@@ -14,13 +14,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['', ''], function () use ($router) {
-	$router->group(['prefix' => 'condominiums/'], function ($router) {
-		/**
-		 * Condominius routes
-		 */
-		$router->get('/', 'CondominiumsController@index');
-		$router->post('/', 'CondominiumsController@store');
-		$router->get('/{condominiums_id}', 'CondominiumsController@show');
+	$router->group(['prefix' => 'ficde/'], function ($router) {
 		/**
 		 * User routes
 		 */
