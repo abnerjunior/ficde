@@ -1,0 +1,903 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger-demo",
+        "description": "Swagger `Api of condominiums`",
+        "contact": {
+            "email": "swagger@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/condominiums"
+        },
+        {
+            "url": "https://swagger-demo-style.herokuapp.com/condominiums"
+        }
+    ],
+    "paths": {
+        "/authenticate": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Authenticate",
+                "description": "Authenticate Users",
+                "operationId": "App\\Http\\Controllers\\AuthenticateController::authenticate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Post resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "Condominium"
+                ],
+                "summary": "Lists available Condominiums",
+                "description": "Gets all available Condominiums resources",
+                "operationId": "App\\Http\\Controllers\\CondominiumsController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Condominium resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Condominiums resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with Condominiums",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Condominium"
+                ],
+                "summary": "Creates a new Condominium",
+                "description": "Creates a new Condominium",
+                "operationId": "App\\Http\\Controllers\\CondominiumsController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Condominium"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Condominium resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/{condominium_id}": {
+            "get": {
+                "tags": [
+                    "Condominium"
+                ],
+                "summary": "Gets a Condominium resource",
+                "description": "Gets a Condominium resource",
+                "operationId": "App\\Http\\Controllers\\CondominiumsController::show",
+                "parameters": [
+                    {
+                        "name": "condominium_id",
+                        "in": "path",
+                        "description": "The Condominium resource condominium_id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Condominium"
+                ],
+                "summary": "Updates a Users resource",
+                "description": "Updates a Users resource by the condominium_id",
+                "operationId": "App\\Http\\Controllers\\CondominiumsController::update",
+                "parameters": [
+                    {
+                        "name": "condominium_id",
+                        "in": "path",
+                        "description": "User resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Condominium"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Condominium resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Condominium"
+                ],
+                "summary": "Removes a Condominium resource",
+                "description": "Removes a Condominium resource",
+                "operationId": "App\\Http\\Controllers\\CondominiumsController::destroy",
+                "parameters": [
+                    {
+                        "name": "condominium_id",
+                        "in": "path",
+                        "description": "The Condominium resource condominium_id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Condominium"
+                ],
+                "summary": "Restore a Condominium resource",
+                "description": "Restore a Condominium resource",
+                "operationId": "App\\Http\\Controllers\\CondominiumsController::restore",
+                "parameters": [
+                    {
+                        "name": "condominium_id",
+                        "in": "path",
+                        "description": "The Condominium resource condominium_id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a Condominium resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Lists available Users",
+                "description": "Gets all available Users resources",
+                "operationId": "App\\Http\\Controllers\\UsersController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Users resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with Users",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Creates a new user",
+                "description": "Creates a new user",
+                "operationId": "App\\Http\\Controllers\\UsersController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The User resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users/{documents}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Gets a User resource",
+                "description": "Gets a User resource",
+                "operationId": "App\\Http\\Controllers\\UsersController::show",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "The User resource documents",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Updates a Users resource",
+                "description": "Updates a Users resource by the documents",
+                "operationId": "App\\Http\\Controllers\\UsersController::update",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "User resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The User resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Removes a User resource",
+                "description": "Removes a User resource",
+                "operationId": "App\\Http\\Controllers\\UsersController::destroy",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "The User resource documents",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Restore a user resource",
+                "description": "Restore a user resource",
+                "operationId": "App\\Http\\Controllers\\UsersController::restore",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "The user resource documents",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a user resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Condominium": {
+                "properties": {
+                    "name": {
+                        "description": "The Condominium name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Condominium phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Condominium email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "type_condominium": {
+                        "description": "The Condominium type_condominium",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "active_indicator": {
+                        "description": "The Condominium active_indicator",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "create_by": {
+                        "description": "The Condominium create_by",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "update_by": {
+                        "description": "The Condominium update_by",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Login": {
+                "properties": {
+                    "email": {
+                        "description": "The Users email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The email password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The user lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The user documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Users email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Users phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Users password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
