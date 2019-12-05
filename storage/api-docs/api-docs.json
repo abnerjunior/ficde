@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Swagger-demo",
-        "description": "Swagger `Api of condominiums`",
+        "description": "Swagger `Api of ficde`",
         "contact": {
             "email": "swagger@gmail.com"
         },
@@ -10,10 +10,10 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8000/condominiums"
+            "url": "http://localhost:8000/ficde"
         },
         {
-            "url": "https://swagger-demo-style.herokuapp.com/condominiums"
+            "url": "https://ficde.herokuapp.com//ficde"
         }
     ],
     "paths": {
