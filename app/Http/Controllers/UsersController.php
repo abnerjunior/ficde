@@ -308,9 +308,9 @@ class UsersController extends Controller
                     'name' =>  $request->name,
                     'lastname' =>  $request->lastname,
                     'documents' =>  $request->documents,
-                    'email' = $request->email,
-                    'phone' = $request->phone,
-                    'password' = Hash::make($request->password)
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'password' => Hash::make($request->password)
                 ]);
                 return response()->json($user, 201);
             }
