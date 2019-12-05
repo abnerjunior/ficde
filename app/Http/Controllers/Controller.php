@@ -14,7 +14,7 @@ use Laravel\Lumen\Routing\Controller as BaseController;
  *   )
  * )
  * @OA\Server(url="http://localhost:8000/ficde")
- * @OA\Server(url="https://ficde.herokuapp.com//ficde")
+ * @OA\Server(url="https://ficde.herokuapp.com/ficde")
  */
 
 class Controller extends BaseController
