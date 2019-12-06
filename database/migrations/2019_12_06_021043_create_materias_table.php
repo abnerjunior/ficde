@@ -14,7 +14,11 @@ class CreateMateriasTable extends Migration
     public function up()
     {
         Schema::create('materias', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('cod_materia');
+            $table->string('cod_curso');
+            $table->string('nombre');
+
+
             $table->timestamps();
         });
     }
