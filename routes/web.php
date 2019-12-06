@@ -23,6 +23,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('curso/', 'CursoController@index');
 		$router->get('materias/', 'MateriasController@index');
 		$router->get('semestres/', 'SemestresController@index');
+		
 
 		$router->get('users/{documents}', 'UsersController@show');
 		$router->post('users/', 'UsersController@store');
