@@ -8,10 +8,10 @@ class SemestresController extends Controller
 {
     /**
        * @OA\Get(
-       *   path="/curso",
-       *   summary="Lists available Curso",
-       *   description="Gets all available Curso resources",
-       *   tags={"Curso"},
+       *   path="/semestres",
+       *   summary="Lists available semestres",
+       *   description="Gets all available semestres resources",
+       *   tags={"semestres"},
        *   security={{"passport": {"*"}}},
        *   @OA\Parameter(
        *       name="paginate",
@@ -66,7 +66,7 @@ class SemestresController extends Controller
        *           title="perPage",
        *           type="number",
        *           default="0",
-       *           description="The unique identifier of a Curso resource"
+       *           description="The unique identifier of a semestres resource"
        *       )
        *    ),
        * @OA\Parameter(
@@ -81,7 +81,7 @@ class SemestresController extends Controller
        *   @OA\Response(
        *       @OA\MediaType(mediaType="application/json"),
        *       response=200,
-       *       description="A list with Curso",
+       *       description="A list with semestres",
        *       @OA\Header(
        *       header="X-Auth-Token",
        *       @OA\Schema(
@@ -109,9 +109,9 @@ class SemestresController extends Controller
      */
      public function index(Request $request) {
 
-       $q = curso::select();
-       $Curso = curso::search($request->toArray(), $q);
-       return  new CursoCollection($Curso);
+       $q = semestres::select();
+       $semestres = semestres::search($request->toArray(), $q);
+       return  new semestresCollection($semestres);
    }
 
     /**
