@@ -4,17 +4,117 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\usuarios;
+
 class UsuariosController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+       * @OA\Get(
+       *   path="/usuarios",
+       *   summary="Lists available usuarios",
+       *   description="Gets all available usuarios resources",
+       *   tags={"usuarios"},
+       *   security={{"passport": {"*"}}},
+       *   @OA\Parameter(
+       *       name="paginate",
+       *       in="query",
+       *       description="paginate",
+       *       required=false,
+       *       @OA\Schema(
+       *           title="Paginate",
+       *           example="true",
+       *           type="boolean",
+       *           description="The unique identifier of a User resource"
+       *       )
+       *   ),
+       *   @OA\Parameter(
+       *       name="dataSearch",
+       *       in="query",
+       *       description="User resource name",
+       *       required=false,
+       *       @OA\Schema(
+       *           type="string",
+       *           description="The unique identifier of a User resource"
+       *       )
+       *    ),
+       *   @OA\Parameter(
+       *       name="sortField",
+       *       in="query",
+       *       description="Sort field",
+       *       required=false,
+       *       @OA\Schema(
+       *           title="name",
+       *           type="string",
+       *           example="name",
+       *           description="The unique identifier of a User resource"
+       *       )
+       *    ),
+       *   @OA\Parameter(
+       *       name="sortOrder",
+       *       in="query",
+       *       description="Sort order field",
+       *       @OA\Schema(
+       *           title="sortOrder",
+       *           example="asc",
+       *           type="string",
+       *           description="The unique identifier of a User resource"
+       *       )
+       *    ),
+       *   @OA\Parameter(
+       *       name="perPage",
+       *       in="query",
+       *       description="Sort order field",
+       *       @OA\Schema(
+       *           title="perPage",
+       *           type="number",
+       *           default="0",
+       *           description="The unique identifier of a usuarios resource"
+       *       )
+       *    ),
+       * @OA\Parameter(
+       *     name="authorization",
+       *     in="header",
+       *     description="authorization",
+       *     @OA\Schema(
+       *         title="authorization",
+       *         type="string",
+       *     )
+       * ),
+       *   @OA\Response(
+       *       @OA\MediaType(mediaType="application/json"),
+       *       response=200,
+       *       description="A list with usuarios",
+       *       @OA\Header(
+       *       header="X-Auth-Token",
+       *       @OA\Schema(
+       *           type="integer",
+       *           format="int32"
+       *       ),
+       *       description="calls per hour allowed by the user"
+       *     ),
+       *   ),
+       *   @OA\Response(
+       *       @OA\MediaType(mediaType="application/json"),
+       *       response=401,
+       *       description="Unauthenticated."
+       *   ),
+       *   @OA\Response(
+       *       @OA\MediaType(mediaType="application/json"),
+       *       response="default",
+       *       description="an ""unexpected"" error"
+       *   ),
+       * )
+       *
+       * Display a listing of the resource.
+       *
+       * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+     public function index(Request $request) {
+
+       $q = usuarios::select();
+       $usuarios = usuarios::search($request->toArray(), $q);
+       return  new usuariosCollection($usuarios);
+   }
 
     /**
      * Store a newly created resource in storage.
