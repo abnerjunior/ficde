@@ -10,10 +10,10 @@ class MateriasController extends Controller
 {
      /**
         * @OA\Get(
-        *   path="/curso",
-        *   summary="Lists available Curso",
-        *   description="Gets all available Curso resources",
-        *   tags={"Curso"},
+        *   path="/materias",
+        *   summary="Lists available materias",
+        *   description="Gets all available materias resources",
+        *   tags={"materias"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -68,7 +68,7 @@ class MateriasController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="0",
-        *           description="The unique identifier of a Curso resource"
+        *           description="The unique identifier of a materias resource"
         *       )
         *    ),
         * @OA\Parameter(
@@ -83,7 +83,7 @@ class MateriasController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="A list with Curso",
+        *       description="A list with materias",
         *       @OA\Header(
         *       header="X-Auth-Token",
         *       @OA\Schema(
@@ -111,9 +111,9 @@ class MateriasController extends Controller
       */
       public function index(Request $request) {
 
-        $q = curso::select();
-        $Curso = curso::search($request->toArray(), $q);
-        return  new CursoCollection($Curso);
+        $q = materias::select();
+        $materias = materias::search($request->toArray(), $q);
+        return  new materiasCollection($materias);
     }
 
     /**

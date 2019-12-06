@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\curso;
+
 class CursoController extends Controller
 {
      /**
