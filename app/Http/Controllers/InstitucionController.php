@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\instituto; 
+use App\Models\institucion; 
 
-class InstitutoController extends Controller
+class InstitucionController extends Controller
 {
     
      /**
