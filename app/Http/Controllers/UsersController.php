@@ -183,6 +183,7 @@ class UsersController extends Controller
         */
     public function show($documents)
     {
+        /** esto es una consulta por la cedula */
         $user = User::where('documents', $documents)
             ->where('documents', $documents)
             ->first();
@@ -310,7 +311,7 @@ class UsersController extends Controller
                     'documents' =>  $request->documents,
                     'email' => $request->email,
                     'phone' => $request->phone,
-                    'password' => Hash::make($request->password)
+                    'password' = Hash::make($request->password)
                 ]);
                 return response()->json($user, 201);
             }
