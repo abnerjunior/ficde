@@ -14,7 +14,13 @@ class CreateAulasTable extends Migration
     public function up()
     {
         Schema::create('aulas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('cod_aula');
+            $table->string('nombre');
+            $table->string('capacidad');
+            $table->string('cod_sede');
+
+            $table->foreign('cod_sede')->references('cod_sede')->on('aulas');
+
             $table->timestamps();
         });
     }
