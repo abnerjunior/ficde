@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsistenciasTable extends Migration
+class CreateModalidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateAsistenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('asistencias', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('modalidades', function (Blueprint $table) {
+            $table->bigIncrements('cod_modalidad');
+            $table->string('modalidad');
+
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateAsistenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asistencias');
+        Schema::dropIfExists('modalidades');
     }
 }

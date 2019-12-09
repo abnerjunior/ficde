@@ -15,11 +15,11 @@ class CreateSemestresMateriasTable extends Migration
     {
         Schema::create('semestres_materias', function (Blueprint $table) 
         {
-            $table->bigIncrements('id_sm');
-            $table->unsignedBigInteger('cod_materia');
-            $table->unsignedBigInteger('cod_semestres');
-            $table->unsignedBigInteger('cod_usuario');
-            $table->unsignedBigInteger('cod_aula');
+            $table->bigIncrements('cod_sm');
+            $table->unsignedBigInteger('id_materia');
+            $table->unsignedBigInteger('id_semestres');
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_aula');
 
             $table->timestamps();
         });
@@ -27,20 +27,18 @@ class CreateSemestresMateriasTable extends Migration
         Schema::table('semestres_materias', function($table)
         {
 
-          /* 
-            
-            $table->foreign('cod_materia')
+            $table->foreign('id_materia')
             ->references('cod_materia')->on('materias');
 
-            $table->foreign('cod_usuario')
+            $table->foreign('id_usuario')
             ->references('cod_usuario')->on('usuarios');
 
-            $table->foreign('cod_semestres')
-            ->references('cod_semestres')->on('semestres');
+            $table->foreign('id_semestres')
+            ->references('cod_semestre')->on('semestres');
 
-            $table->foreign('cod_aula')
+            $table->foreign('id_aula')
             ->references('cod_aula')->on('aulas'); 
-            */
+            
         });
     }
 
