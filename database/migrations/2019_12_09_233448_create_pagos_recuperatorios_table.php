@@ -26,7 +26,7 @@ class CreatePagosRecuperatoriosTable extends Migration
 
         });
 
-        Schema::table('pagos_semestres', function($table)
+        Schema::table('pagos_recuperatorios', function($table)
         {
 
             $table->foreign('id_nota')
