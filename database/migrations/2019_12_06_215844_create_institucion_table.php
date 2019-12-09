@@ -15,10 +15,10 @@ class CreateInstitucionTable extends Migration
     {
         Schema::create('institucion', function (Blueprint $table) {
             $table->bigIncrements('cod_institucion');
-            $table->bigIncrements('nombre');
-            $table->bigIncrements('registro');
-            $table->bigIncrements('telefono');
-            $table->bigIncrements('direccion');
+            $table->string('nombre');
+            $table->string('registro');
+            $table->string('telefono');
+            $table->string('direccion');
             $table->timestamps();
         });
     }

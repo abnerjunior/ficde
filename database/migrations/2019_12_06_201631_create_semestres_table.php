@@ -14,12 +14,9 @@ class CreateSemestresTable extends Migration
     public function up()
     {
         Schema::create('semestres', function (Blueprint $table) {
-            $table->string('cod_semestre');
-            $table->string('cod_curso');
+            $table->bigIncrements('cod_semestre')->unique();
             $table->string('nombre');
             $table->string('fecha');
-
-            $table->foreign('cod_curso')->references('cod_curso')->on('cursos');
 
             $table->timestamps();
         });

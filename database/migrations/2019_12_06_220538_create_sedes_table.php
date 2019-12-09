@@ -14,11 +14,11 @@ class CreateSedesTable extends Migration
     public function up()
     {
         Schema::create('sedes', function (Blueprint $table) {
-            $table->string('cod_sede');
-            $table->bigIncrements('nombre');
-            $table->bigIncrements('direccion');
-            $table->bigIncrements('telefono');
-            $table->bigIncrements('cod_institucion');
+            $table->bigIncrements('cod_sede');
+            $table->string('nombre');
+            $table->string('direccion');
+            $table->string('telefono');
+            $table->unsignedBigInteger('cod_institucion');
 
             $table->foreign('cod_institucion')->references('cod_institucion')->on('institucion');
 

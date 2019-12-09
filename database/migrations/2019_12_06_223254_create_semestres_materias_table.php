@@ -14,18 +14,32 @@ class CreateSemestresMateriasTable extends Migration
     public function up()
     {
         Schema::create('semestres_materias', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('cod_materia');
-            $table->string('cod_semestre');
-            $table->string('cod_usuario');
-            $table->string('cod_aula');
+            $table->bigIncrements('id_sm');
+            $table->unsignedBigInteger('cod_materia');
+            $table->unsignedBigInteger('cod_semestres');
+            $table->unsignedBigInteger('cod_usuario');
+            $table->unsignedBigInteger('cod_aula');
             
-            $table->foreign('cod_materia')->references('cod_materia')->on('materias');
-            $table->foreign('cod_semestre')->references('cod_semestre')->on('semestres');
-            $table->foreign('cod_usuario')->references('cod_usuario')->on('usuarios');
-            $table->foreign('cod_aula')->references('cod_aula')->on('aulas');
+            $table->foreign('cod_materia')
+            ->references('cod_materia')
+            ->on('materias')
+            ->onDelete('cascade');
 
-            $table->timestamps();
+            $table->foreign('cod_usuario')
+            ->references('cod_usuario')
+            ->on('usuarios')
+            ->onDelete('cascade');
+
+            $table->foreign('cod_aula')
+            ->references('cod_aula')
+            ->on('aulas')
+            ->onDelete('cascade');
+
+            $table->foreign('cod_semestres')
+            ->references('cod_semestres')
+            ->on('semestres')
+            ->onDelete('cascade');
+            
         });
     }
 
