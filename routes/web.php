@@ -28,6 +28,16 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('institucion/', 'InstitucionController@index');
 		$router->get('sedes/', 'SedesController@index');
 		$router->get('usuarios/', 'UsuariosController@index');
+		$router->get('asistencias/', 'AsistenciasController@index');
+		$router->get('recuperatorio/', 'RecuperatorioController@index');
+		$router->get('justificados/', 'JustificadosController@index');
+		$router->get('modalidad/', 'ModalidadController@index');
+		$router->get('pago_recuperatorio/', 'PagoRecuperatorioController@index');
+		$router->get('pago_semestre/', 'PagoSemestreController@index');
+		$router->get('estudiantes_materias/', 'EstudiantesController@index');
+		$router->get('usuarios/', 'UsuariosController@index');
+		$router->get('usuarios/', 'UsuariosController@index');
+		$router->get('usuarios/', 'UsuariosController@index');
 		
 
 		$router->get('users/{documents}', 'UsersController@show');
