@@ -20,10 +20,12 @@ class CreateSedesTable extends Migration
             $table->string('telefono');
             $table->unsignedBigInteger('cod_institucion');
 
-            $table->foreign('cod_institucion')->references('cod_institucion')->on('institucion');
+            $table->foreign('cod_institucion')
+            ->references('cod_institucion')->on('institucion');
 
             $table->timestamps();
         });
+        
     }
 
     /**

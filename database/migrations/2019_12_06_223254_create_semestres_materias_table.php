@@ -16,17 +16,18 @@ class CreateSemestresMateriasTable extends Migration
         Schema::create('semestres_materias', function (Blueprint $table) 
         {
             $table->bigIncrements('id_sm');
-           
+            $table->unsignedBigInteger('cod_materia');
+            $table->unsignedBigInteger('cod_semestres');
+            $table->unsignedBigInteger('cod_usuario');
+            $table->unsignedBigInteger('cod_aula');
+
             $table->timestamps();
         });
 
         Schema::table('semestres_materias', function($table)
         {
-            
-            $table->unsignedBigInteger('cod_materia');
-            $table->unsignedBigInteger('cod_semestres');
-            $table->unsignedBigInteger('cod_usuario');
-            $table->unsignedBigInteger('cod_aula');
+
+          /* 
             
             $table->foreign('cod_materia')
             ->references('cod_materia')->on('materias');
@@ -39,7 +40,7 @@ class CreateSemestresMateriasTable extends Migration
 
             $table->foreign('cod_aula')
             ->references('cod_aula')->on('aulas'); 
-            
+            */
         });
     }
 
