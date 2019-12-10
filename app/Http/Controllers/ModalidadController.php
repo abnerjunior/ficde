@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Http\Resources\UsersCollection;
-
-use Illuminate\Http\Request;
-use App\Models\
 use App\Models\modalidad;
+use Illuminate\Http\Request;
+
 
 class ModalidadController extends Controller
 {

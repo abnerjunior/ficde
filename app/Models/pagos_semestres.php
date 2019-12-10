@@ -4,29 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pagos_semestre extends Model
+class pagos_semestres extends Model
 {
     /**
  * @OA\Schema(
- *   schema="Pagos_Semestre",
+ *   schema="Pagos_Semestres",
  *   type="object",
  *   @OA\Property(
  *       property="name",
  *       type="string",
  *       required={"true"},
- *       description="The Pagos_Semestre name"
+ *       description="The Pagos_Semestres name"
  *   ),
  *   @OA\Property(
  *       property="lastname",
  *       type="string",
  *       required={"true"},
- *       description="The Pagos_Semestre lastname"
+ *       description="The Pagos_Semestres lastname"
  *   ),
  *   @OA\Property(
  *       property="documents",
  *       type="string",
  *       required={"true"},
- *       description="The Pagos_Semestre documents"
+ *       description="The Pagos_Semestres documents"
  *   ),
  *   @OA\Property(
  *       property="email",

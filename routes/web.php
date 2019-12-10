@@ -23,7 +23,7 @@ $router->group(['', ''], function () use ($router) {
 
 		$router->get('asistencias/', 'AsistenciasController@index');
 		$router->get('aulas/', 'AulasController@index');
-		$router->get('curso/', 'CursoController@index');		
+		$router->get('curso/', 'CursoController@index');
 		$router->get('estudiantes_materias/', 'EstudiantesController@index');
 		$router->get('estudiantes/', 'EstudiantesController@index');
 		$router->get('institucion/', 'InstitucionController@index');
@@ -31,16 +31,16 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('materias/', 'MateriasController@index');
 		$router->get('modalidad/', 'ModalidadController@index');
 		$router->get('notas/', 'NotasController@index');
-		$router->get('pago_recuperatorio/', 'Pago_RecuperatorioController@index');
-		$router->get('pago_semestre/', 'Pago_SemestreController@index');
+		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');
+		$router->get('pagos_semestres/', 'Pagos_SemestresController@index');
 		$router->get('recuperatorio/', 'RecuperatorioController@index');
 		$router->get('sedes/', 'SedesController@index');
 		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
 		$router->get('semestres/', 'SemestresController@index');
 		$router->get('turnos/', 'TurnosController@index');
 		$router->get('usuarios/', 'UsuariosController@index');
-		
-		
+
+
 
 		$router->get('users/{documents}', 'UsersController@show');
 		$router->post('users/', 'UsersController@store');

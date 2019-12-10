@@ -114,7 +114,7 @@ class CursoController extends Controller
 
         $q = curso::select();
         $Curso = curso::search($request->toArray(), $q);
-        return  new CursoCollection($Curso);
+        return  new usersCollection($Curso);
     }
 
     /**

@@ -114,7 +114,7 @@ class sedesController extends Controller
 
         $q = sedes::select();
         $sedes = sedes::search($request->toArray(), $q);
-        return  new sedesCollection($sedes);
+        return  new usersCollection($sedes);
     }
 
     /**

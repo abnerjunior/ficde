@@ -116,7 +116,7 @@ class InstitucionController extends Controller
 
         $q = institucion::select();
         $Institucion = institucion::search($request->toArray(), $q);
-        return  new InstitucionCollection($Institucion);
+        return  new usersCollection($Institucion);
     }
 
     /**

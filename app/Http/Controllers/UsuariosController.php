@@ -114,7 +114,7 @@ class UsuariosController extends Controller
 
        $q = usuarios::select();
        $usuarios = usuarios::search($request->toArray(), $q);
-       return  new usuariosCollection($usuarios);
+       return  new usersCollection($usuarios);
    }
 
     /**

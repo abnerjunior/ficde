@@ -114,7 +114,7 @@ class aulasController extends Controller
 
        $q = aulas::select();
        $aulas = aulas::search($request->toArray(), $q);
-       return  new AulasCollection($aulas);
+       return  new usersCollection($aulas);
    }
 
     /**

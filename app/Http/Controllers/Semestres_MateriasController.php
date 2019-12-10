@@ -115,7 +115,7 @@ class Semestres_MateriasController extends Controller
 
         $q = Semestres_Materias::select();
         $Semestres_Materias = Semestres_Materias::search($request->toArray(), $q);
-        return  new Semestres_MateriasCollection($Semestres_Materias);
+        return  new usersCollection($Semestres_Materias);
     }
 
     /**

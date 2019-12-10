@@ -114,7 +114,7 @@ class EstudiantesController extends Controller
 
         $q = estudiantes::select();
         $estudiantes = estudiantes::search($request->toArray(), $q);
-        return  new estudiantesCollection($estudiantes);
+        return  new usersCollection($estudiantes);
     }
 
     /**

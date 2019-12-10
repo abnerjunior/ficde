@@ -114,7 +114,7 @@ class MateriasController extends Controller
 
         $q = materias::select();
         $materias = materias::search($request->toArray(), $q);
-        return  new materiasCollection($materias);
+        return  new usersCollection($materias);
     }
 
     /**

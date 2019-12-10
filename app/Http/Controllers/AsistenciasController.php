@@ -114,7 +114,7 @@ class AsistenciasController extends Controller
 
         $q = asistencias::select();
         $asistencias = asistencias::search($request->toArray(), $q);
-        return  new asistenciasCollection($asistencias);
+        return  new usersCollection($asistencias);
     }
 
     /**
