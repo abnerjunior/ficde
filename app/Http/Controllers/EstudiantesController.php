@@ -144,7 +144,6 @@ class EstudiantesController extends Controller
         $estudiantes = estudiantes::search($request->toArray(), $q);
         return  new UsersCollection($estudiantes);
     }
-
     /**
         * @OA\Post(
         *   path="/estudiantes",
@@ -155,7 +154,7 @@ class EstudiantesController extends Controller
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/estudiante")
+        *           @OA\Schema(ref="#/components/schemas/estudiantes")
         *       )
         *   ),
         *   @OA\Response(

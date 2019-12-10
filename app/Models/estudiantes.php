@@ -11,7 +11,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
   /**
  * @OA\Schema(
- *   schema="Estudiantes",
+ *   schema="estudiantes",
  *   type="object",
  *   @OA\Property(
  *       property="nombre",
