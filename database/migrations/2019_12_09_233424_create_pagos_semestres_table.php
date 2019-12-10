@@ -19,6 +19,7 @@ class CreatePagosSemestresTable extends Migration
             $table->string('iva');
             $table->string('total');
             $table->string('fecha');
+            $table->string('descripcion');
             $table->unsignedBigInteger('id_estudiante');
             $table->unsignedBigInteger('id_semestre');
 

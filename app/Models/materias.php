@@ -14,37 +14,37 @@ class materias extends Model
  *       property="name",
  *       type="string",
  *       required={"true"},
- *       description="The Curso name"
+ *       description="The Materias name"
  *   ),
  *   @OA\Property(
  *       property="lastname",
  *       type="string",
  *       required={"true"},
- *       description="The Curso lastname"
+ *       description="The Materias lastname"
  *   ),
  *   @OA\Property(
  *       property="documents",
  *       type="string",
  *       required={"true"},
- *       description="The Curso documents"
+ *       description="The Materias documents"
  *   ),
  *   @OA\Property(
  *       property="email",
  *       required={"true"},
  *       type="string",
- *       description="The Cursos email"
+ *       description="The Materiass email"
  *   ),
  *   @OA\Property(
  *       property="phone",
  *       type="string",
  *       required={"true"},
- *       description="The Cursos phone"
+ *       description="The Materiass phone"
  *   ),
  *   @OA\Property(
  *       property="password",
  *       type="string",
  *       required={"true"},
- *       description="The Cursos password"
+ *       description="The Materiass password"
  *   ),
  * )
  */

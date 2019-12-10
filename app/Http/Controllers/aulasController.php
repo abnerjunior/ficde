@@ -113,7 +113,7 @@ class aulasController extends Controller
 
        $q = aulas::select();
        $aulas = aulas::search($request->toArray(), $q);
-       return  new aulasCollection($aulas);
+       return  new AulasCollection($aulas);
    }
 
     /**
