@@ -72,7 +72,7 @@ class estudiantes extends Model
         'cod_estudiante',
         'nombre',
         'apellido',
-        'dni',
+        'dnigi',
         'email'
     ];
 }
