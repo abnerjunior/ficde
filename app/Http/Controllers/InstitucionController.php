@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\institucion as AppInstitucion;
+use App\Http\Resources\UsersCollection;
+
 use Illuminate\Http\Request;
 
-use App\Models\institucion; 
+use App\Models\institucion;
 
 class InstitucionController extends Controller
 {
-    
+
      /**
         * @OA\Get(
         *   path="/Institucion",
