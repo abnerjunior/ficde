@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\UsersCollection;
-
+use App\Models\Cestudiantes;
 use App\Models\estudiantes;
 
 class EstudiantesController extends Controller
@@ -118,14 +118,50 @@ class EstudiantesController extends Controller
     }
 
     /**
+        * @OA\Post(
+        *   path="/users",
+        *   summary="Creates a new user",
+        *   description="Creates a new user",
+        *   tags={"Users"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\RequestBody(
+        *       @OA\MediaType(
+        *           mediaType="application/json",
+        *           @OA\Schema(ref="#/components/schemas/User")
+        *       )
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response=200,
+        *       description="The User resource created",
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response=401,
+        *       description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response="default",
+        *       description="an ""unexpected"" error",
+        *   )
+        * )
+        *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * 
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $estudiantes= new estudiantes();
+        $estudiantes->dni=$request->dni;
+        $estudiantes->nombre=$request->nombre;
+        $estudiantes->apellido=$request->apellido;
+        $estudiantes->email=$request->email;
+        $estudiantes->telefono=$request->telefono;
+        $estudiantes->direccion=$request->direccion;
     }
 
     /**

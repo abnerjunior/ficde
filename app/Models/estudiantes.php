@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class estudiantes extends Model
-{
-     /**
+  /**
  * @OA\Schema(
  *   schema="Estudiantes",
  *   type="object",
@@ -32,20 +30,50 @@ class estudiantes extends Model
  *       property="email",
  *       required={"true"},
  *       type="string",
- *       description="The Estudiantess email"
+ *       description="The Estudiantes email"
  *   ),
  *   @OA\Property(
  *       property="phone",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantess phone"
+ *       description="The Estudiantes phone"
  *   ),
  *   @OA\Property(
  *       property="password",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantess password"
+ *       description="The Estudiantes password"
  *   ),
  * )
  */
+
+class estudiantes extends Model
+{
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'dni',
+        'nombre',
+        'apellido',
+        'email',
+        'telefono',
+        'direccion'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_estudiante',
+        'nombre',
+        'apellido',
+        'dni',
+        'email'
+    ];
 }
+

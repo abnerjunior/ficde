@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class turnos extends Model
 {
-     /**
+  /**
  * @OA\Schema(
  *   schema="Turnos",
  *   type="object",
