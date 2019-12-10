@@ -20,24 +20,26 @@ $router->group(['', ''], function () use ($router) {
 		 */
 		$router->post('authenticate/', 'AuthenticateController@authenticate');
 		$router->get('users/', 'UsersController@index');
-		$router->get('curso/', 'CursoController@index');
-		$router->get('materias/', 'MateriasController@index');
-		$router->get('semestres/', 'SemestresController@index');
-		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
-		$router->get('aulas/', 'AulasController@index');
-		$router->get('institucion/', 'InstitucionController@index');
-		$router->get('sedes/', 'SedesController@index');
-		$router->get('usuarios/', 'UsuariosController@index');
+
 		$router->get('asistencias/', 'AsistenciasController@index');
-		$router->get('recuperatorio/', 'RecuperatorioController@index');
-		$router->get('justificados/', 'JustificadosController@index');
-		$router->get('modalidad/', 'ModalidadController@index');
-		$router->get('pago_recuperatorio/', 'PagoRecuperatorioController@index');
-		$router->get('pago_semestre/', 'PagoSemestreController@index');
+		$router->get('aulas/', 'AulasController@index');
+		$router->get('curso/', 'CursoController@index');		
 		$router->get('estudiantes_materias/', 'EstudiantesController@index');
+		$router->get('estudiantes/', 'EstudiantesController@index');
+		$router->get('institucion/', 'InstitucionController@index');
+		$router->get('justificados/', 'JustificadosController@index');
+		$router->get('materias/', 'MateriasController@index');
+		$router->get('modalidad/', 'ModalidadController@index');
+		$router->get('notas/', 'NotasController@index');
+		$router->get('pago_recuperatorio/', 'Pago_RecuperatorioController@index');
+		$router->get('pago_semestre/', 'Pago_SemestreController@index');
+		$router->get('recuperatorio/', 'RecuperatorioController@index');
+		$router->get('sedes/', 'SedesController@index');
+		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
+		$router->get('semestres/', 'SemestresController@index');
+		$router->get('turnos/', 'TurnosController@index');
 		$router->get('usuarios/', 'UsuariosController@index');
-		$router->get('usuarios/', 'UsuariosController@index');
-		$router->get('usuarios/', 'UsuariosController@index');
+		
 		
 
 		$router->get('users/{documents}', 'UsersController@show');

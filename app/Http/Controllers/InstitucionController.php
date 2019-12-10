@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\institucion as AppInstitucion;
 use Illuminate\Http\Request;
 
 use App\Models\institucion; 
@@ -11,10 +12,10 @@ class InstitucionController extends Controller
     
      /**
         * @OA\Get(
-        *   path="/instituto",
-        *   summary="Lists available instituto",
-        *   description="Gets all available instituto resources",
-        *   tags={"instituto"},
+        *   path="/Institucion",
+        *   summary="Lists available Institucion",
+        *   description="Gets all available Institucion resources",
+        *   tags={"Institucion"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -69,7 +70,7 @@ class InstitucionController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="0",
-        *           description="The unique identifier of a instituto resource"
+        *           description="The unique identifier of a Institucion resource"
         *       )
         *    ),
         * @OA\Parameter(
@@ -84,7 +85,7 @@ class InstitucionController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="A list with instituto",
+        *       description="A list with Institucion",
         *       @OA\Header(
         *       header="X-Auth-Token",
         *       @OA\Schema(
@@ -112,9 +113,9 @@ class InstitucionController extends Controller
       */
       public function index(Request $request) {
 
-        $q = instituto::select();
-        $instituto = instituto::search($request->toArray(), $q);
-        return  new institutoCollection($instituto);
+        $q = institucion::select();
+        $Institucion = institucion::search($request->toArray(), $q);
+        return  new InstitucionCollection($Institucion);
     }
 
     /**

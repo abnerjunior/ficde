@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TurnoController extends Controller
+class TurnosController extends Controller
 {
     /**
      * Display a listing of the resource.
