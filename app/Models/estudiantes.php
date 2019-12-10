@@ -2,29 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+
 
   /**
  * @OA\Schema(
  *   schema="Estudiantes",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="nombre",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantes name"
+ *       description="The Estudiantes nombre"
  *   ),
  *   @OA\Property(
- *       property="lastname",
+ *       property="apellido",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantes lastname"
+ *       description="The Estudiantes apellido"
  *   ),
  *   @OA\Property(
- *       property="documents",
+ *       property="dni",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantes documents"
+ *       description="The Estudiantes dni"
  *   ),
  *   @OA\Property(
  *       property="email",
@@ -33,16 +38,16 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The Estudiantes email"
  *   ),
  *   @OA\Property(
- *       property="phone",
+ *       property="telefono",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantes phone"
+ *       description="The Estudiantes telefono"
  *   ),
  *   @OA\Property(
- *       property="password",
+ *       property="direccion",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantes password"
+ *       description="The Estudiantes direccion"
  *   ),
  * )
  */
