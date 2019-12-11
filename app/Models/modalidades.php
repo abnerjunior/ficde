@@ -16,7 +16,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       property="modalidad",
  *       type="string",
  *       required={"true"},
- *       description="The Turnos name"
+ *       description="The modalidad name"
  *   ),
  * )
  */

@@ -28,11 +28,21 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('aulas/', 'AulasController@index');
 		$router->get('curso/', 'CursoController@index');
 		$router->get('estudiantes_materias/', 'EstudiantesController@index');
+
 		$router->get('estudiantes/', 'EstudiantesController@index');
+		$router->post('estudiantes/', 'EstudiantesController@store');
+		$router->put('estudiantes/{dni}', 'EstudiantesController@update');
+		$router->get('estudiantes/{dni}', 'EstudiantesController@show');
+
 		$router->get('institucion/', 'InstitucionController@index');
 		$router->get('justificados/', 'JustificadosController@index');
 		$router->get('materias/', 'MateriasController@index');
+
 		$router->get('modalidades/', 'ModalidadesController@index');
+		$router->post('modalidades/', 'ModalidadesController@store');
+		$router->put('modalidades/{modalidade}', 'ModalidadesController@update');
+		$router->get('modalidades/{modalidade}', 'ModalidadesController@show');
+
 		$router->get('notas/', 'NotasController@index');
 		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');
 		$router->get('pagos_semestres/', 'Pagos_SemestresController@index');
@@ -40,20 +50,15 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('sedes/', 'SedesController@index');
 		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
 		$router->get('semestres/', 'SemestresController@index');
-		$router->get('turnos/', 'TurnosController@index');
-		$router->get('usuarios/', 'UsuariosController@index');
 
+		$router->get('turnos/', 'TurnosController@index');
 		$router->post('turnos/', 'TurnosController@store');
 		$router->put('turnos/{turno}', 'TurnosController@update');
 		$router->get('turnos/{turno}', 'TurnosController@show');
 
-		$router->post('modalidades/', 'MateriasController@store');
-		$router->put('modalidades/{modalidade}', 'MateriasController@update');
-		$router->get('modalidades/{modalidade}', 'MateriasController@show');
+		$router->get('usuarios/', 'UsuariosController@index');
 
-		$router->post('estudiantes/', 'EstudiantesController@store');
-		$router->put('estudiantes/{dni}', 'EstudiantesController@update');
-		$router->get('estudiantes/{dni}', 'EstudiantesController@show');
+
 
 
 		/** 
