@@ -1,43 +1,43 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Resources\UsersCollection;
 
-use App\Models\modalidades;
+use App\Models\cursos;
 
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class ModalidadesController extends Controller
+class CursosController extends Controller
 {
-
     /**
      * validate data of request
      * @param  [Request] $request data
-     * @param  [String] $modalidad number modalidad
+     * @param  [String] $curso number curso
      * @return [Function]  function validator
      */
-    private function validation ($request, $modalidad) {
-        if ($modalidad !== null) {
-            $unique = Rule::unique('modalidades')->ignore($request->modalidad, 'modalidad');
+    private function validation ($request, $curso) {
+        if ($curso !== null) {
+            $unique = Rule::unique('cursos')->ignore($request->curso, 'curso');
         } else {
-            $unique = 'unique:modalidades';
+            $unique = 'unique:cursos';
         }
         $validator = Validator::make($request->all(), [
-            'modalidad' => ['required', 'max:10', $unique]
+            'curso' => ['required', 'max:19', $unique]
         ]);
         return $validator;
     }
 
      /**
         * @OA\Get(
-        *   path="/modalidades",
-        *   summary="Lists available modalidades",
-        *   description="Gets all available modalidades resources",
-        *   tags={"modalidad"},
+        *   path="/cursos",
+        *   summary="Lists available cursos",
+        *   description="Gets all available cursos resources",
+        *   tags={"curso"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -92,7 +92,7 @@ class ModalidadesController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="0",
-        *           description="The unique identifier of a modalidad resource"
+        *           description="The unique identifier of a curso resource"
         *       )
         *    ),
         * @OA\Parameter(
@@ -107,7 +107,7 @@ class ModalidadesController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="A list with modalidad",
+        *       description="A list with curso",
         *       @OA\Header(
         *       header="X-Auth-Token",
         *       @OA\Schema(
@@ -135,28 +135,28 @@ class ModalidadesController extends Controller
       */
       public function index(Request $request) {
 
-        $q = modalidades::select();
-        $modalidad = modalidades::search($request->toArray(), $q);
-        return  new usersCollection($modalidad);
+        $q = cursos::select();
+        $curso = cursos::search($request->toArray(), $q);
+        return  new usersCollection($curso);
     }
 
     /**
         * @OA\Post(
-        *   path="/modalidades",
-        *   summary="Creates a new modalidad",
-        *   description="Creates a new modalidad",
-        *   tags={"modalidades"},
+        *   path="/cursos",
+        *   summary="Creates a new curso",
+        *   description="Creates a new curso",
+        *   tags={"cursos"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/modalidades")
+        *           @OA\Schema(ref="#/components/schemas/cursos")
         *       )
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="The modalidad resource created",
+        *       description="The curso resource created",
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
@@ -183,9 +183,9 @@ class ModalidadesController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 201);
             } else {
-                $modalidades= new modalidades();
-                $modalidades->modalidad = $request->modalidad;
-                $modalidades->save();
+                $cursos= new cursos();
+                $cursos->curso = $request->curso;
+                $cursos->save();
                 return response()->json($request, 200);      
             }
         }catch (Exception $e) {
@@ -195,19 +195,19 @@ class ModalidadesController extends Controller
 
     /**
         * @OA\Get(
-        *   path="/modalidades/{modalidad}",
-        *   summary="Gets a modalidad resource",
-        *   description="Gets a modalidad resource",
-        *   tags={"modalidades"},
+        *   path="/cursos/{curso}",
+        *   summary="Gets a curso resource",
+        *   description="Gets a curso resource",
+        *   tags={"cursos"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
-        *   name="modalidad",
+        *   name="curso",
         *   in="path",
-        *   description="The modalidad resource modalidad",
+        *   description="The curso resource curso",
         *   required=true,
         *   @OA\Schema(
         *       type="string",
-        *       description="The unique identifier of a modalidad resource"
+        *       description="The unique identifier of a curso resource"
         *   )
         *   ),
         *   @OA\Response(
@@ -229,53 +229,53 @@ class ModalidadesController extends Controller
         *
         * Remove the specified resource from storage.
         *
-        * @param  int  $modalidad
+        * @param  int  $curso
         *
         * @return \Illuminate\Http\Response
         */
-    public function show($modalidad)
+    public function show($curso)
     {
        /** esto es una consulta por la cedula */
-       $modalidades = modalidades::where('modalidad', $modalidad)
-            ->where('modalidad', $modalidad)
+       $cursos = cursos::where('curso', $curso)
+            ->where('curso', $curso)
             ->first();
-        if ($modalidades)
+        if ($cursos)
         {
-            return response()->json($modalidades, 200);
+            return response()->json($cursos, 200);
         } 
         else 
         {
-            return response()->json(['status' => 'error', 'message' => 'No existe este modalidad'], 204);
+            return response()->json(['status' => 'error', 'message' => 'No existe este curso'], 204);
         }
     }
 
         /**
         * @OA\Put(
-        *   path="/modalidades/{modalidad}",
-        *   summary="Updates a modalidades resource",
-        *   description="Updates a modalidades resource by the modalidad",
-        *   tags={"modalidades"},
+        *   path="/cursos/{curso}",
+        *   summary="Updates a cursos resource",
+        *   description="Updates a cursos resource by the curso",
+        *   tags={"cursos"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
-        *   name="modalidad",
+        *   name="curso",
         *   in="path",
-        *   description="modalidades resource id",
+        *   description="cursos resource id",
         *   required=true,
         *   @OA\Schema(
         *       type="string",
-        *       description="The unique identifier of a modalidades resource"
+        *       description="The unique identifier of a cursos resource"
         *   )
         *   ),
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/modalidades")
+        *           @OA\Schema(ref="#/components/schemas/cursos")
         *       )
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *           response=200,
-        *           description="The modalidades resource updated"
+        *           description="The cursos resource updated"
         *       ),
         *       @OA\Response(
         *           @OA\MediaType(mediaType="application/json"),
@@ -292,26 +292,25 @@ class ModalidadesController extends Controller
         * Update the specified resource in storage.
         *
         * @param \Illuminate\Http\Request $request
-        * @param  int  $modalidad
+        * @param  int  $curso
         *
         * @return \Illuminate\Http\Response
         */
-        public function update(Request $request, $modalidad)
+        public function update(Request $request, $curso)
         {
             try {
-                if ($this->validation($request, $modalidad)->fails()) {
-                    $errors = $this->validation($request, $modalidad)->errors();
+                if ($this->validation($request, $curso)->fails()) {
+                    $errors = $this->validation($request, $curso)->errors();
                     return response()->json($errors->all(), 201);
                 } else {
-                    $modalidad = modalidades::where('modalidad', $modalidad)
+                    $curso = cursos::where('curso', $curso)
                     ->update([
-                        'modalidad' =>  $request->modalidad,
+                        'curso' =>  $request->curso,
                     ]);
-                    return response()->json($modalidad, 201);
+                    return response()->json($curso, 201);
                 }
             } catch (Exception $e) {
                 return response()->json($e);
             }
         }
-
 }

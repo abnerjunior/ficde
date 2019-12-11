@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -11,21 +10,21 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
  /**
  * @OA\Schema(
- *   schema="modalidades",
+ *   schema="cursos",
  *   type="object",
  *   @OA\Property(
- *       property="modalidad",
+ *       property="curso",
  *       type="string",
  *       required={"true"},
- *       description="The modalidad name"
+ *       description="The curso name"
  *   ),
  * )
  */
 
-class modalidades extends Base
+class cursos extends Base
 {
-    protected $table = 'modalidades';
-    protected $primaryKey = 'cod_modalidad';
+    protected $table = 'cursos';
+    protected $primaryKey = 'cod_curso';
 
       
     /**
@@ -34,7 +33,7 @@ class modalidades extends Base
      * @var array
      */
     protected $fillable = [
-        'modalidad'
+        'curso'
     ];
     /**
      * The attributes that are filterable.
@@ -42,7 +41,7 @@ class modalidades extends Base
      * @var array
      */
     public static $filterable = [
-        'cod_modalidad',
-        'modalidad'
+        'cod_curso',
+        'curso'
     ];
 }

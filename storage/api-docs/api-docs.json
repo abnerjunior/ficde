@@ -1055,8 +1055,8 @@
                 "tags": [
                     "modalidad"
                 ],
-                "summary": "Lists available modalidad",
-                "description": "Gets all available modalidad resources",
+                "summary": "Lists available modalidades",
+                "description": "Gets all available modalidades resources",
                 "operationId": "App\\Http\\Controllers\\ModalidadesController::index",
                 "parameters": [
                     {
