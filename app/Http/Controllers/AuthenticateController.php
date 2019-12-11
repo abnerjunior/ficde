@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+use App\Models\usuarios;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Firebase\JWT\JWT;
@@ -12,10 +12,10 @@ class AuthenticateController extends Controller
     /**
      * Create a new token.
      * 
-     * @param  \App\User   $user
+     * @param  \App\usuarios   $user
      * @return string
      */
-    protected function jwt(User $user) {
+    protected function jwt(usuarios $user) {
         $payload = [
             'iss' => "lumen-jwt", // Issuer of the token
             'sub' => $user->user_id, // Subject of the token
@@ -33,7 +33,7 @@ class AuthenticateController extends Controller
         *   path="/authenticate",
         *   summary="Authenticate",
         *   description="Authenticate Users",
-        *   tags={"Users"},
+        *   tags={"usuarios"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
@@ -65,11 +65,12 @@ class AuthenticateController extends Controller
         * @return \Illuminate\Http\Response
         */
     public function authenticate(Request $request) {
-        $user = User::where('email', $request->email)->first();
+        $user = usuarios::where('dni', $request->dni)
+            ->first();
         if ($user) {
             if(Hash::check($request->password, $user->password)){
                 $apikey = $this->jwt($user);
-                User::where('email', $request->email)->update(['api_token' => $apikey]);
+                usuarios::where('dni', $request->dni)->update(['api_token' => $apikey]);
 
                 return response()->json(['status' => 'success','api_token' => $apikey], 200);
             } else {

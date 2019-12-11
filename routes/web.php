@@ -9,6 +9,9 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+
+use App\Models\estudiantes;
+
 $router->get('/', function () use ($router) {
     return redirect('api/api-docs');
 });
@@ -40,7 +43,14 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('turnos/', 'TurnosController@index');
 		$router->get('usuarios/', 'UsuariosController@index');
 
-
+		$router->post('estudiantes/', 'EstudiantesController@store');
+		$router->put('estudiantes/{dni}', 'EstudiantesController@update');
+		$router->get('estudiantes/{dni}', 'EstudiantesController@show');
+		/** 
+		 * existen 5 tipos de rutas
+		 * las get, post, put, delete y patch
+		 * no tenenos la post que es
+		*/
 
 		$router->get('users/{documents}', 'UsersController@show');
 		$router->post('users/', 'UsersController@store');

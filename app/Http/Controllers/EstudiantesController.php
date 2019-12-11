@@ -183,24 +183,23 @@ class EstudiantesController extends Controller
     public function store(Request $request)
     {
         try {
-        if ($this->validation($request, null)->fails()) {
-            $errors = $this->validation($request, null)->errors();
-            return response()->json($errors->all(), 201);
-        } else {
-        $estudiantes= new estudiantes();
-        $estudiantes->dni=$request->dni;
-        $estudiantes->nombre=$request->nombre;
-        $estudiantes->apellido=$request->apellido;
-        $estudiantes->email=$request->email;
-        $estudiantes->telefono=$request->telefono;
-        $estudiantes->direccion=$request->direccion;
-        $estudiantes->save();
-        return response()->json($estudiantes,200);
-    
+            if ($this->validation($request, null)->fails()) {
+                $errors = $this->validation($request, null)->errors();
+                return response()->json($errors->all(), 201);
+            } else {
+                $estudiantes= new estudiantes();
+                $estudiantes->dni = $request->dni;
+                $estudiantes->nombre = $request->nombre;
+                $estudiantes->apellido = $request->apellido;
+                $estudiantes->email = $request->email;
+                $estudiantes->telefono = $request->telefono;
+                $estudiantes->direccion = $request->direccion;
+                $estudiantes->save();
+                return response()->json($request, 200);      
+            }
+        }catch (Exception $e) {
+            return response()->json($e);
         }
-    }catch (Exception $e) {
-    return response()->json($e);
-}
     }
 
     /**
@@ -247,21 +246,21 @@ class EstudiantesController extends Controller
     {
        /** esto es una consulta por la cedula */
        $estudiantes = estudiantes::where('dni', $dni)
-       ->where('dni', $dni)
-       ->first();
+            ->where('dni', $dni)
+            ->first();
         if ($estudiantes)
         {
-         return response()->json($estudiantes, 200);
+            return response()->json($estudiantes, 200);
         } 
         else 
         {
-         return response()->json(['status' => 'error', 'message' => 'Estudiante no inscrito'], 204);
+            return response()->json(['status' => 'error', 'message' => 'Estudiante no inscrito'], 204);
         }
     }
 
    /**
         * @OA\Put(
-        *   path="/users/{dni}",
+        *   path="/estudiantes/{dni}",
         *   summary="Updates a estudiantes resource",
         *   description="Updates a estudiantes resource by the dni",
         *   tags={"estudiantes"},
@@ -315,11 +314,11 @@ class EstudiantesController extends Controller
                 } else {
                     $estudiante = estudiantes::where('dni', $dni)
                     ->update([
-                        'nombre' =>  $request->name,
-                        'apellido' =>  $request->lastname,
+                        'nombre' =>  $request->nombre,
+                        'apellido' =>  $request->apellido,
                         'direccion' =>  $request->direccion,
                         'email' => $request->email,
-                        'telefono' => $request->phone,
+                        'telefono' => $request->telefono,
                     ]);
                     return response()->json($estudiante, 201);
                 }
@@ -333,7 +332,7 @@ class EstudiantesController extends Controller
         *   path="/estudiantes/{dni}",
         *   summary="Removes a estudiantes resource",
         *   description="Removes a estudiantes resource",
-        *   tags={"Users"},
+        *   tags={"estudiantes"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *   name="dni",
@@ -371,7 +370,7 @@ class EstudiantesController extends Controller
         public function destroy($dni)
         {
             $estudiantes = estudiantes::where('dni', $dni)
-                ->where('status', 'y')
+                ->where('status', 'n')
                 ->first();
             if ($estudiantes) {
                 estudiantes::where('dni', $dni)->update(['status' => 'n']);

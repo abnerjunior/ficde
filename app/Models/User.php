@@ -8,24 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-/**
- * @OA\Schema(
- *   schema="Login",
- *   type="object",
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The Users email"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The email password"
- *   ),
- * )
- */
 
 /**
  * @OA\Schema(

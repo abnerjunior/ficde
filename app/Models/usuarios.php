@@ -6,7 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class usuarios extends Model
 {
-       /**
+      /**
+ * @OA\Schema(
+ *   schema="Login",
+ *   type="object",
+ *   @OA\Property(
+ *       property="dni",
+ *       required={"true"},
+ *       type="string",
+ *       description="The Users dni"
+ *   ),
+ *   @OA\Property(
+ *       property="password",
+ *       type="string",
+ *       required={"true"},
+ *       description="The email password"
+ *   ),
+ * )
+ */
+/**
  * @OA\Schema(
  *   schema="Usuarios",
  *   type="object",

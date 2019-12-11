@@ -52,8 +52,9 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * )
  */
 
-class estudiantes extends Model
+class estudiantes extends Base
 {
+    protected $table = 'estudiantes';
       
     /**
      * The attributes that are mass assignable.
@@ -77,7 +78,7 @@ class estudiantes extends Model
         'cod_estudiante',
         'nombre',
         'apellido',
-        'dnigi',
+        'dni',
         'email'
     ];
 }
