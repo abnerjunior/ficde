@@ -13,10 +13,16 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *   schema="materias",
  *   type="object",
  *   @OA\Property(
- *       property="materia",
+ *       property="cod_curso",
  *       type="string",
  *       required={"true"},
  *       description="The materia name"
+ *   ),
+ * @OA\Property(
+ *       property="materia",
+ *       type="string",
+ *       required={"true"},
+ *       description="The materia nombre"
  *   ),
  * @OA\Property(
  *       property="descripcion",

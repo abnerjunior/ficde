@@ -1146,7 +1146,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a materias resource",
+                            "description": "The unique identifier of a materia resource",
                             "type": "number",
                             "default": "0"
                         }
@@ -1163,7 +1163,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A list with materias",
+                        "description": "A list with materia",
                         "headers": {
                             "X-Auth-Token": {
                                 "description": "calls per hour allowed by the user",
@@ -1173,6 +1173,155 @@
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Creates a new materia",
+                "description": "Creates a new materia",
+                "operationId": "App\\Http\\Controllers\\MateriasController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The materia resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/materias/{materia}": {
+            "get": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Gets a materia resource",
+                "description": "Gets a materia resource",
+                "operationId": "App\\Http\\Controllers\\MateriasController::show",
+                "parameters": [
+                    {
+                        "name": "materia",
+                        "in": "path",
+                        "description": "The materia resource materia",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a materia resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Updates a materias resource",
+                "description": "Updates a materias resource by the materia",
+                "operationId": "App\\Http\\Controllers\\MateriasController::update",
+                "parameters": [
+                    {
+                        "name": "materia",
+                        "in": "path",
+                        "description": "materias resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The materias resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -3381,45 +3530,24 @@
                 },
                 "type": "object"
             },
-            "Materias": {
+            "materias": {
                 "properties": {
-                    "name": {
-                        "description": "The Materias name",
+                    "cod_curso": {
+                        "description": "The materia name",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "lastname": {
-                        "description": "The Materias lastname",
+                    "nombre": {
+                        "description": "The materia nombre",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "documents": {
-                        "description": "The Materias documents",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The Materiass email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The Materiass phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The Materiass password",
+                    "descripcion": {
+                        "description": "The materia descripcion",
                         "required": [
                             "true"
                         ],
