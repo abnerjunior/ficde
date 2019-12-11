@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Resources\UsersCollection;
 use App\Models\modalidad;
+use App\Models\modalidades;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Hash;
@@ -133,8 +134,8 @@ class ModalidadesController extends Controller
       */
       public function index(Request $request) {
 
-        $q = modalidad::select();
-        $modalidad = modalidad::search($request->toArray(), $q);
+        $q = modalidades::select();
+        $modalidad = modalidades::search($request->toArray(), $q);
         return  new usersCollection($modalidad);
     }
 
@@ -183,7 +184,6 @@ class ModalidadesController extends Controller
             } else {
                 $modalidades= new modalidades();
                 $modalidades->modalidad = $request->modalidad;
-                $modalidades->hora = $request->hora;
                 $modalidades->save();
                 return response()->json($request, 200);      
             }
@@ -305,7 +305,6 @@ class ModalidadesController extends Controller
                     $modalidad = modalidades::where('modalidad', $modalidad)
                     ->update([
                         'modalidad' =>  $request->modalidad,
-                        'hora' => $request->hora,
                     ]);
                     return response()->json($modalidad, 201);
                 }

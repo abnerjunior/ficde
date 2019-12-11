@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class modalidad extends Model
+class modalidades extends Model
 {
      /**
  * @OA\Schema(
