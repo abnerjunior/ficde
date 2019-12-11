@@ -1351,7 +1351,7 @@
         "/modalidades": {
             "get": {
                 "tags": [
-                    "modalidad"
+                    "modalidades"
                 ],
                 "summary": "Lists available modalidades",
                 "description": "Gets all available modalidades resources",
@@ -3539,7 +3539,7 @@
                         ],
                         "type": "string"
                     },
-                    "nombre": {
+                    "materia": {
                         "description": "The materia nombre",
                         "required": [
                             "true"

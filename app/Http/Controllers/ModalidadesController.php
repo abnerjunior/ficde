@@ -37,7 +37,7 @@ class ModalidadesController extends Controller
         *   path="/modalidades",
         *   summary="Lists available modalidades",
         *   description="Gets all available modalidades resources",
-        *   tags={"modalidad"},
+        *   tags={"modalidades"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
