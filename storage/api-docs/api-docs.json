@@ -176,14 +176,14 @@
                 ]
             }
         },
-        "/curso": {
+        "/cursos": {
             "get": {
                 "tags": [
-                    "Curso"
+                    "curso"
                 ],
-                "summary": "Lists available Curso",
-                "description": "Gets all available Curso resources",
-                "operationId": "App\\Http\\Controllers\\CursoController::index",
+                "summary": "Lists available cursos",
+                "description": "Gets all available cursos resources",
+                "operationId": "App\\Http\\Controllers\\CursosController::index",
                 "parameters": [
                     {
                         "name": "paginate",
@@ -236,7 +236,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a Curso resource",
+                            "description": "The unique identifier of a curso resource",
                             "type": "number",
                             "default": "0"
                         }
@@ -253,7 +253,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A list with Curso",
+                        "description": "A list with curso",
                         "headers": {
                             "X-Auth-Token": {
                                 "description": "calls per hour allowed by the user",
@@ -263,6 +263,155 @@
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Creates a new curso",
+                "description": "Creates a new curso",
+                "operationId": "App\\Http\\Controllers\\CursosController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/cursos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The curso resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/cursos/{curso}": {
+            "get": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Gets a curso resource",
+                "description": "Gets a curso resource",
+                "operationId": "App\\Http\\Controllers\\CursosController::show",
+                "parameters": [
+                    {
+                        "name": "curso",
+                        "in": "path",
+                        "description": "The curso resource curso",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a curso resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Updates a cursos resource",
+                "description": "Updates a cursos resource by the curso",
+                "operationId": "App\\Http\\Controllers\\CursosController::update",
+                "parameters": [
+                    {
+                        "name": "curso",
+                        "in": "path",
+                        "description": "cursos resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a cursos resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/cursos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The cursos resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -3025,45 +3174,10 @@
                 },
                 "type": "object"
             },
-            "Curso": {
+            "cursos": {
                 "properties": {
-                    "name": {
-                        "description": "The Curso name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "lastname": {
-                        "description": "The Curso lastname",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "documents": {
-                        "description": "The Curso documents",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The Cursos email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The Cursos phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The Cursos password",
+                    "curso": {
+                        "description": "The curso name",
                         "required": [
                             "true"
                         ],
