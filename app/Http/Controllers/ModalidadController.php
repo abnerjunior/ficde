@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UsersCollection;
 use App\Models\modalidad;
 use Illuminate\Http\Request;
-
+use Exception;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ModalidadController extends Controller
 {

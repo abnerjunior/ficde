@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Http\Resources\UsersCollection;
 use Illuminate\Http\Request;
-use App\Http\Resources\estudiantesCollection;
 use App\Models\turnos;
 use Exception;
 use Illuminate\Support\Facades\Hash;
@@ -303,7 +302,7 @@ class TurnosController extends Controller
                 } else {
                     $turno = turnos::where('turno', $turno)
                     ->update([
-                        'turno' =>  $request->nombre,
+                        'turno' =>  $request->turno,
                         'hora' => $request->hora,
                     ]);
                     return response()->json($turno, 201);
