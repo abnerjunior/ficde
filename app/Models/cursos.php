@@ -33,7 +33,8 @@ class cursos extends Base
      * @var array
      */
     protected $fillable = [
-        'curso'
+        'curso',
+        'descripcion'
     ];
     /**
      * The attributes that are filterable.

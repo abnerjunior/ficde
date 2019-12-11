@@ -37,7 +37,7 @@ class CursosController extends Controller
         *   path="/cursos",
         *   summary="Lists available cursos",
         *   description="Gets all available cursos resources",
-        *   tags={"curso"},
+        *   tags={"cursos"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -185,6 +185,7 @@ class CursosController extends Controller
             } else {
                 $cursos= new cursos();
                 $cursos->curso = $request->curso;
+                $cursos->descripcion = $request->descripcion;
                 $cursos->save();
                 return response()->json($request, 200);      
             }
@@ -306,6 +307,7 @@ class CursosController extends Controller
                     $curso = cursos::where('curso', $curso)
                     ->update([
                         'curso' =>  $request->curso,
+                        'descripcion' =>  $request->descripcion,
                     ]);
                     return response()->json($curso, 201);
                 }
