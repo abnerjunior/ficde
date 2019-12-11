@@ -43,7 +43,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('turnos/', 'TurnosController@index');
 		$router->get('usuarios/', 'UsuariosController@index');
 
-		$router->post('turnos/', 'TurnosController@index');
+		$router->post('turnos/', 'TurnosController@store');
 		$router->put('turnos/{turno}', 'TurnosController@update');
 		$router->get('turnos/{turno}', 'TurnosController@show');
 
