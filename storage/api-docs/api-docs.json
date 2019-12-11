@@ -3312,7 +3312,7 @@
             "modalidades": {
                 "properties": {
                     "modalidad": {
-                        "description": "The Turnos name",
+                        "description": "The modalidad name",
                         "required": [
                             "true"
                         ],

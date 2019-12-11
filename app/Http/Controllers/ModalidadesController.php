@@ -33,7 +33,7 @@ class ModalidadesController extends Controller
 
      /**
         * @OA\Get(
-        *   path="/modalidad",
+        *   path="/modalidades",
         *   summary="Lists available modalidad",
         *   description="Gets all available modalidad resources",
         *   tags={"modalidad"},
