@@ -47,6 +47,10 @@ $router->group(['', ''], function () use ($router) {
 		$router->put('turnos/{turno}', 'TurnosController@update');
 		$router->get('turnos/{turno}', 'TurnosController@show');
 
+		$router->post('modalidades/', 'MateriasController@store');
+		$router->put('modalidades/{modalidade}', 'MateriasController@update');
+		$router->get('modalidades/{modalidade}', 'MateriasController@show');
+
 		$router->post('estudiantes/', 'EstudiantesController@store');
 		$router->put('estudiantes/{dni}', 'EstudiantesController@update');
 		$router->get('estudiantes/{dni}', 'EstudiantesController@show');
