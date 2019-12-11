@@ -2,50 +2,51 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class turnos extends Model
-{
   /**
  * @OA\Schema(
- *   schema="Turnos",
+ *   schema="turnos",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="turno",
  *       type="string",
  *       required={"true"},
  *       description="The Turnos name"
  *   ),
  *   @OA\Property(
- *       property="lastname",
- *       type="string",
- *       required={"true"},
- *       description="The Turnos lastname"
- *   ),
- *   @OA\Property(
- *       property="documents",
- *       type="string",
- *       required={"true"},
- *       description="The Turnos documents"
- *   ),
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The Turnoss email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The Turnoss phone"
- *   ),
- *   @OA\Property(
- *       property="password",
+ *       property="hora",
  *       type="string",
  *       required={"true"},
  *       description="The Turnoss password"
  *   ),
  * )
  */
+
+class turnos extends Base
+{
+    protected $table = 'turnos';
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'turno',
+        'hora'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_turno',
+        'turno'
+    ];
 }
