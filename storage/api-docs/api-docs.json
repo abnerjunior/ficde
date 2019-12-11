@@ -3182,6 +3182,13 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "descripcion": {
+                        "description": "The curso descripcion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"

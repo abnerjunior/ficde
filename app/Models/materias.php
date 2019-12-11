@@ -3,49 +3,55 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class materias extends Model
-{
-    /**
+/**
  * @OA\Schema(
- *   schema="Materias",
+ *   schema="materias",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="materia",
  *       type="string",
  *       required={"true"},
- *       description="The Materias name"
+ *       description="The materia name"
  *   ),
- *   @OA\Property(
- *       property="lastname",
+ * @OA\Property(
+ *       property="descripcion",
  *       type="string",
  *       required={"true"},
- *       description="The Materias lastname"
- *   ),
- *   @OA\Property(
- *       property="documents",
- *       type="string",
- *       required={"true"},
- *       description="The Materias documents"
- *   ),
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The Materiass email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The Materiass phone"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The Materiass password"
+ *       description="The materia descripcion"
  *   ),
  * )
  */
+
+class materias extends Model
+{
+    protected $table = 'materias';
+    protected $primaryKey = 'cod_materia';
+
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'cod_curso',
+        'materia',
+        'descripcion'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_materia',
+        'cod_curso',
+        'descripcion',
+        'materia'
+    ];
 }
