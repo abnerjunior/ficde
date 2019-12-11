@@ -30,6 +30,8 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class turnos extends Base
 {
     protected $table = 'turnos';
+    protected $primaryKey = 'cod_turno';
+
       
     /**
      * The attributes that are mass assignable.

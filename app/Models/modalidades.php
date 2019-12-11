@@ -2,50 +2,46 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class modalidades extends Model
-{
-     /**
+ /**
  * @OA\Schema(
- *   schema="Modalidad",
+ *   schema="modalidades",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="modalidad",
  *       type="string",
  *       required={"true"},
- *       description="The Modalidad name"
- *   ),
- *   @OA\Property(
- *       property="lastname",
- *       type="string",
- *       required={"true"},
- *       description="The Modalidad lastname"
- *   ),
- *   @OA\Property(
- *       property="documents",
- *       type="string",
- *       required={"true"},
- *       description="The Modalidad documents"
- *   ),
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The Modalidads email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The Modalidads phone"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The Modalidads password"
+ *       description="The Turnos name"
  *   ),
  * )
  */
+
+class modalidades extends Base
+{
+    protected $table = 'modalidades';
+    protected $primaryKey = 'cod_modalidad';
+
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'modalidad'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_modalidad',
+        'modalidad'
+    ];
 }
