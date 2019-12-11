@@ -32,7 +32,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('institucion/', 'InstitucionController@index');
 		$router->get('justificados/', 'JustificadosController@index');
 		$router->get('materias/', 'MateriasController@index');
-		$router->get('modalidad/', 'ModalidadController@index');
+		$router->get('modalidades/', 'ModalidadesController@index');
 		$router->get('notas/', 'NotasController@index');
 		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');
 		$router->get('pagos_semestres/', 'Pagos_SemestresController@index');
