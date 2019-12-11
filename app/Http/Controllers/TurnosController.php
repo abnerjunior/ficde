@@ -365,7 +365,7 @@ class TurnosController extends Controller
             } 
             else 
             {
-                return response()->json(['status' => 'error', 'message' => 'turno not inscrito'], 401);
+                return response()->json(['status' => 'error', 'message' => 'turno no existe'], 401);
             }
         }
 }

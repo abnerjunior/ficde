@@ -43,9 +43,15 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('turnos/', 'TurnosController@index');
 		$router->get('usuarios/', 'UsuariosController@index');
 
+		$router->post('turnos/', 'TurnosController@index');
+		$router->put('turnos/{turno}', 'TurnosController@update');
+		$router->get('turnos/{turno}', 'TurnosController@show');
+
 		$router->post('estudiantes/', 'EstudiantesController@store');
 		$router->put('estudiantes/{dni}', 'EstudiantesController@update');
 		$router->get('estudiantes/{dni}', 'EstudiantesController@show');
+
+
 		/** 
 		 * existen 5 tipos de rutas
 		 * las get, post, put, delete y patch
