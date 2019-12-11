@@ -1050,7 +1050,7 @@
                 ]
             }
         },
-        "/modalidad": {
+        "/modalidades": {
             "get": {
                 "tags": [
                     "modalidad"
@@ -1161,9 +1161,7 @@
                         ]
                     }
                 ]
-            }
-        },
-        "/modalidades": {
+            },
             "post": {
                 "tags": [
                     "modalidades"

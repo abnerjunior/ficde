@@ -40,8 +40,8 @@ $router->group(['', ''], function () use ($router) {
 
 		$router->get('modalidades/', 'ModalidadesController@index');
 		$router->post('modalidades/', 'ModalidadesController@store');
-		$router->put('modalidades/{modalidade}', 'ModalidadesController@update');
-		$router->get('modalidades/{modalidade}', 'ModalidadesController@show');
+		$router->put('modalidades/{modalidad}', 'ModalidadesController@update');
+		$router->get('modalidades/{modalidad}', 'ModalidadesController@show');
 
 		$router->get('notas/', 'NotasController@index');
 		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');

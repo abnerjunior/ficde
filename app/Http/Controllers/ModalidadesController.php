@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Http\Resources\UsersCollection;
-use App\Models\modalidad;
 use App\Models\modalidades;
 use Illuminate\Http\Request;
 use Exception;
@@ -34,8 +33,8 @@ class ModalidadesController extends Controller
      /**
         * @OA\Get(
         *   path="/modalidades",
-        *   summary="Lists available modalidad",
-        *   description="Gets all available modalidad resources",
+        *   summary="Lists available modalidades",
+        *   description="Gets all available modalidades resources",
         *   tags={"modalidad"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
