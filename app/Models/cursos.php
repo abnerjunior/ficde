@@ -18,6 +18,12 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The curso name"
  *   ),
+ * @OA\Property(
+ *       property="descripcion",
+ *       type="string",
+ *       required={"true"},
+ *       description="The curso descripcion"
+ *   ),
  * )
  */
 

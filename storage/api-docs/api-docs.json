@@ -179,7 +179,7 @@
         "/cursos": {
             "get": {
                 "tags": [
-                    "curso"
+                    "cursos"
                 ],
                 "summary": "Lists available cursos",
                 "description": "Gets all available cursos resources",
