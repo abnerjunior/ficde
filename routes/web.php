@@ -22,7 +22,6 @@ $router->group(['', ''], function () use ($router) {
 		 * User routes
 		 */
 		$router->post('authenticate/', 'AuthenticateController@authenticate');
-		$router->get('users/', 'UsersController@index');
 
 		$router->get('asistencias/', 'AsistenciasController@index');
 
