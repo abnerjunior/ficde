@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
   /**
  * @OA\Schema(
- *   schema="institucion",
+ *   schema="asistencias",
  *   type="object",
  *   @OA\Property(
  *       property="nombre",
@@ -19,25 +19,25 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       property="registro",
  *       type="string",
  *       required={"true"},
- *       description="The institucion registro"
+ *       description="The asistencias registro"
  *   ),
  *   @OA\Property(
  *       property="telefono",
  *       type="string",
  *       required={"true"},
- *       description="The institucion telefono"
+ *       description="The asistencias telefono"
  *   ),
  *   @OA\Property(
  *       property="direccion",
  *       type="string",
  *       required={"true"},
- *       description="The institucion direccion"
+ *       description="The asistencias direccion"
  *   ),
  * )
  */
-class institucion extends Base
+class asistencias extends Base
 {
-      protected $table = 'institucion';
+      protected $table = 'asistencias';
     protected $primaryKey = 'cod_institucion';
       
     /**

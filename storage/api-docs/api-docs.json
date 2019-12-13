@@ -3422,45 +3422,31 @@
     },
     "components": {
         "schemas": {
-            "Institucion": {
+            "asistencias": {
                 "properties": {
-                    "name": {
-                        "description": "The Institucion name",
+                    "nombre": {
+                        "description": "The Institucion nombre",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "lastname": {
-                        "description": "The Institucion lastname",
+                    "registro": {
+                        "description": "The asistencias registro",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "documents": {
-                        "description": "The Institucion documents",
+                    "telefono": {
+                        "description": "The asistencias telefono",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "email": {
-                        "description": "The Institucions email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The Institucions phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The Institucions password",
+                    "direccion": {
+                        "description": "The asistencias direccion",
                         "required": [
                             "true"
                         ],
