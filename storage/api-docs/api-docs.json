@@ -33,7 +33,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a asistencias resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -41,10 +41,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "User resource name",
+                        "description": "asistencias resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a asistencias resource",
                             "type": "string"
                         }
                     },
@@ -55,7 +55,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a asistencias resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -66,7 +66,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a asistencias resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -97,13 +97,162 @@
                         "description": "A list with asistencias",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the asistencias",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "asistencias"
+                ],
+                "summary": "Creates a new asistencias",
+                "description": "Creates a new asistencias",
+                "operationId": "App\\Http\\Controllers\\AsistenciasController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/asistencias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The  resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/asistencias/{id_estudiante}": {
+            "get": {
+                "tags": [
+                    "asistencias"
+                ],
+                "summary": "Gets a asistencias resource",
+                "description": "Gets a asistencias resource",
+                "operationId": "App\\Http\\Controllers\\AsistenciasController::show",
+                "parameters": [
+                    {
+                        "name": "id_estudiante",
+                        "in": "path",
+                        "description": "The asistencias resource id_estudiante",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a asistencias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "asistencias"
+                ],
+                "summary": "Updates a asistencias resource",
+                "description": "Updates a asistencias resource by the id_estudiante",
+                "operationId": "App\\Http\\Controllers\\AsistenciasController::update",
+                "parameters": [
+                    {
+                        "name": "id_estudiante",
+                        "in": "path",
+                        "description": "asistencias resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a asistencias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/asistencias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The asistencias resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -3424,33 +3573,26 @@
         "schemas": {
             "asistencias": {
                 "properties": {
-                    "nombre": {
-                        "description": "The Institucion nombre",
+                    "id_em": {
+                        "description": "The estudiante materia",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "integer"
                     },
-                    "registro": {
-                        "description": "The asistencias registro",
+                    "id_estudiante": {
+                        "description": "The estudiante",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "integer"
                     },
-                    "telefono": {
+                    "estatus": {
                         "description": "The asistencias telefono",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
-                    },
-                    "direccion": {
-                        "description": "The asistencias direccion",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
