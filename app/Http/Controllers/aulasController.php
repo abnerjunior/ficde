@@ -24,7 +24,7 @@ class AulasController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
-            'capasidad' => 'required',
+            'capacidad' => 'required',
             'cod_sede' => 'required'
         ]);
         return $validator;
@@ -183,7 +183,7 @@ class AulasController extends Controller
             } else {
                 $aulas= new aulas();
                 $aulas->nombre = $request->nombre;
-                $aulas->capasidad = $request->capasidad;
+                $aulas->capacidad = $request->capacidad;
                 $aulas->cod_sede = $request->cod_sede;
                 $aulas->save();
                 return response()->json($request, 200);      
@@ -307,7 +307,7 @@ class AulasController extends Controller
                 $aulas = aulas::where('nombre', $nombre)
                 ->update([
                     'nombre' =>  $request->nombre,
-                    'capasidad' =>  $request->capasidad,
+                    'capacidad' =>  $request->capacidad,
                     'cod_sede' => $request->cod_sede,
                 ]);
                 return response()->json($aulas, 201);

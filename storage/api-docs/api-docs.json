@@ -3478,8 +3478,8 @@
                         ],
                         "type": "string"
                     },
-                    "capasidad": {
-                        "description": "The aulas capasidad",
+                    "capacidad": {
+                        "description": "The aulas capacidad",
                         "required": [
                             "true"
                         ],

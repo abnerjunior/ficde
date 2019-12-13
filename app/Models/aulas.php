@@ -18,10 +18,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The Institucion nombre"
  *   ),
  *   @OA\Property(
- *       property="capasidad",
+ *       property="capacidad",
  *       type="string",
  *       required={"true"},
- *       description="The aulas capasidad"
+ *       description="The aulas capacidad"
  *   ),
  *   @OA\Property(
  *       property="cod_sede",
@@ -44,7 +44,7 @@ class aulas extends Model
        */
       protected $fillable = [
           'nombre',
-          'capasidad',
+          'capacidad',
           'cod_sede'
       ];
       /**
@@ -55,7 +55,7 @@ class aulas extends Model
       public static $filterable = [
           'cod_aula',
           'nombre',
-          'capasidad',
+          'capacidad',
           'cod_sede'         
       ];
 }
