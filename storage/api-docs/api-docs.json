@@ -4141,6 +4141,13 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "rol": {
+                        "description": "The Users password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"

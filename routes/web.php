@@ -74,7 +74,9 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('turnos/{turno}', 'TurnosController@show');
 
 		$router->get('usuarios/', 'UsuariosController@index');
-
+		$router->get('usuarios/{user}', 'UsuariosController@show');
+		$router->post('usuarios/', 'UsuariosController@store');
+		$router->put('usuarios/{user}', 'UsuariosController@update');
 
 
 
