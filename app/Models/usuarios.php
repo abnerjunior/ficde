@@ -89,7 +89,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * )
  */
 
-class usuarios extends Model implements AuthenticatableContract, AuthorizableContract
+class usuarios extends base implements AuthenticatableContract, AuthorizableContract
 {
       use Authenticatable, Authorizable;
       /**

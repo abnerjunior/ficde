@@ -244,8 +244,8 @@ class UsuariosController extends Controller
             } else {
                 $usuarios = new usuarios;
                 $usuarios->user = $request->user;
-                $usuarios->password = Hash::make($request->password);
-                $usuarios->nomnbre = $request->nombre;
+                $usuarios->pass = Hash::make($request->pass);
+                $usuarios->nombre = $request->nombre;
                 $usuarios->apellido = $request->apellido;
                 $usuarios->dni = $request->dni;
                 $usuarios->email = $request->email;

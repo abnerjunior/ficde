@@ -86,10 +86,5 @@ $router->group(['', ''], function () use ($router) {
 		 * no tenenos la post que es
 		*/
 
-		$router->get('users/{documents}', 'UsersController@show');
-		$router->post('users/', 'UsersController@store');
-		$router->put('users/{documents}', 'UsersController@update');
-		$router->delete('users/{documents}', 'UsersController@destroy');
-		$router->patch('users/{documents}', 'UsersController@restore');
 	});
 });
