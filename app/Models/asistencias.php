@@ -10,35 +10,29 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *   schema="asistencias",
  *   type="object",
  *   @OA\Property(
- *       property="nombre",
- *       type="string",
+ *       property="id_em",
+ *       type="integer",
  *       required={"true"},
- *       description="The Institucion nombre"
+ *       description="The estudiante materia"
  *   ),
  *   @OA\Property(
- *       property="registro",
- *       type="string",
+ *       property="id_estudiante",
+ *       type="integer",
  *       required={"true"},
- *       description="The asistencias registro"
+ *       description="The estudiante"
  *   ),
  *   @OA\Property(
- *       property="telefono",
- *       type="string",
+ *       property="estatus",
+ *       type="boolean",
  *       required={"true"},
  *       description="The asistencias telefono"
- *   ),
- *   @OA\Property(
- *       property="direccion",
- *       type="string",
- *       required={"true"},
- *       description="The asistencias direccion"
  *   ),
  * )
  */
 class asistencias extends Base
 {
       protected $table = 'asistencias';
-    protected $primaryKey = 'cod_institucion';
+    protected $primaryKey = 'cod_asistencia';
       
     /**
      * The attributes that are mass assignable.
@@ -46,10 +40,9 @@ class asistencias extends Base
      * @var array
      */
     protected $fillable = [
-        'nombre',
-        'registro',
-        'telefono',
-        'direccion'
+        'id_em',
+        'id_estudiante',
+        'estatus'
     ];
     /**
      * The attributes that are filterable.
@@ -57,11 +50,8 @@ class asistencias extends Base
      * @var array
      */
     public static $filterable = [
-        'cod_institucion',
-        'nombre',
-        'registro',
-        'telefono',
-        'direccion'
+        'cod_asistencia',
+        'id_estudiante'
        
     ];
 }
