@@ -189,11 +189,11 @@ class UsuariosController extends Controller
     public function show($dni)
     {
         /** esto es una consulta por la cedula */
-        $usuario = usuarios::where('dni', $dni)
+        $usuarios = usuarios::where('dni', $dni)
             ->where('dni', $dni)
             ->first();
-        if ($usuario) {
-            return response()->json($usuario, 200);
+        if ($usuarios) {
+            return response()->json($usuarios, 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not register'], 204);
         }
@@ -242,18 +242,18 @@ class UsuariosController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 201);
             } else {
-                $usuario = new usuarios;
-                $usuario->user = $request->user;
-                $usuario->password = Hash::make($request->password);
-                $usuario->nomnbre = $request->nombre;
-                $usuario->apellido = $request->apellido;
-                $usuario->dni = $request->dni;
-                $usuario->email = $request->email;
-                $usuario->telefono = $request->telefono;
-                $usuario->direccion = $request->direccion;
-                $usuario->rol = $request->rol;
-                $usuario->save();
-                return response()->json($usuario, 200);
+                $usuarios = new usuarios;
+                $usuarios->user = $request->user;
+                $usuarios->password = Hash::make($request->password);
+                $usuarios->nomnbre = $request->nombre;
+                $usuarios->apellido = $request->apellido;
+                $usuarios->dni = $request->dni;
+                $usuarios->email = $request->email;
+                $usuarios->telefono = $request->telefono;
+                $usuarios->direccion = $request->direccion;
+                $usuarios->rol = $request->rol;
+                $usuarios->save();
+                return response()->json($usuarios, 200);
             }
         } catch (Exception $e) {
             return response()->json($e);
@@ -313,7 +313,7 @@ class UsuariosController extends Controller
                 $errors = $this->validation($request, $dni)->errors();
                 return response()->json($errors->all(), 201);
             } else {
-                $usuario = usuarios::where('dni', $dni)->update([
+                $usuarios = usuarios::where('dni', $dni)->update([
                     'user' =>  $request->user,
                     'pass' = Hash::make($request->pass),
                     'nombre' =>  $request->nombre,
@@ -324,7 +324,7 @@ class UsuariosController extends Controller
                     'rol' => $request->rol,
                     'telefono' => $request->telefono
                 ]);
-                return response()->json($usuario, 201);
+                return response()->json($usuarios, 201);
             }
         } catch (Exception $e) {
             return response()->json($e);
