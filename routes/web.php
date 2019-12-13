@@ -13,7 +13,7 @@
 use App\Models\estudiantes;
 
 $router->get('/', function () use ($router) {
-    return redirect('api/api-docs');
+    return redirect('api/ficde');
 });
 
 $router->group(['', ''], function () use ($router) {

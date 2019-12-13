@@ -8,10 +8,29 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
+/**
+ * @OA\Schema(
+ *  schema="Login",
+ *  type="object",
+ *   @OA\Property(
+ *       property="dni",
+ *       type="string",
+ *       required={"true"},
+ *       description="The user dni"
+ *   ),
+ *  type="object",
+ *  @OA\Property(
+ *       property="pass",
+ *       type="string",
+ *       required={"true"},
+ *       description="The user password"
+ *   ),
+ * )
+ */
 
 /**
  * @OA\Schema(
- *   schema="User",
+ *   schema="usuarios",
  *   type="object",
  *   @OA\Property(
  *       property="name",
