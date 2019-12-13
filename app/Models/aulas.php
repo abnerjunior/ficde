@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 /**
  * @OA\Schema(
- *   schema="Aulas",
+ *   schema="aulas",
  *   type="object",
  *   @OA\Property(
  *       property="nombre",
