@@ -15,12 +15,12 @@ class CreateAsistenciasTable extends Migration
     {
         Schema::create('asistencias', function (Blueprint $table) {
             $table->bigIncrements('cod_asistencia');
-            $table->unsignedBigInteger('id_sm');
+            $table->unsignedBigInteger('id_em');
             $table->unsignedBigInteger('id_estudiante');
             $table->boolean('estatus');
 
-            $table->foreign('id_sm')
-            ->references('cod_sm')->on('semestres_materias');
+            $table->foreign('id_em')
+            ->references('cod_em')->on('estudiantes_materias');
 
             $table->timestamps();
         });

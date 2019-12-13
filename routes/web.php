@@ -24,6 +24,9 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('authenticate/', 'AuthenticateController@authenticate');
 
 		$router->get('asistencias/', 'AsistenciasController@index');
+		$router->post('asistencias/', 'AsistenciasController@store');
+		$router->put('asistencias/{aula}', 'AsistenciasController@update');
+		$router->get('asistencias/{aula}', 'AsistenciasController@show');
 
 		$router->get('aulas/', 'AulasController@index');
 		$router->post('aulas/', 'AulasController@store');
