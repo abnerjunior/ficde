@@ -315,7 +315,7 @@ class UsuariosController extends Controller
             } else {
                 $usuarios = usuarios::where('dni', $dni)->update([
                     'user' =>  $request->user,
-                    'pass' = Hash::make($request->pass),
+                    'pass' => Hash::make($request->pass),
                     'nombre' =>  $request->nombre,
                     'apellido' =>  $request->apellid,
                     'dni' =>  $request->dni,
