@@ -33,19 +33,19 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *   schema="usuarios",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="user",
  *       type="string",
  *       required={"true"},
  *       description="The user name"
  *   ),
  *   @OA\Property(
- *       property="lastname",
+ *       property="pass",
  *       type="string",
  *       required={"true"},
  *       description="The user lastname"
  *   ),
  *   @OA\Property(
- *       property="documents",
+ *       property="dni",
  *       type="string",
  *       required={"true"},
  *       description="The user documents"
@@ -57,13 +57,25 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The Users email"
  *   ),
  *   @OA\Property(
- *       property="phone",
+ *       property="telefono",
  *       type="string",
  *       required={"true"},
  *       description="The Users phone"
  *   ),
  *   @OA\Property(
- *       property="password",
+ *       property="direccion",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Users password"
+ *   ),
+ *   @OA\Property(
+ *       property="nombre",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Users password"
+ *   ),
+ *   @OA\Property(
+ *       property="nombre",
  *       type="string",
  *       required={"true"},
  *       description="The Users password"
