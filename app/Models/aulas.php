@@ -18,30 +18,24 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The Institucion nombre"
  *   ),
  *   @OA\Property(
- *       property="registro",
+ *       property="capasidad",
  *       type="string",
  *       required={"true"},
- *       description="The institucion registro"
+ *       description="The aulas capasidad"
  *   ),
  *   @OA\Property(
- *       property="telefono",
+ *       property="cod_sede",
  *       type="string",
  *       required={"true"},
- *       description="The institucion telefono"
- *   ),
- *   @OA\Property(
- *       property="direccion",
- *       type="string",
- *       required={"true"},
- *       description="The institucion direccion"
+ *       description="The aulas cod_sede"
  *   ),
  * )
  */
 
 class aulas extends Model
 {
-      protected $table = 'institucion';
-      protected $primaryKey = 'cod_institucion';
+      protected $table = 'aulas';
+      protected $primaryKey = 'cod_aula';
         
       /**
        * The attributes that are mass assignable.
@@ -50,9 +44,8 @@ class aulas extends Model
        */
       protected $fillable = [
           'nombre',
-          'registro',
-          'telefono',
-          'direccion'
+          'capasidad',
+          'cod_sede'
       ];
       /**
        * The attributes that are filterable.
@@ -60,11 +53,9 @@ class aulas extends Model
        * @var array
        */
       public static $filterable = [
-          'cod_institucion',
+          'cod_aula',
           'nombre',
-          'registro',
-          'telefono',
-          'direccion'
-         
+          'capasidad',
+          'cod_sede'         
       ];
 }
