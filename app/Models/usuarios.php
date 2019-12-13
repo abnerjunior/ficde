@@ -75,7 +75,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The Users password"
  *   ),
  *   @OA\Property(
- *       property="nombre",
+ *       property="apellido",
  *       type="string",
  *       required={"true"},
  *       description="The Users password"
