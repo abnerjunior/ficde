@@ -13,7 +13,7 @@
 use App\Models\estudiantes;
 
 $router->get('/', function () use ($router) {
-    return redirect('api/api-docs');
+    return redirect('api/ficde');
 });
 
 $router->group(['', ''], function () use ($router) {
@@ -41,6 +41,9 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('estudiantes/{dni}', 'EstudiantesController@show');
 
 		$router->get('institucion/', 'InstitucionController@index');
+		$router->post('institucion/', 'InstitucionController@store');
+		$router->put('institucion/{nombre}', 'InstitucionController@update');
+		$router->get('institucion/{nombre}', 'InstitucionController@show');
 
 		$router->get('justificados/', 'JustificadosController@index');
 
@@ -63,6 +66,9 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('recuperatorio/', 'RecuperatorioController@index');
 
 		$router->get('sedes/', 'SedesController@index');
+		$router->post('sedes/', 'SedesController@store');
+		$router->put('sedes/{sedes}', 'SedesController@update');
+		$router->get('sedes/{sedes}', 'SedesController@show');
 
 		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
 		

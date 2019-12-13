@@ -1,0 +1,4406 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger-demo",
+        "description": "Swagger `Api of ficde`",
+        "contact": {
+            "email": "swagger@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/ficde"
+        },
+        {
+            "url": "https://ficde.herokuapp.com/ficde"
+        }
+    ],
+    "paths": {
+        "/asistencias": {
+            "get": {
+                "tags": [
+                    "asistencias"
+                ],
+                "summary": "Lists available asistencias",
+                "description": "Gets all available asistencias resources",
+                "operationId": "App\\Http\\Controllers\\AsistenciasController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a asistencias resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with asistencias",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/authenticate": {
+            "post": {
+                "tags": [
+                    "usuarios"
+                ],
+                "summary": "Authenticate",
+                "description": "Authenticate Users",
+                "operationId": "App\\Http\\Controllers\\AuthenticateController::authenticate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Post resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/cursos": {
+            "get": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Lists available cursos",
+                "description": "Gets all available cursos resources",
+                "operationId": "App\\Http\\Controllers\\CursosController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with curso",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Creates a new curso",
+                "description": "Creates a new curso",
+                "operationId": "App\\Http\\Controllers\\CursosController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/cursos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The curso resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/cursos/{curso}": {
+            "get": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Gets a curso resource",
+                "description": "Gets a curso resource",
+                "operationId": "App\\Http\\Controllers\\CursosController::show",
+                "parameters": [
+                    {
+                        "name": "curso",
+                        "in": "path",
+                        "description": "The curso resource curso",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a curso resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "cursos"
+                ],
+                "summary": "Updates a cursos resource",
+                "description": "Updates a cursos resource by the curso",
+                "operationId": "App\\Http\\Controllers\\CursosController::update",
+                "parameters": [
+                    {
+                        "name": "curso",
+                        "in": "path",
+                        "description": "cursos resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a cursos resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/cursos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The cursos resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/estudiantes": {
+            "get": {
+                "tags": [
+                    "estudiantes"
+                ],
+                "summary": "Lists available estudiantes",
+                "description": "Gets all available estudiantes resources",
+                "operationId": "App\\Http\\Controllers\\EstudiantesController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "estudiante resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a estudiantes resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with estudiantes",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the estudiante",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "estudiantes"
+                ],
+                "summary": "Creates a new estudiante",
+                "description": "Creates a new estudiante",
+                "operationId": "App\\Http\\Controllers\\EstudiantesController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/estudiantes"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The estudiante resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/estudiantes/{dni}": {
+            "get": {
+                "tags": [
+                    "estudiantes"
+                ],
+                "summary": "Gets a estudiante resource",
+                "description": "Gets a estudiante resource",
+                "operationId": "App\\Http\\Controllers\\EstudiantesController::show",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The estudiante resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "estudiantes"
+                ],
+                "summary": "Updates a estudiantes resource",
+                "description": "Updates a estudiantes resource by the dni",
+                "operationId": "App\\Http\\Controllers\\EstudiantesController::update",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "estudiantes resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiantes resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/estudiantes"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The estudiantes resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "estudiantes"
+                ],
+                "summary": "Removes a estudiantes resource",
+                "description": "Removes a estudiantes resource",
+                "operationId": "App\\Http\\Controllers\\EstudiantesController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The estudiantes resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiantes resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/Estudiantes_Materias": {
+            "get": {
+                "tags": [
+                    "Estudiantes_Materias"
+                ],
+                "summary": "Lists available Estudiantes_Materias",
+                "description": "Gets all available Estudiantes_Materias resources",
+                "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Estudiantes_Materias resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with Estudiantes_Materias",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/institucion": {
+            "get": {
+                "tags": [
+                    "institucion"
+                ],
+                "summary": "Lists available institucion",
+                "description": "Gets all available institucion resources",
+                "operationId": "App\\Http\\Controllers\\InstitucionController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "institucion resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with institucion",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the institucion",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "institucion"
+                ],
+                "summary": "Creates a new institucion",
+                "description": "Creates a new institucion",
+                "operationId": "App\\Http\\Controllers\\InstitucionController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/institucion"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The  resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/institucion/{nombre}": {
+            "get": {
+                "tags": [
+                    "institucion"
+                ],
+                "summary": "Gets a institucion resource",
+                "description": "Gets a institucion resource",
+                "operationId": "App\\Http\\Controllers\\InstitucionController::show",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "path",
+                        "description": "The institucion resource nombre",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "institucion"
+                ],
+                "summary": "Updates a institucion resource",
+                "description": "Updates a institucion resource by the nombre",
+                "operationId": "App\\Http\\Controllers\\InstitucionController::update",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "path",
+                        "description": "institucion resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/institucion"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The institucion resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/justificados": {
+            "get": {
+                "tags": [
+                    "justificados"
+                ],
+                "summary": "Lists available justificados",
+                "description": "Gets all available justificados resources",
+                "operationId": "App\\Http\\Controllers\\JustificadosController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a justificados resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with justificados",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/materias": {
+            "get": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Lists available materias",
+                "description": "Gets all available materias resources",
+                "operationId": "App\\Http\\Controllers\\MateriasController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a materia resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with materia",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Creates a new materia",
+                "description": "Creates a new materia",
+                "operationId": "App\\Http\\Controllers\\MateriasController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The materia resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/materias/{materia}": {
+            "get": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Gets a materia resource",
+                "description": "Gets a materia resource",
+                "operationId": "App\\Http\\Controllers\\MateriasController::show",
+                "parameters": [
+                    {
+                        "name": "materia",
+                        "in": "path",
+                        "description": "The materia resource materia",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a materia resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Updates a materias resource",
+                "description": "Updates a materias resource by the materia",
+                "operationId": "App\\Http\\Controllers\\MateriasController::update",
+                "parameters": [
+                    {
+                        "name": "materia",
+                        "in": "path",
+                        "description": "materias resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The materias resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/modalidades": {
+            "get": {
+                "tags": [
+                    "modalidades"
+                ],
+                "summary": "Lists available modalidades",
+                "description": "Gets all available modalidades resources",
+                "operationId": "App\\Http\\Controllers\\ModalidadesController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a modalidad resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with modalidad",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "modalidades"
+                ],
+                "summary": "Creates a new modalidad",
+                "description": "Creates a new modalidad",
+                "operationId": "App\\Http\\Controllers\\ModalidadesController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/modalidades"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The modalidad resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/modalidades/{modalidad}": {
+            "get": {
+                "tags": [
+                    "modalidades"
+                ],
+                "summary": "Gets a modalidad resource",
+                "description": "Gets a modalidad resource",
+                "operationId": "App\\Http\\Controllers\\ModalidadesController::show",
+                "parameters": [
+                    {
+                        "name": "modalidad",
+                        "in": "path",
+                        "description": "The modalidad resource modalidad",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a modalidad resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "modalidades"
+                ],
+                "summary": "Updates a modalidades resource",
+                "description": "Updates a modalidades resource by the modalidad",
+                "operationId": "App\\Http\\Controllers\\ModalidadesController::update",
+                "parameters": [
+                    {
+                        "name": "modalidad",
+                        "in": "path",
+                        "description": "modalidades resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a modalidades resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/modalidades"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The modalidades resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/notas": {
+            "get": {
+                "tags": [
+                    "notas"
+                ],
+                "summary": "Lists available notas",
+                "description": "Gets all available notas resources",
+                "operationId": "App\\Http\\Controllers\\NotasController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a notas resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with notas",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/pago_recuperatorio": {
+            "get": {
+                "tags": [
+                    "pago_recuperatorio"
+                ],
+                "summary": "Lists available pago_recuperatorio",
+                "description": "Gets all available pago_recuperatorio resources",
+                "operationId": "App\\Http\\Controllers\\Pago_RecuperatorioController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a pago_recuperatorio resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with pago_recuperatorio",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/pagos_semestres": {
+            "get": {
+                "tags": [
+                    "pagos_semestres"
+                ],
+                "summary": "Lists available pagos_semestres",
+                "description": "Gets all available pagos_semestres resources",
+                "operationId": "App\\Http\\Controllers\\Pagos_SemestresController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a pagos_semestres resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with pagos_semestres",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/sedes": {
+            "get": {
+                "tags": [
+                    "sedes"
+                ],
+                "summary": "Lists available sedes",
+                "description": "Gets all available sedes resources",
+                "operationId": "App\\Http\\Controllers\\sedesController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a sede resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "sede resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a sede resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a sede resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a sede resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a sede resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with sedes",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the sedes",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "sedes"
+                ],
+                "summary": "Creates a new sede",
+                "description": "Creates a new sede",
+                "operationId": "App\\Http\\Controllers\\sedesController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sedes"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The sede resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/sedes/{nombre}": {
+            "get": {
+                "tags": [
+                    "sedes"
+                ],
+                "summary": "Gets a sede resource",
+                "description": "Gets a sede resource",
+                "operationId": "App\\Http\\Controllers\\sedesController::show",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "path",
+                        "description": "The sede resource nombre",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a sede resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "sedes"
+                ],
+                "summary": "Updates a sedes resource",
+                "description": "Updates a sedes resource by the nombre",
+                "operationId": "App\\Http\\Controllers\\sedesController::update",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "path",
+                        "description": "sedes resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a sedes resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/sedes"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The sedes resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/semestres": {
+            "get": {
+                "tags": [
+                    "semestres"
+                ],
+                "summary": "Lists available semestres",
+                "description": "Gets all available semestres resources",
+                "operationId": "App\\Http\\Controllers\\SemestresController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a semestres resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with semestres",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/Semestres_Materias": {
+            "get": {
+                "tags": [
+                    "Semestres_Materias"
+                ],
+                "summary": "Lists available Semestres_Materias",
+                "description": "Gets all available Semestres_Materias resources",
+                "operationId": "App\\Http\\Controllers\\Semestres_MateriasController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Semestres_Materias resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with Semestres_Materias",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/turnos": {
+            "get": {
+                "tags": [
+                    "turnos"
+                ],
+                "summary": "Lists available turnos",
+                "description": "Gets all available turnos resources",
+                "operationId": "App\\Http\\Controllers\\TurnosController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a turno resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a turnos resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with turnos",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the turno",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "turnos"
+                ],
+                "summary": "Creates a new turno",
+                "description": "Creates a new turno",
+                "operationId": "App\\Http\\Controllers\\TurnosController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/turnos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The turno resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/turnos/{turno}": {
+            "get": {
+                "tags": [
+                    "turnos"
+                ],
+                "summary": "Gets a turno resource",
+                "description": "Gets a turno resource",
+                "operationId": "App\\Http\\Controllers\\TurnosController::show",
+                "parameters": [
+                    {
+                        "name": "turno",
+                        "in": "path",
+                        "description": "The turno resource turno",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "turnos"
+                ],
+                "summary": "Updates a turnos resource",
+                "description": "Updates a turnos resource by the turno",
+                "operationId": "App\\Http\\Controllers\\TurnosController::update",
+                "parameters": [
+                    {
+                        "name": "turno",
+                        "in": "path",
+                        "description": "turnos resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a turnos resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/turnos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The turnos resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "turnos"
+                ],
+                "summary": "Removes a turnos resource",
+                "description": "Removes a turnos resource",
+                "operationId": "App\\Http\\Controllers\\TurnosController::destroy",
+                "parameters": [
+                    {
+                        "name": "turno",
+                        "in": "path",
+                        "description": "The turnos resource turno",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a turnos resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Lists available Users",
+                "description": "Gets all available Users resources",
+                "operationId": "App\\Http\\Controllers\\UsersController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Users resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with Users",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Creates a new user",
+                "description": "Creates a new user",
+                "operationId": "App\\Http\\Controllers\\UsersController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The User resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/users/{documents}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Gets a User resource",
+                "description": "Gets a User resource",
+                "operationId": "App\\Http\\Controllers\\UsersController::show",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "The User resource documents",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Updates a Users resource",
+                "description": "Updates a Users resource by the documents",
+                "operationId": "App\\Http\\Controllers\\UsersController::update",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "User resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The User resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Removes a User resource",
+                "description": "Removes a User resource",
+                "operationId": "App\\Http\\Controllers\\UsersController::destroy",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "The User resource documents",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Restore a user resource",
+                "description": "Restore a user resource",
+                "operationId": "App\\Http\\Controllers\\UsersController::restore",
+                "parameters": [
+                    {
+                        "name": "documents",
+                        "in": "path",
+                        "description": "The user resource documents",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a user resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/usuarios": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Lists available Users",
+                "description": "Gets all available Users resources",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "usuarios resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Users resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with Users",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the usuario",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Creates a new usuario",
+                "description": "Creates a new usuario",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/usuarios"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The usuarios resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/usuarios/{dni}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Gets a usuarios resource",
+                "description": "Gets a usuarios resource",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::show",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The usuarios resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Updates a Users resource",
+                "description": "Updates a Users resource by the dni",
+                "operationId": "App\\Http\\Controllers\\UsuariosController::update",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "usuarios resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/usuarios"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The usuarios resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/aulas": {
+            "get": {
+                "tags": [
+                    "aulas"
+                ],
+                "summary": "Lists available aulas",
+                "description": "Gets all available aulas resources",
+                "operationId": "App\\Http\\Controllers\\aulasController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a User resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "User resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a User resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a User resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a aulas resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with aulas",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The user lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The user documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Users email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Users phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Users password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Institucion": {
+                "properties": {
+                    "name": {
+                        "description": "The Institucion name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The Institucion lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The Institucion documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Institucions email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Institucions phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Institucions password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "aulas": {
+                "properties": {
+                    "name": {
+                        "description": "The aulas name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The aulas lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The aulas documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The aulass email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The aulass phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The aulass password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "cursos": {
+                "properties": {
+                    "curso": {
+                        "description": "The curso name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "description": "The curso descripcion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "estudiantes": {
+                "properties": {
+                    "nombre": {
+                        "description": "The Estudiantes nombre",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "apellido": {
+                        "description": "The Estudiantes apellido",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "dni": {
+                        "description": "The Estudiantes dni",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Estudiantes email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "telefono": {
+                        "description": "The Estudiantes telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "direccion": {
+                        "description": "The Estudiantes direccion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Estudiantes_Materias": {
+                "properties": {
+                    "name": {
+                        "description": "The Estudiantes_Materias name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The Estudiantes_Materias lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The Estudiantes_Materias documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Estudiantes_Materiass email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Estudiantes_Materiass phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Estudiantes_Materiass password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "institucion": {
+                "properties": {
+                    "nombre": {
+                        "description": "The Institucion nombre",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "registro": {
+                        "description": "The institucion registro",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "telefono": {
+                        "description": "The institucion telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "direccion": {
+                        "description": "The institucion direccion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Justificados": {
+                "properties": {
+                    "name": {
+                        "description": "The Justificados name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The Justificados lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The Justificados documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Justificadoss email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Justificadoss phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Justificadoss password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "materias": {
+                "properties": {
+                    "cod_curso": {
+                        "description": "The materia name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "materia": {
+                        "description": "The materia nombre",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "descripcion": {
+                        "description": "The materia descripcion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "modalidades": {
+                "properties": {
+                    "modalidad": {
+                        "description": "The modalidad name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Notas": {
+                "properties": {
+                    "name": {
+                        "description": "The Notas name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The Notas lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The Notas documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Notass email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Notass phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Notass password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "pagos_recuperatorios": {
+                "properties": {
+                    "name": {
+                        "description": "The pagos_recuperatorios name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The pagos_recuperatorios lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The pagos_recuperatorios documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The pagos_recuperatorios email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The pagos_recuperatorios phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The pagos_recuperatorios password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Pagos_Semestres": {
+                "properties": {
+                    "name": {
+                        "description": "The Pagos_Semestres name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The Pagos_Semestres lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The Pagos_Semestres documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Pagos_Semestres email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Pagos_Semestres phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Pagos_Semestres password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Recuperatorio": {
+                "properties": {
+                    "name": {
+                        "description": "The Recuperatorio name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The Recuperatorio lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The Recuperatorio documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Recuperatorios email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Recuperatorios phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Recuperatorios password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "sedes": {
+                "properties": {
+                    "cod_institucion": {
+                        "description": "The sede name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "nombre": {
+                        "description": "The Sedes nombre",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "telefono": {
+                        "description": "The Sedes telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "direccion": {
+                        "description": "The Sedes direccion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "semestres": {
+                "properties": {
+                    "name": {
+                        "description": "The semestres name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The semestres lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The semestres documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The semestress email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The semestress phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The semestress password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "semestres_materias": {
+                "properties": {
+                    "name": {
+                        "description": "The semestres_materias name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The semestres_materias lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The semestres_materias documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The semestres_materiass email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The semestres_materiass phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The semestres_materiass password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "turnos": {
+                "properties": {
+                    "turno": {
+                        "description": "The Turnos name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "hora": {
+                        "description": "The Turnoss password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Login": {
+                "properties": {
+                    "dni": {
+                        "description": "The user dni",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "pass": {
+                        "description": "The user password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "usuarios": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "The user lastname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "documents": {
+                        "description": "The user documents",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Users email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Users phone",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The Users password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
