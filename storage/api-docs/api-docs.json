@@ -912,7 +912,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a estudiantes_materias resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -920,10 +920,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "estudiante resource name",
+                        "description": "estudiantes_materias resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a estudiantes_materias resource",
                             "type": "string"
                         }
                     },
@@ -934,7 +934,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a estudiantes_materias resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -945,7 +945,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a estudiantes_materias resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -976,7 +976,7 @@
                         "description": "A list with estudiantes_materias",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the estudiante",
+                                "description": "calls per hour allowed by the estudiantes_materias",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -1012,8 +1012,8 @@
                 "tags": [
                     "estudiantes_materias"
                 ],
-                "summary": "Creates a new estudiante",
-                "description": "Creates a new estudiante",
+                "summary": "Creates a new estudiantes_materias",
+                "description": "Creates a new estudiantes_materias",
                 "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::store",
                 "requestBody": {
                     "content": {
@@ -1026,7 +1026,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "The estudiante resource created",
+                        "description": "The estudiantes_materias resource created",
                         "content": {
                             "application/json": {}
                         }
@@ -1058,17 +1058,17 @@
                 "tags": [
                     "estudiantes_materias"
                 ],
-                "summary": "Gets a estudiante resource",
-                "description": "Gets a estudiante resource",
+                "summary": "Gets a estudiantes_materias resource",
+                "description": "Gets a estudiantes_materias resource",
                 "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::show",
                 "parameters": [
                     {
                         "name": "id_estudiante",
                         "in": "path",
-                        "description": "The estudiante resource id_estudiante",
+                        "description": "The estudiantes_materias resource id_estudiante",
                         "required": true,
                         "schema": {
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a estudiantes_materias resource",
                             "type": "string"
                         }
                     }

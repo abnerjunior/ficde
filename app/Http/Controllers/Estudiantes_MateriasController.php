@@ -49,17 +49,17 @@ class Estudiantes_MateriasController extends Controller
         *           title="Paginate",
         *           example="true",
         *           type="boolean",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a estudiantes_materias resource"
         *       )
         *   ),
         *   @OA\Parameter(
         *       name="dataSearch",
         *       in="query",
-        *       description="estudiante resource name",
+        *       description="estudiantes_materias resource name",
         *       required=false,
         *       @OA\Schema(
         *           type="string",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a estudiantes_materias resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -71,7 +71,7 @@ class Estudiantes_MateriasController extends Controller
         *           title="name",
         *           type="string",
         *           example="name",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a estudiantes_materias resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -82,7 +82,7 @@ class Estudiantes_MateriasController extends Controller
         *           title="sortOrder",
         *           example="asc",
         *           type="string",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a estudiantes_materias resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -115,7 +115,7 @@ class Estudiantes_MateriasController extends Controller
         *           type="integer",
         *           format="int32"
         *       ),
-        *       description="calls per hour allowed by the estudiante"
+        *       description="calls per hour allowed by the estudiantes_materias"
         *     ),
         *   ),
         *   @OA\Response(
@@ -143,8 +143,8 @@ class Estudiantes_MateriasController extends Controller
     /**
         * @OA\Post(
         *   path="/estudiantes_materias",
-        *   summary="Creates a new estudiante",
-        *   description="Creates a new estudiante",
+        *   summary="Creates a new estudiantes_materias",
+        *   description="Creates a new estudiantes_materias",
         *   tags={"estudiantes_materias"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
@@ -156,7 +156,7 @@ class Estudiantes_MateriasController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="The estudiante resource created",
+        *       description="The estudiantes_materias resource created",
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
@@ -199,18 +199,18 @@ class Estudiantes_MateriasController extends Controller
     /**
         * @OA\Get(
         *   path="/estudiantes_materias/{id_estudiante}",
-        *   summary="Gets a estudiante resource",
-        *   description="Gets a estudiante resource",
+        *   summary="Gets a estudiantes_materias resource",
+        *   description="Gets a estudiantes_materias resource",
         *   tags={"estudiantes_materias"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *   name="id_estudiante",
         *   in="path",
-        *   description="The estudiante resource id_estudiante",
+        *   description="The estudiantes_materias resource id_estudiante",
         *   required=true,
         *   @OA\Schema(
         *       type="string",
-        *       description="The unique identifier of a estudiante resource"
+        *       description="The unique identifier of a estudiantes_materias resource"
         *   )
         *   ),
         *   @OA\Response(
@@ -306,13 +306,13 @@ class Estudiantes_MateriasController extends Controller
                     $errors = $this->validation($request, $id_estudiante)->errors();
                     return response()->json($errors->all(), 201);
                 } else {
-                    $estudiante = estudiantes_materias::where('id_estudiante', $id_estudiante)
+                    $estudiantes_materias = estudiantes_materias::where('id_estudiante', $id_estudiante)
                     ->update([
                         'id_materia' =>  $request->id_materia,
                         'id_turno' =>  $request->id_turno,
                         'id_modalidad' => $request->id_modalidad,
                     ]);
-                    return response()->json($estudiante, 201);
+                    return response()->json($estudiantes_materias, 201);
                 }
             } catch (Exception $e) {
                 return response()->json($e);
