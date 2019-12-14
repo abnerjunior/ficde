@@ -28,9 +28,7 @@ class NotasController extends Controller
         $validator = Validator::make($request->all(), [
             'id_em' => 'required',
             'nota' => 'required',
-            'id_estudiante' => ['email', 'required'],
-            'telefono' => 'required',
-            'direccion' => 'required|min:5'
+            'id_estudiante' => 'required'
         ]);
         return $validator;
     }
@@ -50,17 +48,17 @@ class NotasController extends Controller
         *           title="Paginate",
         *           example="true",
         *           type="boolean",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a notas resource"
         *       )
         *   ),
         *   @OA\Parameter(
         *       name="dataSearch",
         *       in="query",
-        *       description="estudiante resource name",
+        *       description="notas resource name",
         *       required=false,
         *       @OA\Schema(
         *           type="string",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a notas resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -72,7 +70,7 @@ class NotasController extends Controller
         *           title="name",
         *           type="string",
         *           example="name",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a notas resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -83,7 +81,7 @@ class NotasController extends Controller
         *           title="sortOrder",
         *           example="asc",
         *           type="string",
-        *           description="The unique identifier of a estudiante resource"
+        *           description="The unique identifier of a notas resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -116,7 +114,7 @@ class NotasController extends Controller
         *           type="integer",
         *           format="int32"
         *       ),
-        *       description="calls per hour allowed by the estudiante"
+        *       description="calls per hour allowed by the notas"
         *     ),
         *   ),
         *   @OA\Response(
@@ -144,8 +142,8 @@ class NotasController extends Controller
     /**
         * @OA\Post(
         *   path="/notas",
-        *   summary="Creates a new estudiante",
-        *   description="Creates a new estudiante",
+        *   summary="Creates a new notas",
+        *   description="Creates a new notas",
         *   tags={"notas"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
@@ -157,7 +155,7 @@ class NotasController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="The estudiante resource created",
+        *       description="The notas resource created",
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
@@ -186,11 +184,8 @@ class NotasController extends Controller
             } else {
                 $notas= new notas();
                 $notas->id_em = $request->id_em;
-                $notas->nombre = $request->nombre;
-                $notas->apellido = $request->apellido;
-                $notas->email = $request->email;
-                $notas->telefono = $request->telefono;
-                $notas->direccion = $request->direccion;
+                $notas->nota = $request->nota;
+                $notas->id_estudiante = $request->id_estudiante;
                 $notas->save();
                 return response()->json($request, 200);      
             }
@@ -202,18 +197,18 @@ class NotasController extends Controller
     /**
         * @OA\Get(
         *   path="/notas/{id_em}",
-        *   summary="Gets a estudiante resource",
-        *   description="Gets a estudiante resource",
+        *   summary="Gets a notas resource",
+        *   description="Gets a notas resource",
         *   tags={"notas"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *   name="id_em",
         *   in="path",
-        *   description="The estudiante resource id_em",
+        *   description="The notas resource id_em",
         *   required=true,
         *   @OA\Schema(
         *       type="string",
-        *       description="The unique identifier of a estudiante resource"
+        *       description="The unique identifier of a notas resource"
         *   )
         *   ),
         *   @OA\Response(
@@ -309,15 +304,12 @@ class NotasController extends Controller
                     $errors = $this->validation($request, $id_em)->errors();
                     return response()->json($errors->all(), 201);
                 } else {
-                    $estudiante = notas::where('id_em', $id_em)
+                    $notas = notas::where('id_em', $id_em)
                     ->update([
-                        'nombre' =>  $request->nombre,
-                        'apellido' =>  $request->apellido,
-                        'direccion' =>  $request->direccion,
-                        'email' => $request->email,
-                        'telefono' => $request->telefono,
+                        'id_estudiante' =>  $request->id_estudiante,
+                        'nota' =>  $request->nota,
                     ]);
-                    return response()->json($estudiante, 201);
+                    return response()->json($notas, 201);
                 }
             } catch (Exception $e) {
                 return response()->json($e);

@@ -1924,7 +1924,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a notas resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -1932,10 +1932,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "estudiante resource name",
+                        "description": "notas resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a notas resource",
                             "type": "string"
                         }
                     },
@@ -1946,7 +1946,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a notas resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -1957,7 +1957,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a notas resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -1988,7 +1988,7 @@
                         "description": "A list with notas",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the estudiante",
+                                "description": "calls per hour allowed by the notas",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -2024,8 +2024,8 @@
                 "tags": [
                     "notas"
                 ],
-                "summary": "Creates a new estudiante",
-                "description": "Creates a new estudiante",
+                "summary": "Creates a new notas",
+                "description": "Creates a new notas",
                 "operationId": "App\\Http\\Controllers\\NotasController::store",
                 "requestBody": {
                     "content": {
@@ -2038,7 +2038,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "The estudiante resource created",
+                        "description": "The notas resource created",
                         "content": {
                             "application/json": {}
                         }
@@ -2070,17 +2070,17 @@
                 "tags": [
                     "notas"
                 ],
-                "summary": "Gets a estudiante resource",
-                "description": "Gets a estudiante resource",
+                "summary": "Gets a notas resource",
+                "description": "Gets a notas resource",
                 "operationId": "App\\Http\\Controllers\\NotasController::show",
                 "parameters": [
                     {
                         "name": "id_em",
                         "in": "path",
-                        "description": "The estudiante resource id_em",
+                        "description": "The notas resource id_em",
                         "required": true,
                         "schema": {
-                            "description": "The unique identifier of a estudiante resource",
+                            "description": "The unique identifier of a notas resource",
                             "type": "string"
                         }
                     }
