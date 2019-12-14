@@ -20,7 +20,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The Estudiantes nota"
  *   ),
  *   @OA\Property(
- *       property="id_sm",
+ *       property="id_em",
  *       type="string",
  *       required={"true"},
  *       description="The Estudiantes id_sm"

@@ -27,7 +27,6 @@ class AsistenciasController extends Controller
             'id_estudiante' => 'required',
             'id_em' => 'required',
             'estatus' => 'required',
-            'cod_asistencia' => 'required'
         ]);
         return $validator;
     }

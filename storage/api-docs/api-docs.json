@@ -4835,7 +4835,7 @@
                         ],
                         "type": "string"
                     },
-                    "id_sm": {
+                    "id_em": {
                         "description": "The Estudiantes id_sm",
                         "required": [
                             "true"
