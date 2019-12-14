@@ -77,10 +77,10 @@ $router->group(['', ''], function () use ($router) {
 
 		$router->get('pagos_semestres/', 'Pagos_SemestresController@index');
 
-		$router->get('recuperatorio/', 'RecuperatorioController@index');
-		$router->post('recuperatorio/', 'RecuperatorioController@store');
-		$router->put('recuperatorio/{id_nota}', 'RecuperatorioController@update');
-		$router->get('recuperatorio/{id_nota}', 'RecuperatorioController@show');
+		$router->get('recuperatorios/', 'RecuperatorioController@index');
+		$router->post('recuperatorios/', 'RecuperatorioController@store');
+		$router->put('recuperatorios/{id_nota}', 'RecuperatorioController@update');
+		$router->get('recuperatorios/{id_nota}', 'RecuperatorioController@show');
 		
 		$router->get('sedes/', 'SedesController@index');
 		$router->post('sedes/', 'SedesController@store');
@@ -107,6 +107,8 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('usuarios/', 'UsuariosController@store');
 		$router->put('usuarios/{dni}', 'UsuariosController@update');
 
+		
+		$router->get('horarios/', 'HorariosController@index');
 
 
 		/** 

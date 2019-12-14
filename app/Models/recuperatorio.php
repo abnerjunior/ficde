@@ -25,6 +25,12 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The recuperatorios id_nota"
  *   ),
+ *   @OA\Property(
+ *       property="nota_r",
+ *       type="string",
+ *       required={"true"},
+ *       description="The recuperatorios id_nota"
+ *   ),
  * )
  */
 

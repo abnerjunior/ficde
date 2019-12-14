@@ -16,6 +16,7 @@ class CreateRecuperatoriosTable extends Migration
         Schema::create('recuperatorios', function (Blueprint $table) {
             $table->bigIncrements('cod_recuperatorio');
             $table->string('fecha');
+            $table->string('nota_r');
             $table->unsignedBigInteger('id_nota');
 
             $table->foreign('id_nota')

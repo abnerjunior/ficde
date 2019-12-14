@@ -24,11 +24,8 @@ class RecuperatorioController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'fecha' => 'required',
-            'apellido' => 'required',
-            'id_nota' => ['required', 'max:10', $unique],
-            'email' => ['email', 'required'],
-            'telefono' => 'required',
-            'direccion' => 'required|min:5'
+            'id_nota' => 'required',
+            'nota_r' => 'required'
         ]);
         return $validator;
     }
