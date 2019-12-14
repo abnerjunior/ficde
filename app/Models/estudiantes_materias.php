@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class estudiantes_materias extends Model
+class estudiantes_materias extends Base
 {
     /**
  * @OA\Schema(

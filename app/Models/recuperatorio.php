@@ -2,50 +2,53 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class recuperatorio extends Model
-{
-     /**
+
+  /**
  * @OA\Schema(
- *   schema="Recuperatorio",
+ *   schema="recuperatorios",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="fecha",
  *       type="string",
  *       required={"true"},
- *       description="The Recuperatorio name"
+ *       description="The recuperatorios fecha"
  *   ),
  *   @OA\Property(
- *       property="lastname",
+ *       property="id_nota",
  *       type="string",
  *       required={"true"},
- *       description="The Recuperatorio lastname"
- *   ),
- *   @OA\Property(
- *       property="documents",
- *       type="string",
- *       required={"true"},
- *       description="The Recuperatorio documents"
- *   ),
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The Recuperatorios email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The Recuperatorios phone"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The Recuperatorios password"
+ *       description="The recuperatorios id_nota"
  *   ),
  * )
  */
+
+class recuperatorio extends Base
+{
+    protected $table = 'recuperatorios';
+    protected $primaryKey = 'cod_recuperatorio';
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'fecha',
+        'id_nota'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_recuperatorio',
+        'id_nota'
+    ];
 }

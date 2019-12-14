@@ -2,51 +2,68 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class semestres_materias extends Model
-{
-     /**
+/**
  * @OA\Schema(
  *   schema="semestres_materias",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="id_materia",
  *       type="string",
  *       required={"true"},
- *       description="The semestres_materias name"
+ *       description="The Estudiantes id_materia"
  *   ),
  *   @OA\Property(
- *       property="lastname",
+ *       property="id_semestres",
  *       type="string",
  *       required={"true"},
- *       description="The semestres_materias lastname"
+ *       description="The Estudiantes id_semestres"
  *   ),
  *   @OA\Property(
- *       property="documents",
+ *       property="id_usuario",
  *       type="string",
  *       required={"true"},
- *       description="The semestres_materias documents"
+ *       description="The Estudiantes id_usuario"
  *   ),
  *   @OA\Property(
- *       property="email",
+ *       property="id_aula",
  *       required={"true"},
  *       type="string",
- *       description="The semestres_materiass email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The semestres_materiass phone"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The semestres_materiass password"
+ *       description="The Estudiantes id_aula"
  *   ),
  * )
  */
 
+class semestres_materias extends base
+{
+    protected $table = 'semestres_materias';
+    protected $primaryKey = 'cod_estudiante';
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_materia',
+        'id_semestres',
+        'id_usuario',
+        'id_aula'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_sm',
+        'id_semestres',
+        'id_usuario',
+        'id_aula'
+    ];
 }

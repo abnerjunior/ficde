@@ -32,7 +32,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * )
  */
 
-class aulas extends Model
+class aulas extends Base
 {
       protected $table = 'aulas';
       protected $primaryKey = 'cod_aula';

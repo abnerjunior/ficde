@@ -28,7 +28,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * )
  */
 
-class semestres extends Model
+class semestres extends Base
 {
     protected $table = 'semestres';
     protected $primaryKey = 'cod_semestre';

@@ -67,26 +67,32 @@ $router->group(['', ''], function () use ($router) {
 
 		$router->get('notas/', 'NotasController@index');
 		$router->post('notas/', 'NotasController@store');
-		$router->put('notas/{nombre}', 'NotasController@update');
-		$router->get('notas/{nombre}', 'NotasController@show');
+		$router->put('notas/{id_nota}', 'NotasController@update');
+		$router->get('notas/{id_nota}', 'NotasController@show');
 
 		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');
 
 		$router->get('pagos_semestres/', 'Pagos_SemestresController@index');
 
 		$router->get('recuperatorio/', 'RecuperatorioController@index');
-
+		$router->post('recuperatorio/', 'RecuperatorioController@store');
+		$router->put('recuperatorio/{id_nota}', 'RecuperatorioController@update');
+		$router->get('recuperatorio/{id_nota}', 'RecuperatorioController@show');
+		
 		$router->get('sedes/', 'SedesController@index');
 		$router->post('sedes/', 'SedesController@store');
 		$router->put('sedes/{id_estudiante}', 'SedesController@update');
 		$router->get('sedes/{id_estudiante}', 'SedesController@show');
 
 		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
-		
+		$router->post('semestres_materias/', 'Semestres_MateriasController@store');
+		$router->put('semestres_materias/{id_semestres}', 'Semestres_MateriasController@update');
+		$router->get('semestres_materias/{id_semestres}', 'Semestres_MateriasController@show');
+
 		$router->get('semestres/', 'SemestresController@index');
 		$router->post('semestres/', 'SemestresController@store');
-		$router->put('semestres/{nombre}', 'SemestresController@update');
-		$router->get('semestres/{nombre}', 'SemestresController@show');
+		$router->put('semestres/{cod_sm}', 'SemestresController@update');
+		$router->get('semestres/{cod_sm}', 'SemestresController@show');
 
 		$router->get('turnos/', 'TurnosController@index');
 		$router->post('turnos/', 'TurnosController@store');

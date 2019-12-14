@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pagos_semestres extends Model
+class pagos_semestres extends Base
 {
     /**
  * @OA\Schema(

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pagos_recuperatorios extends Model
+class pagos_recuperatorios extends Base
 {
      /**
  * @OA\Schema(

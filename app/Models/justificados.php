@@ -35,7 +35,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  */
 
 
-class justificados extends Model
+class justificados extends Base
 {
     protected $table = 'justificados';
     protected $primaryKey = 'cod_justificado';
