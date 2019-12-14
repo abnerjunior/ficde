@@ -5,16 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Resources\UsersCollection;
 
-use App\Models\Estudiantes_Materias;
+use App\Models\estudiantes_materias;
+use Exception;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class Estudiantes_MateriasController extends Controller
 {
-     /**
+/**
+     * validate data of request
+     * @param  [Request] $request data
+     * @param  [String] $id_estudiante number id_estudiante
+     * @return [Function]  function validator
+     */
+    private function validation ($request, $id_estudiante) {
+        if ($id_estudiante !== null) {
+            $unique = Rule::unique('estudiantes_materias')->ignore($request->id_estudiante, 'id_estudiante');
+        } else {
+            $unique = 'unique:estudiantes_materias';
+        }
+        $validator = Validator::make($request->all(), [
+            'id_materia' => 'required',
+            'id_turno' => 'required',
+            'id_estudiante' => 'required',
+            'id_modalidad' =>  'required'
+        ]);
+        return $validator;
+    }
+    /**
         * @OA\Get(
-        *   path="/Estudiantes_Materias",
-        *   summary="Lists available Estudiantes_Materias",
-        *   description="Gets all available Estudiantes_Materias resources",
-        *   tags={"Estudiantes_Materias"},
+        *   path="/estudiantes_materias",
+        *   summary="Lists available estudiantes_materias",
+        *   description="Gets all available estudiantes_materias resources",
+        *   tags={"estudiantes_materias"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -25,17 +49,17 @@ class Estudiantes_MateriasController extends Controller
         *           title="Paginate",
         *           example="true",
         *           type="boolean",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a estudiante resource"
         *       )
         *   ),
         *   @OA\Parameter(
         *       name="dataSearch",
         *       in="query",
-        *       description="User resource name",
+        *       description="estudiante resource name",
         *       required=false,
         *       @OA\Schema(
         *           type="string",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a estudiante resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -47,7 +71,7 @@ class Estudiantes_MateriasController extends Controller
         *           title="name",
         *           type="string",
         *           example="name",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a estudiante resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -58,7 +82,7 @@ class Estudiantes_MateriasController extends Controller
         *           title="sortOrder",
         *           example="asc",
         *           type="string",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a estudiante resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -69,7 +93,7 @@ class Estudiantes_MateriasController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="0",
-        *           description="The unique identifier of a Estudiantes_Materias resource"
+        *           description="The unique identifier of a estudiantes_materias resource"
         *       )
         *    ),
         * @OA\Parameter(
@@ -84,14 +108,14 @@ class Estudiantes_MateriasController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="A list with Estudiantes_Materias",
+        *       description="A list with estudiantes_materias",
         *       @OA\Header(
         *       header="X-Auth-Token",
         *       @OA\Schema(
         *           type="integer",
         *           format="int32"
         *       ),
-        *       description="calls per hour allowed by the user"
+        *       description="calls per hour allowed by the estudiante"
         *     ),
         *   ),
         *   @OA\Response(
@@ -112,55 +136,186 @@ class Estudiantes_MateriasController extends Controller
       */
       public function index(Request $request) {
 
-        $q = Estudiantes_Materias::select();
-        $Estudiantes_Materias = Estudiantes_Materias::search($request->toArray(), $q);
-        return  new usersCollection($Estudiantes_Materias);
-
-
+        $q = estudiantes_materias::select();
+        $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q);
+        return  new UsersCollection($estudiantes_materias);
     }
-
     /**
+        * @OA\Post(
+        *   path="/estudiantes_materias",
+        *   summary="Creates a new estudiante",
+        *   description="Creates a new estudiante",
+        *   tags={"estudiantes_materias"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\RequestBody(
+        *       @OA\MediaType(
+        *           mediaType="application/json",
+        *           @OA\Schema(ref="#/components/schemas/estudiantes_materias")
+        *       )
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response=200,
+        *       description="The estudiante resource created",
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response=401,
+        *       description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response="default",
+        *       description="an ""unexpected"" error",
+        *   )
+        * )
+        *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * 
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        try {
+            if ($this->validation($request, null)->fails()) {
+                $errors = $this->validation($request, null)->errors();
+                return response()->json($errors->all(), 201);
+            } else {
+                $estudiantes_materias= new estudiantes_materias();
+                $estudiantes_materias->id_estudiante = $request->id_estudiante;
+                $estudiantes_materias->id_materia = $request->id_materia;
+                $estudiantes_materias->id_turno = $request->id_turno;
+                $estudiantes_materias->id_modalidad = $request->id_modalidad;
+                $estudiantes_materias->save();
+                return response()->json($request, 200);      
+            }
+        }catch (Exception $e) {
+            return response()->json($e);
+        }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+        * @OA\Get(
+        *   path="/estudiantes_materias/{id_estudiante}",
+        *   summary="Gets a estudiante resource",
+        *   description="Gets a estudiante resource",
+        *   tags={"estudiantes_materias"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\Parameter(
+        *   name="id_estudiante",
+        *   in="path",
+        *   description="The estudiante resource id_estudiante",
+        *   required=true,
+        *   @OA\Schema(
+        *       type="string",
+        *       description="The unique identifier of a estudiante resource"
+        *   )
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=204,
+        *   description="The resource has been deleted"
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=401,
+        *   description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response="default",
+        *   description="an ""unexpected"" error"
+        *   )
+        * )
+        *
+        * Remove the specified resource from storage.
+        *
+        * @param  int  $id_estudiante
+        *
+        * @return \Illuminate\Http\Response
+        */
+    public function show($id_estudiante)
     {
-        //
+       /** esto es una consulta por la cedula */
+       $estudiantes_materias = estudiantes_materias::where('id_estudiante', $id_estudiante)
+            ->where('id_estudiante', $id_estudiante)
+            ->first();
+        if ($estudiantes_materias)
+        {
+            return response()->json($estudiantes_materias, 200);
+        } 
+        else 
+        {
+            return response()->json(['status' => 'error', 'message' => 'Estudiante no inscrito'], 204);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   /**
+        * @OA\Put(
+        *   path="/estudiantes_materias/{id_estudiante}",
+        *   summary="Updates a estudiantes_materias resource",
+        *   description="Updates a estudiantes_materias resource by the id_estudiante",
+        *   tags={"estudiantes_materias"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\Parameter(
+        *   name="id_estudiante",
+        *   in="path",
+        *   description="estudiantes_materias resource id",
+        *   required=true,
+        *   @OA\Schema(
+        *       type="string",
+        *       description="The unique identifier of a estudiantes_materias resource"
+        *   )
+        *   ),
+        *   @OA\RequestBody(
+        *       @OA\MediaType(
+        *           mediaType="application/json",
+        *           @OA\Schema(ref="#/components/schemas/estudiantes_materias")
+        *       )
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *           response=200,
+        *           description="The estudiantes_materias resource updated"
+        *       ),
+        *       @OA\Response(
+        *           @OA\MediaType(mediaType="application/json"),
+        *           response=401,
+        *           description="Unauthenticated."
+        *       ),
+        *       @OA\Response(
+        *           @OA\MediaType(mediaType="application/json"),
+        *           response="default",
+        *           description="an ""unexpected"" error"
+        *       )
+        *   )
+        *
+        * Update the specified resource in storage.
+        *
+        * @param \Illuminate\Http\Request $request
+        * @param  int  $id_estudiante
+        *
+        * @return \Illuminate\Http\Response
+        */
+        public function update(Request $request, $id_estudiante)
+        {
+            try {
+                if ($this->validation($request, $id_estudiante)->fails()) {
+                    $errors = $this->validation($request, $id_estudiante)->errors();
+                    return response()->json($errors->all(), 201);
+                } else {
+                    $estudiante = estudiantes_materias::where('id_estudiante', $id_estudiante)
+                    ->update([
+                        'id_materia' =>  $request->id_materia,
+                        'id_turno' =>  $request->id_turno,
+                        'id_modalidad' => $request->id_modalidad,
+                    ]);
+                    return response()->json($estudiante, 201);
+                }
+            } catch (Exception $e) {
+                return response()->json($e);
+            }
+        }
 }

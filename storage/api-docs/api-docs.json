@@ -896,13 +896,13 @@
                 ]
             }
         },
-        "/Estudiantes_Materias": {
+        "/estudiantes_materias": {
             "get": {
                 "tags": [
-                    "Estudiantes_Materias"
+                    "estudiantes_materias"
                 ],
-                "summary": "Lists available Estudiantes_Materias",
-                "description": "Gets all available Estudiantes_Materias resources",
+                "summary": "Lists available estudiantes_materias",
+                "description": "Gets all available estudiantes_materias resources",
                 "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::index",
                 "parameters": [
                     {
@@ -912,7 +912,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -920,10 +920,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "User resource name",
+                        "description": "estudiante resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "string"
                         }
                     },
@@ -934,7 +934,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -945,7 +945,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -956,7 +956,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a Estudiantes_Materias resource",
+                            "description": "The unique identifier of a estudiantes_materias resource",
                             "type": "number",
                             "default": "0"
                         }
@@ -973,16 +973,165 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A list with Estudiantes_Materias",
+                        "description": "A list with estudiantes_materias",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the estudiante",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "estudiantes_materias"
+                ],
+                "summary": "Creates a new estudiante",
+                "description": "Creates a new estudiante",
+                "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/estudiantes_materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The estudiante resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/estudiantes_materias/{id_estudiante}": {
+            "get": {
+                "tags": [
+                    "estudiantes_materias"
+                ],
+                "summary": "Gets a estudiante resource",
+                "description": "Gets a estudiante resource",
+                "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::show",
+                "parameters": [
+                    {
+                        "name": "id_estudiante",
+                        "in": "path",
+                        "description": "The estudiante resource id_estudiante",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "estudiantes_materias"
+                ],
+                "summary": "Updates a estudiantes_materias resource",
+                "description": "Updates a estudiantes_materias resource by the id_estudiante",
+                "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::update",
+                "parameters": [
+                    {
+                        "name": "id_estudiante",
+                        "in": "path",
+                        "description": "estudiantes_materias resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiantes_materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/estudiantes_materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The estudiantes_materias resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -4539,6 +4688,39 @@
                     },
                     "direccion": {
                         "description": "The Estudiantes direccion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "estudiantes_materias": {
+                "properties": {
+                    "id_materia": {
+                        "description": "The Estudiantes id_materia",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "id_turno": {
+                        "description": "The Estudiantes id_turno",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "id_modalidad": {
+                        "description": "The Estudiantes id_modalidad",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "id_estudiante": {
+                        "description": "The Estudiantes id_estudiante",
                         "required": [
                             "true"
                         ],

@@ -38,7 +38,10 @@ $router->group(['', ''], function () use ($router) {
 		$router->put('cursos/{curso}', 'CursosController@update');
 		$router->get('cursos/{curso}', 'CursosController@show');
 
-		$router->get('estudiantes_materias/', 'EstudiantesController@index');
+		$router->get('estudiantes_materias/', 'EstudiantesController@index');		
+		$router->post('estudiantes_materias/', 'EstudiantesController@store');
+		$router->put('estudiantes_materias/{id_estudiante}', 'EstudiantesController@update');
+		$router->get('estudiantes_materias/{id_estudiante}', 'EstudiantesController@show');
 
 		$router->get('estudiantes/', 'EstudiantesController@index');
 		$router->post('estudiantes/', 'EstudiantesController@store');
