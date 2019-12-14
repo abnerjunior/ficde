@@ -16,7 +16,7 @@ class CreateNotasTable extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->bigIncrements('cod_nota');
             $table->string('nota');
-            $table->unsignedBigInteger('id_sm');
+            $table->unsignedBigInteger('id_em');
             $table->unsignedBigInteger('id_estudiante');
 
             $table->timestamps();
@@ -25,8 +25,8 @@ class CreateNotasTable extends Migration
         Schema::table('notas', function($table)
         {
 
-            $table->foreign('id_sm')
-            ->references('cod_sm')->on('semestres_materias');
+            $table->foreign('id_em')
+            ->references('cod_em')->on('estudiantes_materias');
 
             $table->foreign('id_estudiante')
             ->references('cod_estudiante')->on('estudiantes');

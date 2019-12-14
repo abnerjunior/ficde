@@ -2,50 +2,53 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class semestres extends Model
-{
-     /**
+
+  /**
  * @OA\Schema(
  *   schema="semestres",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="nombre",
  *       type="string",
  *       required={"true"},
- *       description="The semestres name"
+ *       description="The semestres nombre"
  *   ),
  *   @OA\Property(
- *       property="lastname",
+ *       property="fecha",
  *       type="string",
  *       required={"true"},
- *       description="The semestres lastname"
- *   ),
- *   @OA\Property(
- *       property="documents",
- *       type="string",
- *       required={"true"},
- *       description="The semestres documents"
- *   ),
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The semestress email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The semestress phone"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The semestress password"
+ *       description="The semestres fecha"
  *   ),
  * )
  */
+
+class semestres extends Model
+{
+    protected $table = 'semestres';
+    protected $primaryKey = 'cod_semestre';
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nombre',
+        'fecha'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'cod_semestre',
+        'nombre'
+    ];
 }

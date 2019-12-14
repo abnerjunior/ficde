@@ -1924,7 +1924,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -1932,10 +1932,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "User resource name",
+                        "description": "estudiante resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "string"
                         }
                     },
@@ -1946,7 +1946,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -1957,7 +1957,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a estudiante resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -1988,13 +1988,162 @@
                         "description": "A list with notas",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the estudiante",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "notas"
+                ],
+                "summary": "Creates a new estudiante",
+                "description": "Creates a new estudiante",
+                "operationId": "App\\Http\\Controllers\\NotasController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/notas"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The estudiante resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/notas/{id_em}": {
+            "get": {
+                "tags": [
+                    "notas"
+                ],
+                "summary": "Gets a estudiante resource",
+                "description": "Gets a estudiante resource",
+                "operationId": "App\\Http\\Controllers\\NotasController::show",
+                "parameters": [
+                    {
+                        "name": "id_em",
+                        "in": "path",
+                        "description": "The estudiante resource id_em",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiante resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "notas"
+                ],
+                "summary": "Updates a notas resource",
+                "description": "Updates a notas resource by the id_em",
+                "operationId": "App\\Http\\Controllers\\NotasController::update",
+                "parameters": [
+                    {
+                        "name": "id_em",
+                        "in": "path",
+                        "description": "notas resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a notas resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/notas"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The notas resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -2525,7 +2674,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -2533,10 +2682,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "User resource name",
+                        "description": "semestres resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres resource",
                             "type": "string"
                         }
                     },
@@ -2547,7 +2696,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -2558,7 +2707,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -2589,13 +2738,162 @@
                         "description": "A list with semestres",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the semestres",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "semestres"
+                ],
+                "summary": "Creates a new semestres",
+                "description": "Creates a new semestres",
+                "operationId": "App\\Http\\Controllers\\SemestresController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/semestres"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The semestres resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/semestres/{nombre}": {
+            "get": {
+                "tags": [
+                    "semestres"
+                ],
+                "summary": "Gets a semestres resource",
+                "description": "Gets a semestres resource",
+                "operationId": "App\\Http\\Controllers\\SemestresController::show",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "path",
+                        "description": "The semestres resource nombre",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a semestres resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "semestres"
+                ],
+                "summary": "Updates a semestres resource",
+                "description": "Updates a semestres resource by the nombre",
+                "operationId": "App\\Http\\Controllers\\SemestresController::update",
+                "parameters": [
+                    {
+                        "name": "nombre",
+                        "in": "path",
+                        "description": "semestres resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a semestres resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/semestres"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The semestres resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -3854,45 +4152,24 @@
                 },
                 "type": "object"
             },
-            "Notas": {
+            "notas": {
                 "properties": {
-                    "name": {
-                        "description": "The Notas name",
+                    "nota": {
+                        "description": "The Estudiantes nota",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "lastname": {
-                        "description": "The Notas lastname",
+                    "id_sm": {
+                        "description": "The Estudiantes id_sm",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "documents": {
-                        "description": "The Notas documents",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The Notass email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The Notass phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The Notass password",
+                    "id_estudiante": {
+                        "description": "The Estudiantes id_estudiante",
                         "required": [
                             "true"
                         ],
@@ -4077,43 +4354,15 @@
             },
             "semestres": {
                 "properties": {
-                    "name": {
-                        "description": "The semestres name",
+                    "nombre": {
+                        "description": "The semestres nombre",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "lastname": {
-                        "description": "The semestres lastname",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "documents": {
-                        "description": "The semestres documents",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The semestress email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The semestress phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The semestress password",
+                    "fecha": {
+                        "description": "The semestres fecha",
                         "required": [
                             "true"
                         ],

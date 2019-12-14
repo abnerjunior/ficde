@@ -63,6 +63,9 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('modalidades/{modalidad}', 'ModalidadesController@show');
 
 		$router->get('notas/', 'NotasController@index');
+		$router->post('notas/', 'NotasController@store');
+		$router->put('notas/{nombre}', 'NotasController@update');
+		$router->get('notas/{nombre}', 'NotasController@show');
 
 		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');
 
@@ -72,12 +75,15 @@ $router->group(['', ''], function () use ($router) {
 
 		$router->get('sedes/', 'SedesController@index');
 		$router->post('sedes/', 'SedesController@store');
-		$router->put('sedes/{nombre}', 'SedesController@update');
-		$router->get('sedes/{nombre}', 'SedesController@show');
+		$router->put('sedes/{id_estudiante}', 'SedesController@update');
+		$router->get('sedes/{id_estudiante}', 'SedesController@show');
 
 		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
 		
 		$router->get('semestres/', 'SemestresController@index');
+		$router->post('semestres/', 'SemestresController@store');
+		$router->put('semestres/{nombre}', 'SemestresController@update');
+		$router->get('semestres/{nombre}', 'SemestresController@show');
 
 		$router->get('turnos/', 'TurnosController@index');
 		$router->post('turnos/', 'TurnosController@store');
