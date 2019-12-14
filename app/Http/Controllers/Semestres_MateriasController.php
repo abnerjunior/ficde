@@ -26,10 +26,9 @@ class Semestres_MateriasController extends Controller
             $unique = 'unique:semestres_materias';
         }
         $validator = Validator::make($request->all(), [
-            'cod_sm' => 'required',
             'id_materia' => 'required',
-            'id_semestres' => ['required', $unique],
-            'id_usuario' => ['email', 'required'],
+            'id_semestres' => 'required',
+            'id_usuario' => 'required',
             'id_aula' => 'required',
         ]);
         return $validator;
