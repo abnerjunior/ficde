@@ -4,18 +4,42 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UsersCollection;
 
 use Illuminate\Http\Request;
-
+use Exception;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\Models\Semestres_Materias;
 
 class Semestres_MateriasController extends Controller
 {
      /**
+     * validate data of request
+     * @param  [Request] $request data
+     * @param  [String] $id_semestres number id_semestres
+     * @return [Function]  function validator
+     */
+    private function validation ($request, $id_semestres) {
+        if ($id_semestres !== null) {
+            $unique = Rule::unique('semestres_materias')->ignore($request->id_semestres, 'id_semestres');
+        } else {
+            $unique = 'unique:semestres_materias';
+        }
+        $validator = Validator::make($request->all(), [
+            'cod_sm' => 'required',
+            'id_materia' => 'required',
+            'id_semestres' => ['required', $unique],
+            'id_usuario' => ['email', 'required'],
+            'id_aula' => 'required',
+        ]);
+        return $validator;
+    }
+    /**
         * @OA\Get(
-        *   path="/Semestres_Materias",
-        *   summary="Lists available Semestres_Materias",
-        *   description="Gets all available Semestres_Materias resources",
-        *   tags={"Semestres_Materias"},
+        *   path="/semestres_materias",
+        *   summary="Lists available semestres_materias",
+        *   description="Gets all available semestres_materias resources",
+        *   tags={"semestres_materias"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -26,17 +50,17 @@ class Semestres_MateriasController extends Controller
         *           title="Paginate",
         *           example="true",
         *           type="boolean",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a semestres_materias resource"
         *       )
         *   ),
         *   @OA\Parameter(
         *       name="dataSearch",
         *       in="query",
-        *       description="User resource name",
+        *       description="semestres_materias resource name",
         *       required=false,
         *       @OA\Schema(
         *           type="string",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a semestres_materias resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -48,7 +72,7 @@ class Semestres_MateriasController extends Controller
         *           title="name",
         *           type="string",
         *           example="name",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a semestres_materias resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -59,7 +83,7 @@ class Semestres_MateriasController extends Controller
         *           title="sortOrder",
         *           example="asc",
         *           type="string",
-        *           description="The unique identifier of a User resource"
+        *           description="The unique identifier of a semestres_materias resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -70,7 +94,7 @@ class Semestres_MateriasController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="0",
-        *           description="The unique identifier of a Semestres_Materias resource"
+        *           description="The unique identifier of a semestres_materias resource"
         *       )
         *    ),
         * @OA\Parameter(
@@ -85,14 +109,14 @@ class Semestres_MateriasController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="A list with Semestres_Materias",
+        *       description="A list with semestres_materias",
         *       @OA\Header(
         *       header="X-Auth-Token",
         *       @OA\Schema(
         *           type="integer",
         *           format="int32"
         *       ),
-        *       description="calls per hour allowed by the user"
+        *       description="calls per hour allowed by the semestres_materias"
         *     ),
         *   ),
         *   @OA\Response(
@@ -113,53 +137,187 @@ class Semestres_MateriasController extends Controller
       */
       public function index(Request $request) {
 
-        $q = Semestres_Materias::select();
-        $Semestres_Materias = Semestres_Materias::search($request->toArray(), $q);
-        return  new usersCollection($Semestres_Materias);
+        $q = semestres_materias::select();
+        $semestres_materias = semestres_materias::search($request->toArray(), $q);
+        return  new UsersCollection($semestres_materias);
     }
-
     /**
+        * @OA\Post(
+        *   path="/semestres_materias",
+        *   summary="Creates a new semestres_materias",
+        *   description="Creates a new semestres_materias",
+        *   tags={"semestres_materias"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\RequestBody(
+        *       @OA\MediaType(
+        *           mediaType="application/json",
+        *           @OA\Schema(ref="#/components/schemas/semestres_materias")
+        *       )
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response=200,
+        *       description="The semestres_materias resource created",
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response=401,
+        *       description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *       response="default",
+        *       description="an ""unexpected"" error",
+        *   )
+        * )
+        *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * 
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        try {
+            if ($this->validation($request, null)->fails()) {
+                $errors = $this->validation($request, null)->errors();
+                return response()->json($errors->all(), 201);
+            } else {
+                $semestres_materias= new semestres_materias();
+                $semestres_materias->id_semestres = $request->id_semestres;
+                $semestres_materias->id_materia = $request->id_materia;
+                $semestres_materias->id_usuario = $request->id_usuario;
+                $semestres_materias->id_aula = $request->id_aula;
+                $semestres_materias->save();
+                return response()->json($request, 200);      
+            }
+        }catch (Exception $e) {
+            return response()->json($e);
+        }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+        * @OA\Get(
+        *   path="/semestres_materias/{id_semestres}",
+        *   summary="Gets a semestres_materias resource",
+        *   description="Gets a semestres_materias resource",
+        *   tags={"semestres_materias"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\Parameter(
+        *   name="id_semestres",
+        *   in="path",
+        *   description="The semestres_materias resource id_semestres",
+        *   required=true,
+        *   @OA\Schema(
+        *       type="string",
+        *       description="The unique identifier of a semestres_materias resource"
+        *   )
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=204,
+        *   description="The resource has been deleted"
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=401,
+        *   description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response="default",
+        *   description="an ""unexpected"" error"
+        *   )
+        * )
+        *
+        * Remove the specified resource from storage.
+        *
+        * @param  int  $id_semestres
+        *
+        * @return \Illuminate\Http\Response
+        */
+    public function show($id_semestres)
     {
-        //
+       /** esto es una consulta por la cedula */
+       $semestres_materias = semestres_materias::where('id_semestres', $id_semestres)
+            ->where('id_semestres', $id_semestres)
+            ->first();
+        if ($semestres_materias)
+        {
+            return response()->json($semestres_materias, 200);
+        } 
+        else 
+        {
+            return response()->json(['status' => 'error', 'message' => 'Estudiante no inscrito'], 204);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   /**
+        * @OA\Put(
+        *   path="/semestres_materias/{id_semestres}",
+        *   summary="Updates a semestres_materias resource",
+        *   description="Updates a semestres_materias resource by the id_semestres",
+        *   tags={"semestres_materias"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\Parameter(
+        *   name="id_semestres",
+        *   in="path",
+        *   description="semestres_materias resource id",
+        *   required=true,
+        *   @OA\Schema(
+        *       type="string",
+        *       description="The unique identifier of a semestres_materias resource"
+        *   )
+        *   ),
+        *   @OA\RequestBody(
+        *       @OA\MediaType(
+        *           mediaType="application/json",
+        *           @OA\Schema(ref="#/components/schemas/semestres_materias")
+        *       )
+        *   ),
+        *   @OA\Response(
+        *       @OA\MediaType(mediaType="application/json"),
+        *           response=200,
+        *           description="The semestres_materias resource updated"
+        *       ),
+        *       @OA\Response(
+        *           @OA\MediaType(mediaType="application/json"),
+        *           response=401,
+        *           description="Unauthenticated."
+        *       ),
+        *       @OA\Response(
+        *           @OA\MediaType(mediaType="application/json"),
+        *           response="default",
+        *           description="an ""unexpected"" error"
+        *       )
+        *   )
+        *
+        * Update the specified resource in storage.
+        *
+        * @param \Illuminate\Http\Request $request
+        * @param  int  $id_semestres
+        *
+        * @return \Illuminate\Http\Response
+        */
+        public function update(Request $request, $id_semestres)
+        {
+            try {
+                if ($this->validation($request, $id_semestres)->fails()) {
+                    $errors = $this->validation($request, $id_semestres)->errors();
+                    return response()->json($errors->all(), 201);
+                } else {
+                    $semestres_materias = semestres_materias::where('id_semestres', $id_semestres)
+                    ->update([
+                        'id_materia' =>  $request->id_materia,
+                        'id_semestres' =>  $request->id_semestres,
+                        'id_usuario' =>  $request->id_usuario,
+                        'id_aula' => $request->id_aula,
+                    ]);
+                    return response()->json($semestres_materias, 201);
+                }
+            } catch (Exception $e) {
+                return response()->json($e);
+            }
+        }
 }

@@ -3331,13 +3331,13 @@
                 ]
             }
         },
-        "/Semestres_Materias": {
+        "/semestres_materias": {
             "get": {
                 "tags": [
-                    "Semestres_Materias"
+                    "semestres_materias"
                 ],
-                "summary": "Lists available Semestres_Materias",
-                "description": "Gets all available Semestres_Materias resources",
+                "summary": "Lists available semestres_materias",
+                "description": "Gets all available semestres_materias resources",
                 "operationId": "App\\Http\\Controllers\\Semestres_MateriasController::index",
                 "parameters": [
                     {
@@ -3347,7 +3347,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres_materias resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -3355,10 +3355,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "User resource name",
+                        "description": "semestres_materias resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres_materias resource",
                             "type": "string"
                         }
                     },
@@ -3369,7 +3369,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres_materias resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -3380,7 +3380,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a semestres_materias resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -3391,7 +3391,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a Semestres_Materias resource",
+                            "description": "The unique identifier of a semestres_materias resource",
                             "type": "number",
                             "default": "0"
                         }
@@ -3408,16 +3408,165 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A list with Semestres_Materias",
+                        "description": "A list with semestres_materias",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the semestres_materias",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "semestres_materias"
+                ],
+                "summary": "Creates a new semestres_materias",
+                "description": "Creates a new semestres_materias",
+                "operationId": "App\\Http\\Controllers\\Semestres_MateriasController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/semestres_materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The semestres_materias resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/semestres_materias/{id_semestres}": {
+            "get": {
+                "tags": [
+                    "semestres_materias"
+                ],
+                "summary": "Gets a semestres_materias resource",
+                "description": "Gets a semestres_materias resource",
+                "operationId": "App\\Http\\Controllers\\Semestres_MateriasController::show",
+                "parameters": [
+                    {
+                        "name": "id_semestres",
+                        "in": "path",
+                        "description": "The semestres_materias resource id_semestres",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a semestres_materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "semestres_materias"
+                ],
+                "summary": "Updates a semestres_materias resource",
+                "description": "Updates a semestres_materias resource by the id_semestres",
+                "operationId": "App\\Http\\Controllers\\Semestres_MateriasController::update",
+                "parameters": [
+                    {
+                        "name": "id_semestres",
+                        "in": "path",
+                        "description": "semestres_materias resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a semestres_materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/semestres_materias"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The semestres_materias resource updated",
                         "content": {
                             "application/json": {}
                         }
@@ -4390,53 +4539,6 @@
                     },
                     "direccion": {
                         "description": "The Estudiantes direccion",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "Estudiantes_Materias": {
-                "properties": {
-                    "name": {
-                        "description": "The Estudiantes_Materias name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "lastname": {
-                        "description": "The Estudiantes_Materias lastname",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "documents": {
-                        "description": "The Estudiantes_Materias documents",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The Estudiantes_Materiass email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The Estudiantes_Materiass phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The Estudiantes_Materiass password",
                         "required": [
                             "true"
                         ],
