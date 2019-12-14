@@ -51,11 +51,14 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('institucion/{nombre}', 'InstitucionController@show');
 
 		$router->get('justificados/', 'JustificadosController@index');
+		$router->post('justificados/', 'JustificadosController@store');
+		$router->put('justificados/{materia}', 'JustificadosController@update');
+		$router->get('justificados/{materia}', 'JustificadosController@show');
 
 		$router->get('materias/', 'MateriasController@index');
 		$router->post('materias/', 'MateriasController@store');
-		$router->put('materias/{materia}', 'MateriasController@update');
-		$router->get('materias/{materia}', 'MateriasController@show');
+		$router->put('materias/{id_asistencia}', 'MateriasController@update');
+		$router->get('materias/{id_asistencia}', 'MateriasController@show');
 
 		$router->get('modalidades/', 'ModalidadesController@index');
 		$router->post('modalidades/', 'ModalidadesController@store');

@@ -2,50 +2,61 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Authenticatable;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class justificados extends Model
-{
-     /**
+
+  /**
  * @OA\Schema(
- *   schema="Justificados",
+ *   schema="justificados",
  *   type="object",
  *   @OA\Property(
- *       property="name",
+ *       property="tipo",
  *       type="string",
  *       required={"true"},
- *       description="The Justificados name"
+ *       description="The justificados tipo"
  *   ),
  *   @OA\Property(
- *       property="lastname",
+ *       property="fecha",
  *       type="string",
  *       required={"true"},
- *       description="The Justificados lastname"
+ *       description="The justificados fecha"
  *   ),
  *   @OA\Property(
- *       property="documents",
+ *       property="id_asistencia",
  *       type="string",
  *       required={"true"},
- *       description="The Justificados documents"
- *   ),
- *   @OA\Property(
- *       property="email",
- *       required={"true"},
- *       type="string",
- *       description="The Justificadoss email"
- *   ),
- *   @OA\Property(
- *       property="phone",
- *       type="string",
- *       required={"true"},
- *       description="The Justificadoss phone"
- *   ),
- *   @OA\Property(
- *       property="password",
- *       type="string",
- *       required={"true"},
- *       description="The Justificadoss password"
+ *       description="The justificados id_asistencia"
  *   ),
  * )
  */
+
+
+class justificados extends Model
+{
+    protected $table = 'justificados';
+    protected $primaryKey = 'cod_justificado';
+      
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'tipo',
+        'fecha',
+        'id_asistencia'
+    ];
+    /**
+     * The attributes that are filterable.
+     *
+     * @var array
+     */
+    public static $filterable = [
+        'id_asistencia',
+        'cod_justificado'
+    ];  
 }

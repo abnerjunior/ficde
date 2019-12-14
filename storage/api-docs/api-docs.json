@@ -4067,45 +4067,24 @@
                 },
                 "type": "object"
             },
-            "Justificados": {
+            "justificados": {
                 "properties": {
-                    "name": {
-                        "description": "The Justificados name",
+                    "tipo": {
+                        "description": "The justificados tipo",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "lastname": {
-                        "description": "The Justificados lastname",
+                    "fecha": {
+                        "description": "The justificados fecha",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "documents": {
-                        "description": "The Justificados documents",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The Justificadoss email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone": {
-                        "description": "The Justificadoss phone",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "password": {
-                        "description": "The Justificadoss password",
+                    "id_asistencia": {
+                        "description": "The justificados id_asistencia",
                         "required": [
                             "true"
                         ],
