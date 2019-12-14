@@ -1287,7 +1287,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a justificados resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -1295,10 +1295,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "User resource name",
+                        "description": "justificados resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a justificados resource",
                             "type": "string"
                         }
                     },
@@ -1309,7 +1309,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a justificados resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -1320,7 +1320,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a User resource",
+                            "description": "The unique identifier of a justificados resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -1351,13 +1351,162 @@
                         "description": "A list with justificados",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the justificados",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "justificados"
+                ],
+                "summary": "Creates a new justificados",
+                "description": "Creates a new justificados",
+                "operationId": "App\\Http\\Controllers\\JustificadosController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/justificados"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The justificados resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/justificados/{id_asistencia}": {
+            "get": {
+                "tags": [
+                    "justificados"
+                ],
+                "summary": "Gets a justificados resource",
+                "description": "Gets a justificados resource",
+                "operationId": "App\\Http\\Controllers\\JustificadosController::show",
+                "parameters": [
+                    {
+                        "name": "id_asistencia",
+                        "in": "path",
+                        "description": "The justificados resource id_asistencia",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a justificados resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "justificados"
+                ],
+                "summary": "Updates a justificados resource",
+                "description": "Updates a justificados resource by the id_asistencia",
+                "operationId": "App\\Http\\Controllers\\JustificadosController::update",
+                "parameters": [
+                    {
+                        "name": "id_asistencia",
+                        "in": "path",
+                        "description": "justificados resource id",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a justificados resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/justificados"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The justificados resource updated",
                         "content": {
                             "application/json": {}
                         }
