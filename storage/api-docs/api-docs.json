@@ -2956,13 +2956,13 @@
                 ]
             }
         },
-        "/horarios": {
+        "/Inscripcion": {
             "get": {
                 "tags": [
-                    "horarios"
+                    "Inscripcion"
                 ],
-                "summary": "Lists available horarios",
-                "description": "Gets all available horarios resources",
+                "summary": "Lists available Inscripcion",
+                "description": "Gets all available Inscripcion resources",
                 "operationId": "App\\Http\\Controllers\\ReportesController::index",
                 "parameters": [
                     {
@@ -3016,7 +3016,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a horarios resource",
+                            "description": "The unique identifier of a Inscripcion resource",
                             "type": "number",
                             "default": "0"
                         }
@@ -3033,7 +3033,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A list with horarios",
+                        "description": "A list with Inscripcion",
                         "headers": {
                             "X-Auth-Token": {
                                 "description": "calls per hour allowed by the estudiante",

@@ -9,10 +9,10 @@ class ReportesController extends Controller
 {
    /**
         * @OA\Get(
-        *   path="/horarios",
-        *   summary="Lists available horarios",
-        *   description="Gets all available horarios resources",
-        *   tags={"horarios"},
+        *   path="/Inscripcion",
+        *   summary="Lists available Inscripcion",
+        *   description="Gets all available Inscripcion resources",
+        *   tags={"Inscripcion"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -67,7 +67,7 @@ class ReportesController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="0",
-        *           description="The unique identifier of a horarios resource"
+        *           description="The unique identifier of a Inscripcion resource"
         *       )
         *    ),
         * @OA\Parameter(
@@ -82,7 +82,7 @@ class ReportesController extends Controller
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="A list with horarios",
+        *       description="A list with Inscripcion",
         *       @OA\Header(
         *       header="X-Auth-Token",
         *       @OA\Schema(
@@ -111,7 +111,7 @@ class ReportesController extends Controller
      
     public function index($dni)
     {
-        $horarios = DB::table('sedes')
+        $Inscripcion = DB::table('sedes')
             ->select(
                 'sedes.nombre as nombreSedes',
                 'sedes.direccion',
@@ -139,7 +139,7 @@ class ReportesController extends Controller
             ->join('modalidades','modalidades.cod_modalidad','estudiantes_materias.id_modalidad')
             ->where('where estudiantes.dni','=',$dni)
             ->get();
-        return response()->json($horarios, 200);
+        return response()->json($Inscripcion, 200);
     }
 
     /**
