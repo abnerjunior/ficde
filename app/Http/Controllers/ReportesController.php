@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class HorariosController extends Controller
+class ReportesController extends Controller
 {
    /**
         * @OA\Get(
@@ -109,7 +109,7 @@ class HorariosController extends Controller
         * @return \Illuminate\Http\Response
       */
      
-    public function index()
+    public function index($dni)
     {
         $horarios = DB::table('sedes')
             ->select(
@@ -137,6 +137,7 @@ class HorariosController extends Controller
             ->join('estudiantes','estudiantes.cod_estudiante','estudiantes_materias.id_estudiante')
             ->join('turnos','turnos.cod_turno','estudiantes_materias.id_turno')
             ->join('modalidades','modalidades.cod_modalidad','estudiantes_materias.id_modalidad')
+            ->where('where estudiantes.dni','=',$dni)
             ->get();
         return response()->json($horarios, 200);
     }
