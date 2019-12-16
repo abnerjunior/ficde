@@ -18,6 +18,8 @@ class CreateJustificadosTable extends Migration
             $table->boolean('tipo');
             $table->string('fecha');
             $table->unsignedBigInteger('id_asistencia');
+            $table->boolean('status');
+            $table->string('user');
 
             $table->foreign('id_asistencia')
             ->references('cod_asistencia')->on('asistencias');

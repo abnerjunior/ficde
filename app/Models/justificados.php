@@ -31,6 +31,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The justificados id_asistencia"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -48,7 +60,9 @@ class justificados extends Base
     protected $fillable = [
         'tipo',
         'fecha',
-        'id_asistencia'
+        'id_asistencia',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

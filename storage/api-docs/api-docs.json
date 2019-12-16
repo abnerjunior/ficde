@@ -2956,14 +2956,14 @@
                 ]
             }
         },
-        "/Inscripcion": {
+        "/Reporte_Inscripcion": {
             "get": {
                 "tags": [
-                    "Inscripcion"
+                    "Reporte de Inscripcion"
                 ],
                 "summary": "Lists available Inscripcion",
                 "description": "Gets all available Inscripcion resources",
-                "operationId": "App\\Http\\Controllers\\ReportesController::index",
+                "operationId": "App\\Http\\Controllers\\ReportesController::RGI",
                 "parameters": [
                     {
                         "name": "paginate",
@@ -3043,6 +3043,55 @@
                                 }
                             }
                         },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/Reporte_Inscripcion/{dni}": {
+            "get": {
+                "tags": [
+                    "Reporte de Inscripcion"
+                ],
+                "summary": "Gets a recuperatorio resource",
+                "description": "Gets a recuperatorio resource",
+                "operationId": "App\\Http\\Controllers\\ReportesController::BRI",
+                "parameters": [
+                    {
+                        "name": "id_nota",
+                        "in": "path",
+                        "description": "The recuperatorio resource id_nota",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a recuperatorio resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -4707,12 +4756,19 @@
                         ],
                         "type": "integer"
                     },
-                    "estatus": {
+                    "status": {
                         "description": "The asistencias telefono",
                         "required": [
                             "true"
                         ],
                         "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4739,6 +4795,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4754,6 +4824,20 @@
                     },
                     "descripcion": {
                         "description": "The curso descripcion",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -4805,6 +4889,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4834,6 +4932,20 @@
                     },
                     "id_estudiante": {
                         "description": "The Estudiantes id_estudiante",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -4871,6 +4983,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4893,6 +5019,20 @@
                     },
                     "id_asistencia": {
                         "description": "The justificados id_asistencia",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -4923,6 +5063,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -4931,6 +5085,20 @@
                 "properties": {
                     "modalidad": {
                         "description": "The modalidad name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -4957,6 +5125,20 @@
                     },
                     "id_estudiante": {
                         "description": "The Estudiantes id_estudiante",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -5081,6 +5263,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -5114,6 +5310,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -5129,6 +5339,20 @@
                     },
                     "fecha": {
                         "description": "The semestres fecha",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -5166,6 +5390,20 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -5181,6 +5419,20 @@
                     },
                     "hora": {
                         "description": "The Turnoss password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],
@@ -5268,6 +5520,20 @@
                     },
                     "rol": {
                         "description": "The Users password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "boolean"
+                    },
+                    "user_r": {
+                        "description": "The aulas user",
                         "required": [
                             "true"
                         ],

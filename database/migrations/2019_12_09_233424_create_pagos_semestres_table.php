@@ -22,6 +22,8 @@ class CreatePagosSemestresTable extends Migration
             $table->string('descripcion');
             $table->unsignedBigInteger('id_estudiante');
             $table->unsignedBigInteger('id_semestre');
+            $table->boolean('status');
+            $table->string('user');
 
             $table->timestamps();
 

@@ -19,6 +19,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The modalidad name"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -34,7 +46,9 @@ class modalidades extends Base
      * @var array
      */
     protected $fillable = [
-        'modalidad'
+        'modalidad',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

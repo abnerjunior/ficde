@@ -185,6 +185,8 @@ class ModalidadesController extends Controller
             } else {
                 $modalidades= new modalidades();
                 $modalidades->modalidad = $request->modalidad;
+                $modalidades->status = true;
+                $modalidades->user = $request->user;
                 $modalidades->save();
                 return response()->json($request, 200);      
             }

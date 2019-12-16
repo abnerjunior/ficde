@@ -30,6 +30,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The materia descripcion"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -47,7 +59,9 @@ class materias extends Base
     protected $fillable = [
         'cod_curso',
         'materia',
-        'descripcion'
+        'descripcion',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

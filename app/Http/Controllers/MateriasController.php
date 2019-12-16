@@ -187,6 +187,8 @@ class MateriasController extends Controller
                 $materias->cod_curso = $request->cod_curso;
                 $materias->materia = $request->materia;
                 $materias->descripcion = $request->descripcion;
+                $materias->status = true;
+                $materias->user = $request->user;
                 $materias->save();
                 return response()->json($request, 200);      
             }

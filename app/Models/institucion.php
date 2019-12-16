@@ -33,6 +33,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The institucion direccion"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 class institucion extends Base
@@ -49,7 +61,9 @@ class institucion extends Base
         'nombre',
         'registro',
         'telefono',
-        'direccion'
+        'direccion',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

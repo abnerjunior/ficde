@@ -86,6 +86,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The Users password"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user_r",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -107,7 +119,9 @@ class usuarios extends Base implements AuthenticatableContract, AuthorizableCont
             'email',
             'telefono',
             'direccion',
-            'rol'
+            'rol',
+            'status',
+            'user_r'
         ];
         /**
          * The attributes that are filterable.

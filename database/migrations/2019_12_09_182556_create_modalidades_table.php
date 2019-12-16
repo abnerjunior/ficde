@@ -16,6 +16,8 @@ class CreateModalidadesTable extends Migration
         Schema::create('modalidades', function (Blueprint $table) {
             $table->bigIncrements('cod_modalidad');
             $table->string('modalidad');
+            $table->boolean('status');
+            $table->string('user');
 
             $table->timestamps();
         });

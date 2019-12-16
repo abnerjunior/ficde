@@ -31,6 +31,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The Estudiantes id_estudiante"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -47,7 +59,9 @@ class notas extends Base
     protected $fillable = [
         'nota',
         'id_em',
-        'id_estudiante'
+        'id_estudiante',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

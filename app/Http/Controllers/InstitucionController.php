@@ -186,6 +186,8 @@ class InstitucionController extends Controller
                 $institucion->registro = $request->registro;
                 $institucion->telefono = $request->telefono;
                 $institucion->direccion = $request->direccion;
+                $institucion->status = true;
+                $institucion->user = $request->user;
                 $institucion->save();
                 return response()->json($request, 200);      
             }

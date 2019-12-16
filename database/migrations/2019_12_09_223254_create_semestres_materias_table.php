@@ -20,6 +20,8 @@ class CreateSemestresMateriasTable extends Migration
             $table->unsignedBigInteger('id_semestres');
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_aula');
+            $table->boolean('status');
+            $table->string('user');
 
             $table->timestamps();
         });

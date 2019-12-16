@@ -15,10 +15,12 @@ class CreateEstudiantesMateriasTable extends Migration
     {
         Schema::create('estudiantes_materias', function (Blueprint $table) {
             $table->bigIncrements('cod_em');
-            $table->unsignedBigInteger('id_materia');
+            $table->unsignedBigInteger('id_sm');
             $table->unsignedBigInteger('id_turno');
             $table->unsignedBigInteger('id_modalidad');
             $table->unsignedBigInteger('id_estudiante');
+            $table->boolean('status');
+            $table->string('user');
 
 
             $table->timestamps();
@@ -27,8 +29,8 @@ class CreateEstudiantesMateriasTable extends Migration
         Schema::table('estudiantes_materias', function($table)
         {
 
-            $table->foreign('id_materia')
-            ->references('cod_materia')->on('materias');
+            $table->foreign('id_sm')
+            ->references('cod_sm')->on('semestres_materias');
 
             $table->foreign('id_turno')
             ->references('cod_turno')->on('turnos');

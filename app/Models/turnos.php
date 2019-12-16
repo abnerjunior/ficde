@@ -24,6 +24,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The Turnoss password"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -40,7 +52,9 @@ class turnos extends Base
      */
     protected $fillable = [
         'turno',
-        'hora'
+        'hora',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

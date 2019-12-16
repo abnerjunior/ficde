@@ -9,10 +9,10 @@ class ReportesController extends Controller
 {
    /**
         * @OA\Get(
-        *   path="/Inscripcion",
+        *   path="/Reporte_Inscripcion",
         *   summary="Lists available Inscripcion",
         *   description="Gets all available Inscripcion resources",
-        *   tags={"Inscripcion"},
+        *   tags={"Reporte de Inscripcion"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *       name="paginate",
@@ -109,7 +109,7 @@ class ReportesController extends Controller
         * @return \Illuminate\Http\Response
       */
      
-    public function index($dni)
+    public function RGI()
     {
         $Inscripcion = DB::table('sedes')
             ->select(
@@ -137,7 +137,6 @@ class ReportesController extends Controller
             ->join('estudiantes','estudiantes.cod_estudiante','estudiantes_materias.id_estudiante')
             ->join('turnos','turnos.cod_turno','estudiantes_materias.id_turno')
             ->join('modalidades','modalidades.cod_modalidad','estudiantes_materias.id_modalidad')
-            ->where('where estudiantes.dni','=',$dni)
             ->get();
         return response()->json($Inscripcion, 200);
     }
@@ -154,15 +153,86 @@ class ReportesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        * @OA\Get(
+        *   path="/Reporte_Inscripcion/{dni}",
+        *   summary="Gets a recuperatorio resource",
+        *   description="Gets a recuperatorio resource",
+        *   tags={"Reporte de Inscripcion"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\Parameter(
+        *   name="id_nota",
+        *   in="path",
+        *   description="The recuperatorio resource id_nota",
+        *   required=true,
+        *   @OA\Schema(
+        *       type="string",
+        *       description="The unique identifier of a recuperatorio resource"
+        *   )
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=204,
+        *   description="The resource has been deleted"
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=401,
+        *   description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response="default",
+        *   description="an ""unexpected"" error"
+        *   )
+        * )
+        *
+        * Remove the specified resource from storage.
+        *
+        * @param  int  $id_nota
+        *
+        * @return \Illuminate\Http\Response
+        */
+        public function BRI($dni)
+        {
+           /** esto es una consulta por la cedula */
+           $Inscripcion = DB::table('sedes')
+           ->select(
+               'sedes.nombre as nombreSedes',
+               'sedes.direccion',
+               'aulas.nombre as nombreAulas',
+               'materias.materia as nombreMateria',
+               'cursos.curso as nombreCurso',
+               'usuarios.nombre as nombreUsuario',
+               'usuarios.apellido as apellidoUsuario',
+               'estudiantes.nombre as nombreEstudiante',
+               'estudiantes.apellido as apellidoEstudiante',
+               'estudiantes.email as emailEstudiante',
+               'estudiantes.telefono as telefonoEstudiante',
+               'turnos.turno',
+               'turnos.hora',
+               'modalidades.modalidad'
+           )
+           ->join('aulas', 'aulas.cod_sede', 'sedes.cod_sede')
+           ->join('semestres_materias', 'aulas.cod_aula', 'semestres_materias.id_aula')
+           ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia')
+           ->join('cursos','cursos.cod_curso','materias.cod_curso')
+           ->join('usuarios','usuarios.cod_usuario','semestres_materias.id_usuario')
+           ->join('estudiantes_materias','estudiantes_materias.id_materia','semestres_materias.cod_sm')
+           ->join('estudiantes','estudiantes.cod_estudiante','estudiantes_materias.id_estudiante')
+           ->join('turnos','turnos.cod_turno','estudiantes_materias.id_turno')
+           ->join('modalidades','modalidades.cod_modalidad','estudiantes_materias.id_modalidad')
+           ->where('estudiantes.dni','=',$dni)
+           ->orderBy('name', 'desc')
+           ->get();
+            if ($Inscripcion)
+            {
+                return response()->json($Inscripcion, 200);
+            } 
+            else 
+            {
+                return response()->json(['status' => 'error', 'message' => 'Estudiante no inscrito'], 204);
+            }
+        }
 
     /**
      * Update the specified resource in storage.

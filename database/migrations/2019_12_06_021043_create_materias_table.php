@@ -18,7 +18,9 @@ class CreateMateriasTable extends Migration
             $table->unsignedBigInteger('cod_curso');
             $table->string('materia');
             $table->string('descripcion');
-
+            $table->boolean('status');
+            $table->string('user');
+            
             $table->foreign('cod_curso')->references('cod_curso')->on('cursos');
 
             $table->timestamps();

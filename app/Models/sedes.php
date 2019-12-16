@@ -35,6 +35,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The Sedes direccion"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 class sedes extends Base
@@ -50,7 +62,9 @@ class sedes extends Base
       'cod_institucion',
       'nombre',
       'telefono',
-      'direccion'
+      'direccion',
+      'status',
+      'user'
   ];
    /**
      * The attributes that are filterable.

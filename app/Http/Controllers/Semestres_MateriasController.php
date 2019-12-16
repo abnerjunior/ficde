@@ -188,6 +188,8 @@ class Semestres_MateriasController extends Controller
                 $semestres_materias->id_materia = $request->id_materia;
                 $semestres_materias->id_usuario = $request->id_usuario;
                 $semestres_materias->id_aula = $request->id_aula;
+                $semestres_materias->status = true;
+                $semestres_materias->user = $request->user;
                 $semestres_materias->save();
                 return response()->json($request, 200);      
             }

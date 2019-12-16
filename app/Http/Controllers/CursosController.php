@@ -186,6 +186,8 @@ class CursosController extends Controller
                 $cursos= new cursos();
                 $cursos->curso = $request->curso;
                 $cursos->descripcion = $request->descripcion;
+                $cursos->status = true;
+                $cursos->user = $request->user;
                 $cursos->save();
                 return response()->json($request, 200);      
             }

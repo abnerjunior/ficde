@@ -31,6 +31,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The recuperatorios id_nota"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -46,7 +58,9 @@ class recuperatorio extends Base
      */
     protected $fillable = [
         'fecha',
-        'id_nota'
+        'id_nota',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

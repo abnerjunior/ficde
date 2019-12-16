@@ -36,6 +36,18 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       type="string",
  *       description="The Estudiantes id_estudiante"
  *   ),
+ *    @OA\Property(
+ *       property="status",
+ *       type="boolean",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -53,7 +65,9 @@ class estudiantes_materias extends Base
         'id_materia',
         'id_turno',
         'id_modalidad',
-        'id_estudiante'
+        'id_estudiante',
+        'status',
+        'user'
     ];
     /**
      * The attributes that are filterable.

@@ -22,10 +22,16 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The estudiante"
  *   ),
  *   @OA\Property(
- *       property="estatus",
+ *       property="status",
  *       type="boolean",
  *       required={"true"},
  *       description="The asistencias telefono"
+ *   ),
+ * @OA\Property(
+ *       property="user",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
  *   ),
  * )
  */
@@ -42,7 +48,9 @@ class asistencias extends Base
     protected $fillable = [
         'id_em',
         'id_estudiante',
-        'estatus'
+        'status',
+        'user'
+
     ];
     /**
      * The attributes that are filterable.
