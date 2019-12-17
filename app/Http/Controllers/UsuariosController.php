@@ -34,8 +34,7 @@ class UsuariosController extends Controller
             'direccion' => 'required',
             'rol' => 'required',
             'email' => ['email', 'required', $unique],
-            'telefono' => 'required',
-            'api_token' => ['required', 'max:200'],
+            'telefono' => 'required'
         ]);
         return $validator;
     }
@@ -321,7 +320,7 @@ class UsuariosController extends Controller
                     'user' =>  $request->user,
                     'pass' => Hash::make($request->pass),
                     'nombre' =>  $request->nombre,
-                    'apellido' =>  $request->apellid,
+                    'apellido' =>  $request->apellido,
                     'dni' =>  $request->dni,
                     'email' => $request->email,
                     'direccion' => $request->direccion,
