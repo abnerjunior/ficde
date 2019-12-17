@@ -22,10 +22,10 @@ class UsuariosController extends Controller
     private function validation ($request, $dni) {
         if ($dni !== null) {
             $unique = Rule::unique('usuarios')->ignore($request->dni, 'dni');
-            $pass = 'required|min:8';
-        } else {
-            $unique = 'unique:usuarios';
             $pass = 'min:8';
+        } else {
+            $pass = 'required|min:8';
+            $unique = 'unique:usuarios';
         }
         $validator = Validator::make($request->all(), [
             'user' => ['required', $unique],
