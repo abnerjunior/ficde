@@ -142,7 +142,7 @@ class usuarios extends Base implements AuthenticatableContract, AuthorizableCont
          * @var array
          */
         protected $hidden = [
-            'password'
+            'pass'
         ];
     
         protected $primaryKey = 'cod_usuario';

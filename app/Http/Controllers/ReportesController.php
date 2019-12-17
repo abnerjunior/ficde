@@ -223,7 +223,7 @@ class ReportesController extends Controller
            ->join('modalidades','modalidades.cod_modalidad','estudiantes_materias.id_modalidad')
            ->where('estudiantes.dni','=',$dni)
            ->orderBy('name', 'desc')
-           ->get();
+           ->firs();
             if ($Inscripcion)
             {
                 return response()->json($Inscripcion, 200);
