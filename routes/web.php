@@ -109,6 +109,7 @@ $router->group(['', ''], function () use ($router) {
 
 		
 		$router->get('Reporte_Inscripcion/', 'ReportesController@RGI');
+		$router->get('Reporte_Inscripcion/{dni}', 'ReportesController@BRI');
 
 
 		/** 

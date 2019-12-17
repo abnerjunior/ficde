@@ -26,7 +26,7 @@ class Estudiantes_MateriasController extends Controller
             $unique = 'unique:estudiantes_materias';
         }
         $validator = Validator::make($request->all(), [
-            'id_materia' => 'required',
+            'id_semestre' => 'required',
             'id_turno' => 'required',
             'id_estudiante' => 'required',
             'id_modalidad' =>  'required'
@@ -185,7 +185,7 @@ class Estudiantes_MateriasController extends Controller
             } else {
                 $estudiantes_materias= new estudiantes_materias();
                 $estudiantes_materias->id_estudiante = $request->id_estudiante;
-                $estudiantes_materias->id_materia = $request->id_materia;
+                $estudiantes_materias->id_semestre = $request->id_semestre;
                 $estudiantes_materias->id_turno = $request->id_turno;
                 $estudiantes_materias->id_modalidad = $request->id_modalidad;
                 $estudiantes_materias->status = $request->status;

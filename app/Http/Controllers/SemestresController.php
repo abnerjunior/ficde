@@ -24,7 +24,7 @@ class SemestresController extends Controller
             $unique = 'unique:semestres';
         }
         $validator = Validator::make($request->all(), [
-            'cod_semestre' => 'required',
+            'nombre' => 'required',
             'fecha' => 'required'            
         ]);
         return $validator;

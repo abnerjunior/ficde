@@ -13,10 +13,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *   schema="estudiantes_materias",
  *   type="object",
  *   @OA\Property(
- *       property="id_materia",
+ *       property="id_semestre",
  *       type="string",
  *       required={"true"},
- *       description="The Estudiantes id_materia"
+ *       description="The Estudiantes id_semestre"
  *   ),
  *   @OA\Property(
  *       property="id_turno",
@@ -62,7 +62,7 @@ class estudiantes_materias extends Base
      * @var array
      */
     protected $fillable = [
-        'id_materia',
+        'id_semestre',
         'id_turno',
         'id_modalidad',
         'id_estudiante',
@@ -76,7 +76,7 @@ class estudiantes_materias extends Base
      */
     public static $filterable = [
         'cod_em',
-        'id_materia',
+        'id_semestre',
         'id_estudiante'
     ];
 }

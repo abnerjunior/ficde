@@ -253,7 +253,7 @@ class UsuariosController extends Controller
                 $usuarios->direccion = $request->direccion;
                 $usuarios->rol = $request->rol;
                 $usuarios->status = $request->status;
-                $usuarios->api_token = $request->api_token;
+                $usuarios->api_token = null;
                 $usuarios->user_r = $request->user_r;
                 $usuarios->save();
                 return response()->json($usuarios, 200);
