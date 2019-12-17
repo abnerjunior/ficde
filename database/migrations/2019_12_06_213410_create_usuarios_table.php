@@ -26,6 +26,7 @@ class CreateUsuariosTable extends Migration
             $table->string('rol');
             $table->string('status');
             $table->string('user_r');
+            $table->string('api_token');
 
 
             $table->timestamps();

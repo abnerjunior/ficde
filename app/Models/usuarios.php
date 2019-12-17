@@ -98,6 +98,12 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The aulas user"
  *   ),
+ * @OA\Property(
+ *       property="api_token",
+ *       type="string",
+ *       required={"true"},
+ *       description="The aulas user"
+ *   ),
  * )
  */
 
@@ -120,6 +126,7 @@ class usuarios extends Base implements AuthenticatableContract, AuthorizableCont
             'telefono',
             'direccion',
             'rol',
+            'api_token',
             'status',
             'user_r'
         ];

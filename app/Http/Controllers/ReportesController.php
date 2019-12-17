@@ -111,6 +111,7 @@ class ReportesController extends Controller
      
     public function RGI()
     {
+        /** Reporte General de Inscripciones */
         $Inscripcion = DB::table('sedes')
             ->select(
                 'sedes.nombre as nombreSedes',
@@ -126,6 +127,7 @@ class ReportesController extends Controller
                 'estudiantes.telefono as telefonoEstudiante',
                 'turnos.turno',
                 'turnos.hora',
+                'semestres.nombre as nombre semestre',
                 'modalidades.modalidad'
             )
             ->join('aulas', 'aulas.cod_sede', 'sedes.cod_sede')
@@ -195,6 +197,7 @@ class ReportesController extends Controller
         public function BRI($dni)
         {
            /** esto es una consulta por la cedula */
+
            $Inscripcion = DB::table('sedes')
            ->select(
                'sedes.nombre as nombreSedes',
