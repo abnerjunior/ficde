@@ -65,12 +65,13 @@ class AuthenticateController extends Controller
         * @return \Illuminate\Http\Response
         */
     public function authenticate(Request $request) {
-        $user = usuarios::where('dni', $request->dni)
+        $user = usuarios::where('dni', $request->text)
+        ->orWhere('user',$request->text)
             ->first();
         if ($user) {
             if(Hash::check($request->password, $user->password)){
                 $apikey = $this->jwt($user);
-                usuarios::where('dni', $request->dni)->update(['api_token' => $apikey]);
+                usuarios::where('dni', $request->text)->update(['api_token' => $apikey]);
 
                 return response()->json(['status' => 'success','api_token' => $apikey], 200);
             } else {
