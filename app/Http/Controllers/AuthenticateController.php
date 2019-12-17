@@ -69,7 +69,7 @@ class AuthenticateController extends Controller
         ->orWhere('user',$request->dni)
             ->first();
         if ($user) {
-            if(Hash::check($request->password, $user->pass)){
+            if(Hash::check($request->password, $user->password)){
                 $apikey = $this->jwt($user);
                 usuarios::where('dni', $request->dni)->update(['api_token' => $apikey]);
 
