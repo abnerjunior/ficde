@@ -316,6 +316,7 @@ class UsuariosController extends Controller
                 $errors = $this->validation($request, $dni)->errors();
                 return response()->json($errors->all(), 201);
             } else {
+                // es mejor usar $request->all() 
                 $usuarios = usuarios::where('dni', $dni)->update($request->all());
                 return response()->json($usuarios, 201);
             }

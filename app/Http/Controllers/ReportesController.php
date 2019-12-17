@@ -289,7 +289,8 @@ class ReportesController extends Controller
             ->join('estudiantes_materias','estudiantes_materias.id_semestre','semestres.cod_semestre')
             ->join('notas','notas.id_em','estudiantes_materias.cod_em')
             ->join('recuperatorios','recuperatorios.id_nota','notas.cod_nota')
-            ->join('','','')
+            ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante')
+
             ->join('','','')
             ->where('estudiantes.dni', '=', $dni)
           
