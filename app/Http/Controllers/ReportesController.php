@@ -127,7 +127,7 @@ class ReportesController extends Controller
                 'estudiantes.telefono as telefonoEstudiante',
                 'turnos.turno',
                 'turnos.hora',
-                'semestres.nombre as nombre semestre',
+                'semestres.nombre as nombresemestre',
                 'modalidades.modalidad'
             )
             ->join('aulas', 'aulas.cod_sede', 'sedes.cod_sede')
@@ -135,6 +135,7 @@ class ReportesController extends Controller
             ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia')
             ->join('cursos','cursos.cod_curso','materias.cod_curso')
             ->join('usuarios','usuarios.cod_usuario','semestres_materias.id_usuario')
+            ->join('semestres','semestres.cod_semestre','semestre')
             ->join('estudiantes_materias','estudiantes_materias.id_materia','semestres_materias.cod_sm')
             ->join('estudiantes','estudiantes.cod_estudiante','estudiantes_materias.id_estudiante')
             ->join('turnos','turnos.cod_turno','estudiantes_materias.id_turno')
