@@ -34,7 +34,8 @@ class UsuariosController extends Controller
             'direccion' => 'required',
             'rol' => 'required',
             'email' => ['email', 'required', $unique],
-            'telefono' => 'required'
+            'telefono' => 'required',
+            'api_token' => ['required','min:180', 'max:200'],
         ]);
         return $validator;
     }
