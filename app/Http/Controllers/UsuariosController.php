@@ -325,7 +325,10 @@ class UsuariosController extends Controller
                     'email' => $request->email,
                     'direccion' => $request->direccion,
                     'rol' => $request->rol,
-                    'telefono' => $request->telefono
+                    'telefono' => $request->telefono,
+                    'status' => $request->status,
+                    'api_token' => $request->api_token,
+                    'user_r' => $request->user_r
                 ]);
                 return response()->json($usuarios, 201);
             }
