@@ -316,20 +316,7 @@ class UsuariosController extends Controller
                 $errors = $this->validation($request, $dni)->errors();
                 return response()->json($errors->all(), 201);
             } else {
-                $usuarios = usuarios::where('dni', $dni)->update([
-                    'user' =>  $request->user,
-                    'pass' => Hash::make($request->pass),
-                    'nombre' =>  $request->nombre,
-                    'apellido' =>  $request->apellido,
-                    'dni' =>  $request->dni,
-                    'email' => $request->email,
-                    'direccion' => $request->direccion,
-                    'rol' => $request->rol,
-                    'telefono' => $request->telefono,
-                    'status' => 'y',
-                    'api_token' => null,
-                    'user_r' => $request->user_r
-                ]);
+                $usuarios = usuarios::where('dni', $dni)->update($request->all());
                 return response()->json($usuarios, 201);
             }
         } catch (Exception $e) {
