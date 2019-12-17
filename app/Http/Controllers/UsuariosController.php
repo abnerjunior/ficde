@@ -22,12 +22,14 @@ class UsuariosController extends Controller
     private function validation ($request, $dni) {
         if ($dni !== null) {
             $unique = Rule::unique('usuarios')->ignore($request->dni, 'dni');
+            $pass = 'required|min:8';
         } else {
             $unique = 'unique:usuarios';
+            $pass = 'min:8';
         }
         $validator = Validator::make($request->all(), [
             'user' => ['required', $unique],
-            'pass' => 'required|min:8',
+            'pass' => $pass,
             'nombre' => 'required',
             'apellido' => 'required',
             'dni' => ['required', 'max:10', $unique],
@@ -195,7 +197,7 @@ class UsuariosController extends Controller
         if ($usuarios) {
             return response()->json($usuarios, 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not register'], 204);
+            return response()->json(['status' => 'error', 'message' => 'usuario not register'], 404); // no encontro el contenido
         }
     }
 
@@ -240,7 +242,7 @@ class UsuariosController extends Controller
         try {
             if ($this->validation($request, null)->fails()) {
                 $errors = $this->validation($request, null)->errors();
-                return response()->json($errors->all(), 201);
+                return response()->json($errors->all(), 400);
             } else {
                 $usuarios = new usuarios;
                 $usuarios->user = $request->user;
@@ -252,11 +254,10 @@ class UsuariosController extends Controller
                 $usuarios->telefono = $request->telefono;
                 $usuarios->direccion = $request->direccion;
                 $usuarios->rol = $request->rol;
-                $usuarios->status = 'y';
                 $usuarios->api_token = null;
                 $usuarios->user_r = $request->user_r;
                 $usuarios->save();
-                return response()->json($usuarios, 200);
+                return response()->json($usuarios, 201); // 201 es de creado
             }
         } catch (Exception $e) {
             return response()->json($e);
@@ -314,14 +315,66 @@ class UsuariosController extends Controller
         try {
             if ($this->validation($request, $dni)->fails()) {
                 $errors = $this->validation($request, $dni)->errors();
-                return response()->json($errors->all(), 201);
+                return response()->json($errors->all(), 400); // error en la validacion
             } else {
                 // es mejor usar $request->all() 
                 $usuarios = usuarios::where('dni', $dni)->update($request->all());
-                return response()->json($usuarios, 201);
+                return response()->json($usuarios, 200); // 200 todo salio bien
             }
         } catch (Exception $e) {
             return response()->json($e);
         }
     }
+    /**
+        * @OA\Delete(
+        *   path="/usuarios/{dni}",
+        *   summary="Removes a usuarios resource",
+        *   description="Removes a usuarios resource",
+        *   tags={"users"},
+        *   security={{"passport": {"*"}}},
+        *   @OA\Parameter(
+        *   name="dni",
+        *   in="path",
+        *   description="The usuarios resource dni",
+        *   required=true,
+        *   @OA\Schema(
+        *       type="string",
+        *       description="The unique identifier of a usuarios resource"
+        *   )
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=204,
+        *   description="The resource has been deleted"
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response=401,
+        *   description="Unauthenticated."
+        *   ),
+        *   @OA\Response(
+        *   @OA\MediaType(mediaType="application/json"),
+        *   response="default",
+        *   description="an ""unexpected"" error"
+        *   )
+        * )
+        *
+        * Remove the specified resource from storage.
+        *
+        * @param  int  $dni
+        *
+        * @return \Illuminate\Http\Response
+        */
+        public function destroy($dni)
+        {
+            $usuarios = usuarios::where('dni', $dni)
+                ->where('status', 'n')
+                ->first();
+            if ($usuarios) {
+                usuarios::where('dni', $dni)->update(['status' => 'n']);
+                return response()->json(['status' => 'success', 'message' => 'estudiante eliminado'], 200);
+            } else {
+                return response()->json(['status' => 'error', 'message' => 'estudiante not inscrito'], 404); // 404 es de que no se encontro contenido
+            }
+        }
 }

@@ -106,6 +106,8 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('usuarios/{dni}', 'UsuariosController@show');
 		$router->post('usuarios/', 'UsuariosController@store');
 		$router->put('usuarios/{dni}', 'UsuariosController@update');
+		$router->put('usuarios/{dni}', 'UsuariosController@destroy');
+
 
 		
 		$router->get('Reporte_Inscripcion/', 'ReportesController@RGI');
