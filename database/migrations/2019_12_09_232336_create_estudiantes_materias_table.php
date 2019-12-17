@@ -19,7 +19,7 @@ class CreateEstudiantesMateriasTable extends Migration
             $table->unsignedBigInteger('id_turno');
             $table->unsignedBigInteger('id_modalidad');
             $table->unsignedBigInteger('id_estudiante');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user');
 
 

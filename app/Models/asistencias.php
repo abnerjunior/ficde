@@ -22,8 +22,13 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The estudiante"
  *   ),
  *   @OA\Property(
+ *       property="estatus",
+ *       type="string",
+ *       required={"true"},
+ *       description="The asistencias telefono"
+ *   @OA\Property(
  *       property="status",
- *       type="boolean",
+ *       type="string",
  *       required={"true"},
  *       description="The asistencias telefono"
  *   ),
@@ -48,6 +53,7 @@ class asistencias extends Base
     protected $fillable = [
         'id_em',
         'id_estudiante',
+        'estatus',
         'status',
         'user'
 

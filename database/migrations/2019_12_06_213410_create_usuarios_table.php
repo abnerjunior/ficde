@@ -24,7 +24,7 @@ class CreateUsuariosTable extends Migration
             $table->string('telefono');
             $table->string('email');
             $table->string('rol');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user_r');
 
 

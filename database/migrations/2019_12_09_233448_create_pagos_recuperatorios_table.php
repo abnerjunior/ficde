@@ -21,7 +21,7 @@ class CreatePagosRecuperatoriosTable extends Migration
             $table->string('fecha');
             $table->unsignedBigInteger('id_estudiante');
             $table->unsignedBigInteger('id_nota');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user');
 
             $table->timestamps();

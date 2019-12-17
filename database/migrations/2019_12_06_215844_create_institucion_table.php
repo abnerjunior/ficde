@@ -19,7 +19,7 @@ class CreateInstitucionTable extends Migration
             $table->string('registro');
             $table->string('telefono');
             $table->string('direccion');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user');
             $table->timestamps();
         });

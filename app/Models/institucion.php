@@ -35,7 +35,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *   ),
  *    @OA\Property(
  *       property="status",
- *       type="boolean",
+ *       type="string",
  *       required={"true"},
  *       description="The asistencias telefono"
  *   ),

@@ -182,7 +182,8 @@ class SemestresController extends Controller
                 $semestres= new semestres();
                 $semestres->nombre = $request->nombre;
                 $semestres->fecha = $request->fecha;
-                $semestres->status = true;
+                $semestres->status = $request->status;
+
                 $semestres->user = $request->user;
                 $semestres->save();
                 return response()->json($request, 200);      

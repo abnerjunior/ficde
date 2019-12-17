@@ -18,7 +18,7 @@ class CreateAulasTable extends Migration
             $table->string('nombre');
             $table->string('capacidad');
             $table->unsignedBigInteger('cod_sede');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user');
 
             $table->foreign('cod_sede')->references('cod_sede')->on('sedes');

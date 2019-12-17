@@ -188,7 +188,8 @@ class Estudiantes_MateriasController extends Controller
                 $estudiantes_materias->id_materia = $request->id_materia;
                 $estudiantes_materias->id_turno = $request->id_turno;
                 $estudiantes_materias->id_modalidad = $request->id_modalidad;
-                $estudiantes_materias->status = true;
+                $estudiantes_materias->status = $request->status;
+
                 $estudiantes_materias->user = $request->user;
                 $estudiantes_materias->save();
                 return response()->json($request, 200);      

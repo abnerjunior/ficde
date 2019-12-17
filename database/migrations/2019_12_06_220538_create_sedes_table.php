@@ -19,7 +19,7 @@ class CreateSedesTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->unsignedBigInteger('cod_institucion');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user');
 
             $table->foreign('cod_institucion')

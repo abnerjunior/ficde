@@ -17,7 +17,7 @@ class CreateSemestresTable extends Migration
             $table->bigIncrements('cod_semestre')->unique();
             $table->string('nombre');
             $table->string('fecha');
-            $table->boolean('status');
+            $table->string('status');
             $table->string('user');
             $table->timestamps();
         });

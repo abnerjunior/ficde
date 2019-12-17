@@ -252,7 +252,8 @@ class UsuariosController extends Controller
                 $usuarios->telefono = $request->telefono;
                 $usuarios->direccion = $request->direccion;
                 $usuarios->rol = $request->rol;
-                $usuarios->status = true;
+                $usuarios->status = $request->status;
+
                 $usuarios->user_r = $request->user_r;
                 $usuarios->save();
                 return response()->json($usuarios, 200);
