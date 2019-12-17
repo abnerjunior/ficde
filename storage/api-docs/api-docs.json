@@ -4756,12 +4756,19 @@
                         ],
                         "type": "integer"
                     },
+                    "estatus": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
                     "status": {
                         "description": "The asistencias telefono",
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -4801,7 +4808,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -4834,7 +4841,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -4895,7 +4902,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -4942,7 +4949,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -4989,7 +4996,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5029,7 +5036,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5069,7 +5076,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5095,7 +5102,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5135,7 +5142,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5269,7 +5276,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5316,7 +5323,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5349,7 +5356,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5396,7 +5403,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5429,7 +5436,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user": {
                         "description": "The aulas user",
@@ -5530,9 +5537,16 @@
                         "required": [
                             "true"
                         ],
-                        "type": "boolean"
+                        "type": "string"
                     },
                     "user_r": {
+                        "description": "The aulas user",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "api_token": {
                         "description": "The aulas user",
                         "required": [
                             "true"

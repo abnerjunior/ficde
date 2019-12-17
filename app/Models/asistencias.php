@@ -9,24 +9,25 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * @OA\Schema(
  *   schema="asistencias",
  *   type="object",
- *   @OA\Property(
+ *       @OA\Property(
  *       property="id_em",
  *       type="integer",
  *       required={"true"},
  *       description="The estudiante materia"
- *   ),
- *   @OA\Property(
+ *      ),
+ *      @OA\Property(
  *       property="id_estudiante",
  *       type="integer",
  *       required={"true"},
  *       description="The estudiante"
- *   ),
- *   @OA\Property(
+ *      ),
+ *      @OA\Property(
  *       property="estatus",
  *       type="string",
  *       required={"true"},
  *       description="The asistencias telefono"
- *   @OA\Property(
+ *   ),
+ *       @OA\Property(
  *       property="status",
  *       type="string",
  *       required={"true"},
