@@ -368,7 +368,7 @@ class UsuariosController extends Controller
         public function destroy($dni)
         {
             $usuarios = usuarios::where('dni', $dni)
-                ->where('status', 'n')
+                ->where('status', 'y')
                 ->first();
             if ($usuarios) {
                 usuarios::where('dni', $dni)->update(['status' => 'n']);
