@@ -252,7 +252,7 @@ class UsuariosController extends Controller
                 $usuarios->telefono = $request->telefono;
                 $usuarios->direccion = $request->direccion;
                 $usuarios->rol = $request->rol;
-                $usuarios->status = $request->status;
+                $usuarios->status = 'y';
                 $usuarios->api_token = null;
                 $usuarios->user_r = $request->user_r;
                 $usuarios->save();
@@ -326,8 +326,8 @@ class UsuariosController extends Controller
                     'direccion' => $request->direccion,
                     'rol' => $request->rol,
                     'telefono' => $request->telefono,
-                    'status' => $request->status,
-                    'api_token' => $request->api_token,
+                    'status' => 'y',
+                    'api_token' => null,
                     'user_r' => $request->user_r
                 ]);
                 return response()->json($usuarios, 201);
