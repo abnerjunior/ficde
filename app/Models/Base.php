@@ -24,7 +24,8 @@ class Base extends Model
         	$fields = array_only($fields, static::$filterable);
 	        foreach ($fields as $field => $value) {
 	            if (isset($fields[$field])) {
-	                $q->orWhere($field, 'LIKE', "%$fields[$field]%")->orderBy($data['sortField'], $data['sortOrder']);
+					$q->where('status', 'y')
+	                ->orWhere($field, 'LIKE', "%$fields[$field]%")->orderBy($data['sortField'], $data['sortOrder']);
 	            }
 	        }
     	}

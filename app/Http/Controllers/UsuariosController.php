@@ -372,9 +372,9 @@ class UsuariosController extends Controller
                 ->first();
             if ($usuarios) {
                 usuarios::where('dni', $dni)->update(['status' => 'n']);
-                return response()->json(['status' => 'success', 'message' => 'estudiante eliminado'], 200);
+                return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
             } else {
-                return response()->json(['status' => 'error', 'message' => 'estudiante not inscrito'], 404); // 404 es de que no se encontro contenido
+                return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
             }
         }
 }
