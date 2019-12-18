@@ -177,7 +177,7 @@ class TurnosController extends Controller
         try {
             if ($this->validation($request, null)->fails()) {
                 $errors = $this->validation($request, null)->errors();
-                return response()->json($errors->all(), 201);
+                return response()->json($errors->all(), 400);
             } else {
                 $turnos= new turnos();
                 $turnos->turno = $request->turno;
@@ -186,7 +186,7 @@ class TurnosController extends Controller
 
                 $turnos->user = $request->user;
                 $turnos->save();
-                return response()->json($request, 200);      
+                return response()->json($request, 201);      
             }
         }catch (Exception $e) {
             return response()->json($e);
@@ -245,7 +245,7 @@ class TurnosController extends Controller
         } 
         else 
         {
-            return response()->json(['status' => 'error', 'message' => 'No existe este turno'], 204);
+            return response()->json(['status' => 'error', 'message' => 'No existe este turno'], 404);
         }
     }
 
@@ -301,14 +301,14 @@ class TurnosController extends Controller
             try {
                 if ($this->validation($request, $turno)->fails()) {
                     $errors = $this->validation($request, $turno)->errors();
-                    return response()->json($errors->all(), 201);
+                    return response()->json($errors->all(), 400);
                 } else {
                     $turno = turnos::where('turno', $turno)
                     ->update([
                         'turno' =>  $request->turno,
                         'hora' => $request->hora,
                     ]);
-                    return response()->json($turno, 201);
+                    return response()->json($turno, 200);
                 }
             } catch (Exception $e) {
                 return response()->json($e);
@@ -358,7 +358,7 @@ class TurnosController extends Controller
         public function destroy($turno)
         {
             $turnos = turnos::where('turno', $turno)
-                ->where('status', 'n')
+                ->where('status', 'y')
                 ->first();
             if ($turnos) 
             {
@@ -367,7 +367,7 @@ class TurnosController extends Controller
             } 
             else 
             {
-                return response()->json(['status' => 'error', 'message' => 'turno no existe'], 401);
+                return response()->json(['status' => 'error', 'message' => 'turno no existe'], 404);
             }
         }
 }

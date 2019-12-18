@@ -46,7 +46,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * )
  */
 
-class recuperatorio extends Base
+class recuperatorios extends Base
 {
     protected $table = 'recuperatorios';
     protected $primaryKey = 'cod_recuperatorio';
