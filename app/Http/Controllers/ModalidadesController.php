@@ -321,7 +321,7 @@ class ModalidadesController extends Controller
      *   path="/modalidades/{dni}",
      *   summary="Removes a modalidades resource",
      *   description="Removes a modalidades resource",
-     *   tags={"users"},
+     *   tags={"modalidades"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

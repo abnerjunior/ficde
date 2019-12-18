@@ -327,7 +327,7 @@ class sedesController extends Controller
      *   path="/sedes/{dni}",
      *   summary="Removes a sedes resource",
      *   description="Removes a sedes resource",
-     *   tags={"users"},
+     *   tags={"sedes"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

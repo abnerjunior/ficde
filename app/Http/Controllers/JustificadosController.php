@@ -323,7 +323,7 @@ class JustificadosController extends Controller
      *   path="/justificados/{dni}",
      *   summary="Removes a justificados resource",
      *   description="Removes a justificados resource",
-     *   tags={"users"},
+     *   tags={"justificados"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

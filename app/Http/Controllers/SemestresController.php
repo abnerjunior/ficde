@@ -320,7 +320,7 @@ class SemestresController extends Controller
      *   path="/semestres/{dni}",
      *   summary="Removes a semestres resource",
      *   description="Removes a semestres resource",
-     *   tags={"users"},
+     *   tags={"semestres"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

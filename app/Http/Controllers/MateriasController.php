@@ -324,7 +324,7 @@ class MateriasController extends Controller
      *   path="/materias/{dni}",
      *   summary="Removes a materias resource",
      *   description="Removes a materias resource",
-     *   tags={"users"},
+     *   tags={"materias"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

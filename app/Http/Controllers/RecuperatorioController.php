@@ -318,7 +318,7 @@ class RecuperatorioController extends Controller
      *   path="/recuperatorios/{dni}",
      *   summary="Removes a recuperatorios resource",
      *   description="Removes a recuperatorios resource",
-     *   tags={"users"},
+     *   tags={"recuperatorios"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

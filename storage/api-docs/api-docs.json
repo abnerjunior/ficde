@@ -279,6 +279,55 @@
                 ]
             }
         },
+        "/asistencias/{dni}": {
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Removes a asistencias resource",
+                "description": "Removes a asistencias resource",
+                "operationId": "App\\Http\\Controllers\\AsistenciasController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The asistencias resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a asistencias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/authenticate": {
             "post": {
                 "tags": [
@@ -561,6 +610,55 @@
                 "responses": {
                     "200": {
                         "description": "The cursos resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/cursos/{dni}": {
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Removes a cursos resource",
+                "description": "Removes a cursos resource",
+                "operationId": "App\\Http\\Controllers\\CursosController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The cursos resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a cursos resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -1158,6 +1256,55 @@
                 ]
             }
         },
+        "/estudiantes_materias/{dni}": {
+            "delete": {
+                "tags": [
+                    "estudiantes_materias"
+                ],
+                "summary": "Removes a estudiantes_materias resource",
+                "description": "Removes a estudiantes_materias resource",
+                "operationId": "App\\Http\\Controllers\\Estudiantes_MateriasController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The estudiantes_materias resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a estudiantes_materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/institucion": {
             "get": {
                 "tags": [
@@ -1394,6 +1541,55 @@
                 "responses": {
                     "200": {
                         "description": "The institucion resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/institucion/{dni}": {
+            "delete": {
+                "tags": [
+                    "institucion"
+                ],
+                "summary": "Removes a institucion resource",
+                "description": "Removes a institucion resource",
+                "operationId": "App\\Http\\Controllers\\InstitucionController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The institucion resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a institucion resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -1682,6 +1878,55 @@
                 ]
             }
         },
+        "/justificados/{dni}": {
+            "delete": {
+                "tags": [
+                    "justificados"
+                ],
+                "summary": "Removes a justificados resource",
+                "description": "Removes a justificados resource",
+                "operationId": "App\\Http\\Controllers\\JustificadosController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The justificados resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a justificados resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/materias": {
             "get": {
                 "tags": [
@@ -1742,7 +1987,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a materia resource",
+                            "description": "The unique identifier of a descripcion resource",
                             "type": "number",
                             "default": "0"
                         }
@@ -1759,7 +2004,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "A list with materia",
+                        "description": "A list with descripcion",
                         "headers": {
                             "X-Auth-Token": {
                                 "description": "calls per hour allowed by the user",
@@ -1798,8 +2043,8 @@
                 "tags": [
                     "materias"
                 ],
-                "summary": "Creates a new materia",
-                "description": "Creates a new materia",
+                "summary": "Creates a new descripcion",
+                "description": "Creates a new descripcion",
                 "operationId": "App\\Http\\Controllers\\MateriasController::store",
                 "requestBody": {
                     "content": {
@@ -1812,7 +2057,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "The materia resource created",
+                        "description": "The descripcion resource created",
                         "content": {
                             "application/json": {}
                         }
@@ -1839,22 +2084,22 @@
                 ]
             }
         },
-        "/materias/{materia}": {
+        "/materias/{descripcion}": {
             "get": {
                 "tags": [
                     "materias"
                 ],
-                "summary": "Gets a materia resource",
-                "description": "Gets a materia resource",
+                "summary": "Gets a descripcion resource",
+                "description": "Gets a descripcion resource",
                 "operationId": "App\\Http\\Controllers\\MateriasController::show",
                 "parameters": [
                     {
-                        "name": "materia",
+                        "name": "descripcion",
                         "in": "path",
-                        "description": "The materia resource materia",
+                        "description": "The descripcion resource descripcion",
                         "required": true,
                         "schema": {
-                            "description": "The unique identifier of a materia resource",
+                            "description": "The unique identifier of a descripcion resource",
                             "type": "string"
                         }
                     }
@@ -1892,11 +2137,11 @@
                     "materias"
                 ],
                 "summary": "Updates a materias resource",
-                "description": "Updates a materias resource by the materia",
+                "description": "Updates a materias resource by the descripcion",
                 "operationId": "App\\Http\\Controllers\\MateriasController::update",
                 "parameters": [
                     {
-                        "name": "materia",
+                        "name": "descripcion",
                         "in": "path",
                         "description": "materias resource id",
                         "required": true,
@@ -1918,6 +2163,55 @@
                 "responses": {
                     "200": {
                         "description": "The materias resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/materias/{dni}": {
+            "delete": {
+                "tags": [
+                    "materias"
+                ],
+                "summary": "Removes a materias resource",
+                "description": "Removes a materias resource",
+                "operationId": "App\\Http\\Controllers\\MateriasController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The materias resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -2206,6 +2500,55 @@
                 ]
             }
         },
+        "/modalidades/{dni}": {
+            "delete": {
+                "tags": [
+                    "modalidades"
+                ],
+                "summary": "Removes a modalidades resource",
+                "description": "Removes a modalidades resource",
+                "operationId": "App\\Http\\Controllers\\ModalidadesController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The modalidades resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a modalidades resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/notas": {
             "get": {
                 "tags": [
@@ -2442,6 +2785,55 @@
                 "responses": {
                     "200": {
                         "description": "The notas resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/notas/{dni}": {
+            "delete": {
+                "tags": [
+                    "notas"
+                ],
+                "summary": "Removes a notas resource",
+                "description": "Removes a notas resource",
+                "operationId": "App\\Http\\Controllers\\NotasController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The notas resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a notas resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -2710,7 +3102,7 @@
                         "required": false,
                         "schema": {
                             "title": "Paginate",
-                            "description": "The unique identifier of a recuperatorio resource",
+                            "description": "The unique identifier of a recuperatorios resource",
                             "type": "boolean",
                             "example": "true"
                         }
@@ -2718,10 +3110,10 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "recuperatorio resource name",
+                        "description": "recuperatorios resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a recuperatorio resource",
+                            "description": "The unique identifier of a recuperatorios resource",
                             "type": "string"
                         }
                     },
@@ -2732,7 +3124,7 @@
                         "required": false,
                         "schema": {
                             "title": "name",
-                            "description": "The unique identifier of a recuperatorio resource",
+                            "description": "The unique identifier of a recuperatorios resource",
                             "type": "string",
                             "example": "name"
                         }
@@ -2743,7 +3135,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "sortOrder",
-                            "description": "The unique identifier of a recuperatorio resource",
+                            "description": "The unique identifier of a recuperatorios resource",
                             "type": "string",
                             "example": "asc"
                         }
@@ -2774,7 +3166,7 @@
                         "description": "A list with recuperatorios",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the recuperatorio",
+                                "description": "calls per hour allowed by the recuperatorios",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -2810,8 +3202,8 @@
                 "tags": [
                     "recuperatorios"
                 ],
-                "summary": "Creates a new recuperatorio",
-                "description": "Creates a new recuperatorio",
+                "summary": "Creates a new recuperatorios",
+                "description": "Creates a new recuperatorios",
                 "operationId": "App\\Http\\Controllers\\RecuperatorioController::store",
                 "requestBody": {
                     "content": {
@@ -2824,7 +3216,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "The recuperatorio resource created",
+                        "description": "The recuperatorios resource created",
                         "content": {
                             "application/json": {}
                         }
@@ -2856,17 +3248,17 @@
                 "tags": [
                     "recuperatorios"
                 ],
-                "summary": "Gets a recuperatorio resource",
-                "description": "Gets a recuperatorio resource",
+                "summary": "Gets a recuperatorios resource",
+                "description": "Gets a recuperatorios resource",
                 "operationId": "App\\Http\\Controllers\\RecuperatorioController::show",
                 "parameters": [
                     {
                         "name": "id_nota",
                         "in": "path",
-                        "description": "The recuperatorio resource id_nota",
+                        "description": "The recuperatorios resource id_nota",
                         "required": true,
                         "schema": {
-                            "description": "The unique identifier of a recuperatorio resource",
+                            "description": "The unique identifier of a recuperatorios resource",
                             "type": "string"
                         }
                     }
@@ -2930,6 +3322,55 @@
                 "responses": {
                     "200": {
                         "description": "The recuperatorios resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/recuperatorios/{dni}": {
+            "delete": {
+                "tags": [
+                    "recuperatorios"
+                ],
+                "summary": "Removes a recuperatorios resource",
+                "description": "Removes a recuperatorios resource",
+                "operationId": "App\\Http\\Controllers\\RecuperatorioController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The recuperatorios resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a recuperatorios resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -3429,6 +3870,55 @@
                 ]
             }
         },
+        "/sedes/{dni}": {
+            "delete": {
+                "tags": [
+                    "sedes"
+                ],
+                "summary": "Removes a sedes resource",
+                "description": "Removes a sedes resource",
+                "operationId": "App\\Http\\Controllers\\sedesController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The sedes resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a sedes resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/semestres": {
             "get": {
                 "tags": [
@@ -3691,6 +4181,55 @@
                 ]
             }
         },
+        "/semestres/{dni}": {
+            "delete": {
+                "tags": [
+                    "semestres"
+                ],
+                "summary": "Removes a semestres resource",
+                "description": "Removes a semestres resource",
+                "operationId": "App\\Http\\Controllers\\SemestresController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The semestres resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a semestres resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/semestres_materias": {
             "get": {
                 "tags": [
@@ -3927,6 +4466,55 @@
                 "responses": {
                     "200": {
                         "description": "The semestres_materias resource updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/semestres_materias/{dni}": {
+            "delete": {
+                "tags": [
+                    "semestres_materias"
+                ],
+                "summary": "Removes a semestres_materias resource",
+                "description": "Removes a semestres_materias resource",
+                "operationId": "App\\Http\\Controllers\\Semestres_MateriasController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The semestres_materias resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a semestres_materias resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
                         "content": {
                             "application/json": {}
                         }
@@ -4832,6 +5420,55 @@
                     }
                 ]
             }
+        },
+        "/aulas/{dni}": {
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Removes a aulas resource",
+                "description": "Removes a aulas resource",
+                "operationId": "App\\Http\\Controllers\\AulasController::destroy",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The aulas resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a aulas resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
         }
     },
     "components": {
@@ -5636,13 +6273,6 @@
                         "type": "string"
                     },
                     "user_r": {
-                        "description": "The aulas user",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "api_token": {
                         "description": "The aulas user",
                         "required": [
                             "true"

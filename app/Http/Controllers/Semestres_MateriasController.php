@@ -327,7 +327,7 @@ class Semestres_MateriasController extends Controller
      *   path="/semestres_materias/{dni}",
      *   summary="Removes a semestres_materias resource",
      *   description="Removes a semestres_materias resource",
-     *   tags={"users"},
+     *   tags={"semestres_materias"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

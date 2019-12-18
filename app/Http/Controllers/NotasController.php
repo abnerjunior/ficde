@@ -323,7 +323,7 @@ class NotasController extends Controller
      *   path="/notas/{dni}",
      *   summary="Removes a notas resource",
      *   description="Removes a notas resource",
-     *   tags={"users"},
+     *   tags={"notas"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

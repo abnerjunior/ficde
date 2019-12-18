@@ -325,7 +325,7 @@ class Estudiantes_MateriasController extends Controller
      *   path="/estudiantes_materias/{dni}",
      *   summary="Removes a estudiantes_materias resource",
      *   description="Removes a estudiantes_materias resource",
-     *   tags={"users"},
+     *   tags={"estudiantes_materias"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

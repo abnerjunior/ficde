@@ -329,7 +329,7 @@ class InstitucionController extends Controller
      *   path="/institucion/{dni}",
      *   summary="Removes a institucion resource",
      *   description="Removes a institucion resource",
-     *   tags={"users"},
+     *   tags={"institucion"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",
