@@ -19,8 +19,8 @@ class CreateMateriasTable extends Migration
             $table->string('materia');
             $table->string('descripcion');
             $table->enum('status', ['y','n'])->default('y');
+            $table->string('user_r');
 
-            $table->string('user');
             
             $table->foreign('cod_curso')->references('cod_curso')->on('cursos');
 

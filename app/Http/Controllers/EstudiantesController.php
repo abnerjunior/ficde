@@ -196,7 +196,7 @@ class EstudiantesController extends Controller
                 $estudiantes->email = $request->email;
                 $estudiantes->telefono = $request->telefono;
                 $estudiantes->direccion = $request->direccion;
-                $estudiantes->user = $request->user;
+                $estudiantes->user_r = $request->user_r;
                 $estudiantes->save();
                 return response()->json($request, 201);
             }

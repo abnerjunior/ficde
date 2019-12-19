@@ -20,7 +20,7 @@ class CreateAulasTable extends Migration
             $table->unsignedBigInteger('cod_sede');
             $table->enum('status', ['y','n'])->default('y');
 
-            $table->string('user');
+            $table->string('user_r');
 
             $table->foreign('cod_sede')->references('cod_sede')->on('sedes');
 

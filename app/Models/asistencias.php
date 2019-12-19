@@ -34,10 +34,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The asistencias telefono"
  *   ),
  * @OA\Property(
- *       property="user",
+ *       property="user_r",
  *       type="string",
  *       required={"true"},
- *       description="The aulas user"
+ *       description="The aulas user_r"
  *   ),
  * )
  */
@@ -56,7 +56,7 @@ class asistencias extends Base
         'id_estudiante',
         'estatus',
         'status',
-        'user'
+        'user_r'
 
     ];
     /**

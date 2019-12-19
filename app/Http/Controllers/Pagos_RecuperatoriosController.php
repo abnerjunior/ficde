@@ -90,7 +90,7 @@ class Pago_RecuperatorioController extends Controller
         *           type="integer",
         *           format="int32"
         *       ),
-        *       description="calls per hour allowed by the user"
+        *       description="calls per hour allowed by the user_r"
         *     ),
         *   ),
         *   @OA\Response(

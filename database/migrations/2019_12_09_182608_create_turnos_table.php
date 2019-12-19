@@ -19,8 +19,8 @@ class CreateTurnosTable extends Migration
             $table->string('hora');
             $table->enum('status', ['y','n'])->default('y');
 
-            $table->string('user');
-            
+            $table->string('user_r');
+
 
             $table->timestamps();
         });

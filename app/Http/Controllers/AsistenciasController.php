@@ -190,7 +190,7 @@ class AsistenciasController extends Controller
                 $asistencias->id_estudiante = $request->id_estudiante;
                 $asistencias->id_em = $request->id_em;
                 $asistencias->estatus = $request->estatus;
-                $asistencias->user = $request->user;
+                $asistencias->user_r = $request->user_r;
                 $asistencias->save();
                 return response()->json($request, 201);
             }

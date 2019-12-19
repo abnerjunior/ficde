@@ -115,7 +115,7 @@ class CursosController extends Controller
      *           type="integer",
      *           format="int32"
      *       ),
-     *       description="calls per hour allowed by the user"
+     *       description="calls per hour allowed by the user_r"
      *     ),
      *   ),
      *   @OA\Response(
@@ -188,7 +188,7 @@ class CursosController extends Controller
                 $cursos = new cursos();
                 $cursos->curso = $request->curso;
                 $cursos->descripcion = $request->descripcion;
-                $cursos->user = $request->user;
+                $cursos->user_r = $request->user_r;
                 $cursos->save();
                 return response()->json($request, 201);
             }

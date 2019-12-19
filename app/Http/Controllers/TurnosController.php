@@ -182,7 +182,7 @@ class TurnosController extends Controller
                 $turnos= new turnos();
                 $turnos->turno = $request->turno;
                 $turnos->hora = $request->hora;
-                $turnos->user = $request->user;
+                $turnos->user_r = $request->user_r;
                 $turnos->save();
                 return response()->json($request, 201);      
             }

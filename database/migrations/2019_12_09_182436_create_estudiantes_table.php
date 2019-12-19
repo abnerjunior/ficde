@@ -22,8 +22,7 @@ class CreateEstudiantesTable extends Migration
             $table->string('direccion');
             $table->string('email');
             $table->enum('status', ['y','n'])->default('y');
-
-            $table->string('user');
+            $table->string('user_r');
 
             $table->timestamps();
         });

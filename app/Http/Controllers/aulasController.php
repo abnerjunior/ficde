@@ -189,7 +189,7 @@ class AulasController extends Controller
                 $aulas->nombre = $request->nombre;
                 $aulas->capacidad = $request->capacidad;
                 $aulas->cod_sede = $request->cod_sede;
-                $aulas->user = $request->user;
+                $aulas->user_r = $request->user_r;
                 $aulas->save();
                 return response()->json($request, 201);
             }

@@ -17,8 +17,7 @@ class CreateModalidadesTable extends Migration
             $table->bigIncrements('cod_modalidad');
             $table->string('modalidad');
             $table->enum('status', ['y','n'])->default('y');
-
-            $table->string('user');
+            $table->string('user_r');
 
             $table->timestamps();
         });

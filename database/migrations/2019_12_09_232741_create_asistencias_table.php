@@ -20,7 +20,7 @@ class CreateAsistenciasTable extends Migration
             $table->boolean('estatus');
             $table->enum('status', ['y','n'])->default('y');
 
-            $table->string('user');
+            $table->string('user_r');
 
             $table->foreign('id_em')
             ->references('cod_em')->on('estudiantes_materias');

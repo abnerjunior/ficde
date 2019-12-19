@@ -115,7 +115,7 @@ class MateriasController extends Controller
      *           type="integer",
      *           format="int32"
      *       ),
-     *       description="calls per hour allowed by the user"
+     *       description="calls per hour allowed by the user_r"
      *     ),
      *   ),
      *   @OA\Response(
@@ -189,7 +189,7 @@ class MateriasController extends Controller
                 $materias->cod_curso = $request->cod_curso;
                 $materias->descripcion = $request->descripcion;
                 $materias->materia = $request->materia;
-                $materias->user = $request->user;
+                $materias->user_r = $request->user_r;
                 $materias->save();
                 return response()->json($request, 201);
             }

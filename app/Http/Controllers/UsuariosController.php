@@ -8,7 +8,7 @@ use App\Models\usuarios;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Auth;
+use Auth; 
 use Exception;
 
 class UsuariosController extends Controller

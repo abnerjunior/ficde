@@ -18,8 +18,8 @@ class CreateSemestresTable extends Migration
             $table->string('nombre');
             $table->string('fecha');
             $table->enum('status', ['y','n'])->default('y');
+            $table->string('user_r');
 
-            $table->string('user');
             $table->timestamps();
         });
         

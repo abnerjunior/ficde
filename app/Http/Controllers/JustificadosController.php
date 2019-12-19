@@ -188,7 +188,7 @@ class JustificadosController extends Controller
                 $justificados->id_asistencia = $request->id_asistencia;
                 $justificados->fecha = $request->fecha;
                 $justificados->tipo = $request->tipo;
-                $justificados->user = $request->user;
+                $justificados->user_r = $request->user_r;
                 $justificados->save();
                 return response()->json($request, 201);
             }

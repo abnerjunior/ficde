@@ -189,7 +189,7 @@ class NotasController extends Controller
                 $notas->id_em = $request->id_em;
                 $notas->nota = $request->nota;
                 $notas->id_estudiante = $request->id_estudiante;
-                $notas->user = $request->user;
+                $notas->user_r = $request->user_r;
                 $notas->save();
                 return response()->json($request, 201);
             }

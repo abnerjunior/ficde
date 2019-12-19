@@ -42,10 +42,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The asistencias telefono"
  *   ),
  * @OA\Property(
- *       property="user",
+ *       property="user_r",
  *       type="string",
  *       required={"true"},
- *       description="The aulas user"
+ *       description="The aulas user_r"
  *   ),
  * )
  */
@@ -64,7 +64,7 @@ class sedes extends Base
       'telefono',
       'direccion',
       'status',
-      'user'
+      'user_r'
   ];
    /**
      * The attributes that are filterable.

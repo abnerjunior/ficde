@@ -20,7 +20,7 @@ class CreateJustificadosTable extends Migration
             $table->unsignedBigInteger('id_asistencia');
             $table->enum('status', ['y','n'])->default('y');
 
-            $table->string('user');
+            $table->string('user_r');
 
             $table->foreign('id_asistencia')
             ->references('cod_asistencia')->on('asistencias');

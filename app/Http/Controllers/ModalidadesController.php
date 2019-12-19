@@ -116,7 +116,7 @@ class ModalidadesController extends Controller
      *           type="integer",
      *           format="int32"
      *       ),
-     *       description="calls per hour allowed by the user"
+     *       description="calls per hour allowed by the user_r"
      *     ),
      *   ),
      *   @OA\Response(
@@ -188,7 +188,7 @@ class ModalidadesController extends Controller
             } else {
                 $modalidades = new modalidades();
                 $modalidades->modalidad = $request->modalidad;
-                $modalidades->user = $request->user;
+                $modalidades->user_r = $request->user_r;
                 $modalidades->save();
                 return response()->json($request, 201);
             }

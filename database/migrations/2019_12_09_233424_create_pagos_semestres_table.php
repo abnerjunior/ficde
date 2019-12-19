@@ -24,7 +24,8 @@ class CreatePagosSemestresTable extends Migration
             $table->unsignedBigInteger('id_semestre');
             $table->enum('status', ['y','n'])->default('y');
 
-            $table->string('user');
+            $table->string('user_r');
+
 
             $table->timestamps();
 
