@@ -137,7 +137,7 @@ class AsistenciasController extends Controller
     public function index(Request $request)
     {
         $q = asistencias::select();
-        $asistencias = asistencias::search($request->toArray(), $q);
+        $asistencias = asistencias::search($request->toArray(), $q,'asistencias');
         return  new UsersCollection($asistencias);
     }
 
