@@ -17,7 +17,8 @@ class CreateCursosTable extends Migration
             $table->bigIncrements('cod_curso');
             $table->string('curso');
             $table->string('descripcion');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
             $table->timestamps();
 

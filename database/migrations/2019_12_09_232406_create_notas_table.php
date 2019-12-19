@@ -18,7 +18,8 @@ class CreateNotasTable extends Migration
             $table->string('nota');
             $table->unsignedBigInteger('id_em');
             $table->unsignedBigInteger('id_estudiante');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
 
             $table->timestamps();

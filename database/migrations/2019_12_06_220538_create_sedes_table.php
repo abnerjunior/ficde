@@ -19,7 +19,8 @@ class CreateSedesTable extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->unsignedBigInteger('cod_institucion');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
 
             $table->foreign('cod_institucion')

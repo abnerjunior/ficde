@@ -19,7 +19,8 @@ class CreateInstitucionTable extends Migration
             $table->string('registro');
             $table->string('telefono');
             $table->string('direccion');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
             $table->timestamps();
         });

@@ -17,7 +17,8 @@ class CreateTurnosTable extends Migration
             $table->bigIncrements('cod_turno');
             $table->string('turno');
             $table->string('hora');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
             
 

@@ -18,7 +18,8 @@ class CreateRecuperatoriosTable extends Migration
             $table->string('fecha');
             $table->string('nota_r');
             $table->unsignedBigInteger('id_nota');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
 
             $table->foreign('id_nota')

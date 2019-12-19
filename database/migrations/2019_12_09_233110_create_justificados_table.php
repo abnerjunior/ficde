@@ -18,7 +18,8 @@ class CreateJustificadosTable extends Migration
             $table->string('tipo');
             $table->string('fecha');
             $table->unsignedBigInteger('id_asistencia');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
 
             $table->foreign('id_asistencia')

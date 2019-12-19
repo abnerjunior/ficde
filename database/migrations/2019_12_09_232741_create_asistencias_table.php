@@ -18,7 +18,8 @@ class CreateAsistenciasTable extends Migration
             $table->unsignedBigInteger('id_em');
             $table->unsignedBigInteger('id_estudiante');
             $table->boolean('estatus');
-            $table->string('status');
+            $table->enum('status', ['y','n'])->default('y');
+
             $table->string('user');
 
             $table->foreign('id_em')
