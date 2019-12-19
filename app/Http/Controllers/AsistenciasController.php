@@ -190,7 +190,6 @@ class AsistenciasController extends Controller
                 $asistencias->id_estudiante = $request->id_estudiante;
                 $asistencias->id_em = $request->id_em;
                 $asistencias->estatus = $request->estatus;
-                $asistencias->status = $request->status;
                 $asistencias->user = $request->user;
                 $asistencias->save();
                 return response()->json($request, 201);
@@ -326,7 +325,7 @@ class AsistenciasController extends Controller
      *   path="/asistencias/{dni}",
      *   summary="Removes a asistencias resource",
      *   description="Removes a asistencias resource",
-     *   tags={"users"},
+     *   tags={"asistencias"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

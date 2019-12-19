@@ -188,8 +188,6 @@ class CursosController extends Controller
                 $cursos = new cursos();
                 $cursos->curso = $request->curso;
                 $cursos->descripcion = $request->descripcion;
-                $cursos->status = $request->status;
-
                 $cursos->user = $request->user;
                 $cursos->save();
                 return response()->json($request, 201);
@@ -322,7 +320,7 @@ class CursosController extends Controller
      *   path="/cursos/{dni}",
      *   summary="Removes a cursos resource",
      *   description="Removes a cursos resource",
-     *   tags={"users"},
+     *   tags={"cursos"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

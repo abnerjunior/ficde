@@ -12,7 +12,7 @@ use Illuminate\Validation\Rule;
 
 class AulasController extends Controller
 {
-    /**
+    /**4
      * validate data of request
      * @param  [Request] $request data
      * @param  [String] $nombre number nombre
@@ -189,8 +189,6 @@ class AulasController extends Controller
                 $aulas->nombre = $request->nombre;
                 $aulas->capacidad = $request->capacidad;
                 $aulas->cod_sede = $request->cod_sede;
-                $aulas->status = $request->status;
-
                 $aulas->user = $request->user;
                 $aulas->save();
                 return response()->json($request, 201);
@@ -326,7 +324,7 @@ class AulasController extends Controller
      *   path="/aulas/{dni}",
      *   summary="Removes a aulas resource",
      *   description="Removes a aulas resource",
-     *   tags={"users"},
+     *   tags={"aulas"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
      *   name="dni",

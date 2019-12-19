@@ -185,8 +185,6 @@ class RecuperatorioController extends Controller
                 $recuperatorios = new recuperatorios();
                 $recuperatorios->id_nota = $request->id_nota;
                 $recuperatorios->fecha = $request->fecha;
-                $recuperatorios->status = $request->status;
-
                 $recuperatorios->user = $request->user;
                 $recuperatorios->save();
                 return response()->json($request, 201);

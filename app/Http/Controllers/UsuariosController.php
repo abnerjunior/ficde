@@ -330,7 +330,7 @@ class UsuariosController extends Controller
         *   path="/usuarios/{dni}",
         *   summary="Removes a usuarios resource",
         *   description="Removes a usuarios resource",
-        *   tags={"users"},
+        *   tags={"Users"},
         *   security={{"passport": {"*"}}},
         *   @OA\Parameter(
         *   name="dni",

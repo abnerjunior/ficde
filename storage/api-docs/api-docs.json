@@ -282,7 +282,7 @@
         "/asistencias/{dni}": {
             "delete": {
                 "tags": [
-                    "users"
+                    "asistencias"
                 ],
                 "summary": "Removes a asistencias resource",
                 "description": "Removes a asistencias resource",
@@ -639,7 +639,7 @@
         "/cursos/{dni}": {
             "delete": {
                 "tags": [
-                    "users"
+                    "cursos"
                 ],
                 "summary": "Removes a cursos resource",
                 "description": "Removes a cursos resource",
@@ -5113,7 +5113,7 @@
             },
             "delete": {
                 "tags": [
-                    "users"
+                    "Users"
                 ],
                 "summary": "Removes a usuarios resource",
                 "description": "Removes a usuarios resource",
@@ -5424,7 +5424,7 @@
         "/aulas/{dni}": {
             "delete": {
                 "tags": [
-                    "users"
+                    "aulas"
                 ],
                 "summary": "Removes a aulas resource",
                 "description": "Removes a aulas resource",
