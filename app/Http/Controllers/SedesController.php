@@ -138,7 +138,7 @@ class sedesController extends Controller
     public function index(Request $request)
     {
         $q = sedes::select();
-        $sedes = sedes::search($request->toArray(), $q);
+        $sedes = sedes::search($request->toArray(), $q,'sedes');
         return  new UsersCollection($sedes);
     }
 

@@ -137,7 +137,7 @@ class InstitucionController extends Controller
     public function index(Request $request)
     {
         $q = institucion::select();
-        $institucion = institucion::search($request->toArray(), $q);
+        $institucion = institucion::search($request->toArray(), $q,'institucion');
         return  new UsersCollection($institucion);
     }
 

@@ -133,7 +133,7 @@ class TurnosController extends Controller
       public function index(Request $request) {
 
         $q = turnos::select();
-        $turnos = turnos::search($request->toArray(), $q);
+        $turnos = turnos::search($request->toArray(), $q,'turnos');
         return  new UsersCollection($turnos);
     }
     /**

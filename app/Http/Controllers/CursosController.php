@@ -138,7 +138,7 @@ class CursosController extends Controller
     {
 
         $q = cursos::select();
-        $curso = cursos::search($request->toArray(), $q);
+        $curso = cursos::search($request->toArray(), $q,'cursos');
         return  new usersCollection($curso);
     }
 

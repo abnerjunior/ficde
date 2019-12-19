@@ -139,7 +139,7 @@ class ModalidadesController extends Controller
     {
 
         $q = modalidades::select();
-        $modalidad = modalidades::search($request->toArray(), $q);
+        $modalidad = modalidades::search($request->toArray(), $q,'modalidades');
         return  new usersCollection($modalidad);
     }
 

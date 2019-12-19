@@ -136,7 +136,7 @@ class RecuperatorioController extends Controller
     {
 
         $q = recuperatorios::select();
-        $recuperatorios = recuperatorios::search($request->toArray(), $q);
+        $recuperatorios = recuperatorios::search($request->toArray(), $q,'recuperatorios');
         return  new UsersCollection($recuperatorios);
     }
     /**

@@ -138,7 +138,7 @@ class JustificadosController extends Controller
     {
 
         $q = justificados::select();
-        $justificados = justificados::search($request->toArray(), $q);
+        $justificados = justificados::search($request->toArray(), $q,'justificados');
         return  new UsersCollection($justificados);
     }
     /**

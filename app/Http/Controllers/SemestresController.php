@@ -137,7 +137,7 @@ class SemestresController extends Controller
     {
 
         $q = semestres::select();
-        $semestres = semestres::search($request->toArray(), $q);
+        $semestres = semestres::search($request->toArray(), $q,'semestres');
         return  new UsersCollection($semestres);
     }
     /**

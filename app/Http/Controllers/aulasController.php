@@ -136,7 +136,7 @@ class AulasController extends Controller
     public function index(Request $request)
     {
         $q = aulas::select();
-        $aulas = aulas::search($request->toArray(), $q);
+        $aulas = aulas::search($request->toArray(), $q,'aulas');
         return  new UsersCollection($aulas);
     }
 

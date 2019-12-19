@@ -139,7 +139,7 @@ class NotasController extends Controller
     {
 
         $q = notas::select();
-        $notas = notas::search($request->toArray(), $q);
+        $notas = notas::search($request->toArray(), $q,'notas');
         return  new UsersCollection($notas);
     }
     /**
