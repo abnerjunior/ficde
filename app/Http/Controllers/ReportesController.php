@@ -282,7 +282,7 @@ class ReportesController extends Controller
                 'estudiantes.telefono as telefonoEstudiante',                
                 'semestres.nombre as nombresemestre',
                 'notas.notas as notaregular',
-                'recuperatorios.notarecuperada'
+                'recuperatorios.nota as notarecuperada'
             )
             ->join('semestres_materias','semestres_materias.id_materia','materias.cod_materia')
             ->join('semestres','semestres.cod_semestre','semestres_materias.id_semestre')

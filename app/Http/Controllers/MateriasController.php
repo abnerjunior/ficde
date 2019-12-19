@@ -136,9 +136,13 @@ class MateriasController extends Controller
      */
     public function index(Request $request)
     {
-
-        $q = materias::select();
-        $descripcion = materias::search($request->toArray(), $q);
+        $q = materias::select(
+            'cursos.curso',
+            'materias.materia',
+            'materias.descripcion',
+            'materias.status as statusm'
+        )->join('cursos', 'cursos.cod_curso','materias.cod_curso');
+        $descripcion = materias::search($request->toArray(), $q, 'materias');
         return  new usersCollection($descripcion);
     }
 

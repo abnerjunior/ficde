@@ -50,7 +50,7 @@ class materias extends Base
     protected $table = 'materias';
     protected $primaryKey = 'cod_materia';
 
-      
+    
     /**
      * The attributes that are mass assignable.
      *

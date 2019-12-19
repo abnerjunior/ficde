@@ -454,7 +454,7 @@
                         "description": "A list with curso",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the user_r",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -2007,7 +2007,7 @@
                         "description": "A list with descripcion",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the user_r",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -2318,7 +2318,7 @@
                         "description": "A list with modalidad",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the user_r",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -2940,7 +2940,7 @@
                         "description": "A list with pago_recuperatorio",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the user_r",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -3053,7 +3053,7 @@
                         "description": "A list with pagos_semestres",
                         "headers": {
                             "X-Auth-Token": {
-                                "description": "calls per hour allowed by the user",
+                                "description": "calls per hour allowed by the user_r",
                                 "schema": {
                                     "type": "integer",
                                     "format": "int32"
@@ -5503,8 +5503,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5543,8 +5543,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5576,8 +5576,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5637,8 +5637,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5684,8 +5684,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5731,8 +5731,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5771,8 +5771,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5811,8 +5811,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5837,8 +5837,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -5877,8 +5877,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -6011,8 +6011,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -6058,8 +6058,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -6091,8 +6091,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -6138,8 +6138,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],
@@ -6171,8 +6171,8 @@
                         ],
                         "type": "string"
                     },
-                    "user": {
-                        "description": "The aulas user",
+                    "user_r": {
+                        "description": "The aulas user_r",
                         "required": [
                             "true"
                         ],

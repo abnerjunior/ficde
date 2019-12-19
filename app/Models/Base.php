@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Base extends Model
 {
 	public static $filterable = [];
-
 	/**
 	 * Search function of fields in the database.
 	 *
@@ -15,8 +14,9 @@ class Base extends Model
 	 *
 	 * @return results data
 	 */
+	// llamada por wh? dejame quitarle el telefono a mi madre
 
-	public static function search(array $data = array(), $q)
+	public static function search(array $data = array(), $q, $table)
 	{
 
 		if (!empty($data['dataSearch'])) {
@@ -31,7 +31,7 @@ class Base extends Model
 				}
 			});
 		}
-		$q->where('status', 'y');
+		$q->where($table.'.status', 'y');
 		if ($data['paginate'] === "true") {
 			return $q->paginate($data['perPage']);
 		} else {

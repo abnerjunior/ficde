@@ -28,7 +28,7 @@ class CursosController extends Controller
             $unique = 'unique:cursos';
         }
         $validator = Validator::make($request->all(), [
-            'curso' => ['required', 'max:19', $unique]
+            'curso' => ['required', 'max:30', $unique]
         ]);
         return $validator;
     }
@@ -199,7 +199,7 @@ class CursosController extends Controller
 
     /**
      * @OA\Get(
-     *   path="/cursos/{curso}",
+     *   path="/cursos/{cod_curso}",
      *   summary="Gets a curso resource",
      *   description="Gets a curso resource",
      *   tags={"cursos"},
@@ -233,15 +233,15 @@ class CursosController extends Controller
      *
      * Remove the specified resource from storage.
      *
-     * @param  int  $curso
+     * @param  int  $cod_curso
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($curso)
+    public function show($cod_curso)
     {
         /** esto es una consulta por la cedula */
-        $cursos = cursos::where('curso', $curso)
-            ->where('curso', $curso)
+        $cursos = cursos::where('cod_curso', $cod_curso)
+            ->where('cod_curso', $cod_curso)
             ->first();
         if ($cursos) {
             return response()->json($cursos, 200);
@@ -252,7 +252,7 @@ class CursosController extends Controller
 
     /**
      * @OA\Put(
-     *   path="/cursos/{curso}",
+     *   path="/cursos/{cod_curso}",
      *   summary="Updates a cursos resource",
      *   description="Updates a cursos resource by the curso",
      *   tags={"cursos"},
@@ -293,18 +293,18 @@ class CursosController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $curso
+     * @param  int  $cod_curso
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $curso)
+    public function update(Request $request, $cod_curso)
     {
         try {
-            if ($this->validation($request, $curso)->fails()) {
-                $errors = $this->validation($request, $curso)->errors();
+            if ($this->validation($request, $cod_curso)->fails()) {
+                $errors = $this->validation($request, $cod_curso)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $curso = cursos::where('curso', $curso)
+                $curso = cursos::where('cod_curso', $cod_curso)
                     ->update([
                         'curso' =>  $request->curso,
                         'descripcion' =>  $request->descripcion,
