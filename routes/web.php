@@ -37,7 +37,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('cursos/', 'CursosController@store');
 		$router->put('cursos/{cod_curso}', 'CursosController@update');
 		$router->get('cursos/{cod_curso}', 'CursosController@show');
-		$router->get('cursos/{cod_curso}', 'CursosController@destroy');
+		$router->delete('cursos/{cod_curso}', 'CursosController@destroy');
 
 		$router->get('estudiantes_materias/', 'Estudiantes_MateriasController@index');		
 		$router->post('estudiantes_materias/', 'Estudiantes_MateriasController@store');
