@@ -137,7 +137,7 @@ class MateriasController extends Controller
     public function index(Request $request)
     {
         $q = materias::select(
-            'cursos.cod_curso'
+            'cursos.cod_curso',
             'cursos.curso',
             'materias.materia',
             'materias.descripcion'
