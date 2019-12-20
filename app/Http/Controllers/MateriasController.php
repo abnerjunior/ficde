@@ -28,7 +28,7 @@ class MateriasController extends Controller
             $unique = 'unique:materias';
         }
         $validator = Validator::make($request->all(), [
-            'cod_materia' => ['required', 'max:19', $unique]
+            'cod_materia' => [$unique]
         ]);
         return $validator;
     }
@@ -362,7 +362,7 @@ class MateriasController extends Controller
      */
     public function destroy($cod_materia)
     {
-        $materias = materias::where('dni', $cod_materia)
+        $materias = materias::where('cod_materia', $cod_materia)
             ->where('status', 'y')
             ->first();
         if ($materias) {
