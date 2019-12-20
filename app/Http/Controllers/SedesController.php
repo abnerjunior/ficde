@@ -310,7 +310,7 @@ class sedesController extends Controller
                 $errors = $this->validation($request, $nombre)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $sedes = sedes::where('nombre', $nombre)
+                $sedes = sedes::where('cod_sede', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
                         'cod_institucion' =>  $request->cod_institucion,
