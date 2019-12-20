@@ -370,7 +370,7 @@ class EstudiantesController extends Controller
     public function destroy($dni)
     {
         $estudiantes = estudiantes::where('dni', $dni)
-            ->where('status', 'n')
+            ->where('status', 'y')
             ->first();
         if ($estudiantes) {
             estudiantes::where('dni', $dni)->update(['status' => 'n']);
