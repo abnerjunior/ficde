@@ -360,16 +360,16 @@ class MateriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($dni)
+    public function destroy($cod_materia)
     {
-        $materias = materias::where('dni', $dni)
+        $materias = materias::where('dni', $cod_materia)
             ->where('status', 'y')
             ->first();
         if ($materias) {
-            materias::where('dni', $dni)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            materias::where('cod_materia', $cod_materia)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'materia eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'materia not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }
