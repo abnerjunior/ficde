@@ -139,8 +139,7 @@ class MateriasController extends Controller
         $q = materias::select(
             'cursos.cod_curso',
             'cursos.curso',
-            'materias.materia',
-            'materias.descripcion'
+            'materias.*'
         )->join('cursos', 'cursos.cod_curso','materias.cod_curso');
         $descripcion = materias::search($request->toArray(), $q, 'materias');
         return  new usersCollection($descripcion);
