@@ -301,7 +301,7 @@ class TurnosController extends Controller
                     $errors = $this->validation($request, $turno)->errors();
                     return response()->json($errors->all(), 400);
                 } else {
-                    $turno = turnos::where('turno', $turno)
+                    $turno = turnos::where('cod_turno', $turno)
                     ->update([
                         'turno' =>  $request->turno,
                         'hora' => $request->hora,
