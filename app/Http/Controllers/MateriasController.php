@@ -23,12 +23,12 @@ class MateriasController extends Controller
     private function validation($request, $descripcion)
     {
         if ($descripcion !== null) {
-            $unique = Rule::unique('materias')->ignore($request->descripcion, 'descripcion');
+            $unique = Rule::unique('materias')->ignore($request->cod_materia, 'cod_materia');
         } else {
             $unique = 'unique:materias';
         }
         $validator = Validator::make($request->all(), [
-            'descripcion' => ['required', 'max:19', $unique]
+            'cod_materia' => ['required', 'max:19', $unique]
         ]);
         return $validator;
     }
@@ -301,14 +301,14 @@ class MateriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $descripcion)
+    public function update(Request $request, $cod_materia)
     {
         try {
-            if ($this->validation($request, $descripcion)->fails()) {
-                $errors = $this->validation($request, $descripcion)->errors();
+            if ($this->validation($request, $cod_materia)->fails()) {
+                $errors = $this->validation($request, $cod_materia)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $descripcion = materias::where('descripcion', $descripcion)
+                $descripcion = materias::where('cod_materia', $cod_materia)
                     ->update([
                         'cod_curso' =>  $request->cod_curso,
                         'descripcion' =>  $request->descripcion,
