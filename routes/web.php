@@ -90,6 +90,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('sedes/', 'SedesController@store');
 		$router->put('sedes/{id_estudiante}', 'SedesController@update');
 		$router->get('sedes/{id_estudiante}', 'SedesController@show');
+		$router->delete('sedes/{id_estudiante}', 'SedesController@destroy');
 
 		$router->get('semestres_materias/', 'Semestres_MateriasController@index');
 		$router->post('semestres_materias/', 'Semestres_MateriasController@store');
