@@ -137,7 +137,11 @@ class sedesController extends Controller
      */
     public function index(Request $request)
     {
-        $q = sedes::select();
+        $q = sedes::select(
+            'institucion.cod_institucion',
+            'institucion.nombre as institucion',
+            'sedes.*'
+        )->join('institucion', 'institucion.cod_institucion', 'sedes.cod_institucion');
         $sedes = sedes::search($request->toArray(), $q,'sedes');
         return  new UsersCollection($sedes);
     }
