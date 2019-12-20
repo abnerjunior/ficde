@@ -189,7 +189,7 @@ class sedesController extends Controller
                 $sedes->cod_institucion = $request->cod_institucion;
                 $sedes->direccion = $request->direccion;
                 $sedes->telefono = $request->telefono;
-                $sedes->user = $request->user;
+                $sedes->user = $request->user_r;
                 $sedes->save();
                 return response()->json($request, 201);
             }
@@ -362,14 +362,14 @@ class sedesController extends Controller
      */
     public function destroy($nombre)
     {
-        $sedes = sedes::where('nombre', $nombre)
+        $sedes = sedes::where('cod_sede', $nombre)
             ->where('status', 'y')
             ->first();
         if ($sedes) {
-            sedes::where('nombre', $nombre)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            sedes::where('cod_sede', $nombre)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'sede eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'sede not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }
