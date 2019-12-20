@@ -106,6 +106,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('turnos/', 'TurnosController@store');
 		$router->put('turnos/{turno}', 'TurnosController@update');
 		$router->get('turnos/{turno}', 'TurnosController@show');
+		$router->delete('turnos/{turno}', 'TurnosController@destroy');
 
 		$router->get('usuarios/', 'UsuariosController@index');
 		$router->get('usuarios/{dni}', 'UsuariosController@show');
