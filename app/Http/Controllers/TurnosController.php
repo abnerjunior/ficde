@@ -355,7 +355,7 @@ class TurnosController extends Controller
         */
         public function destroy($turno)
         {
-            $turnos = turnos::where('turno', $turno)
+            $turnos = turnos::where('cod_turno', $turno)
                 ->where('status', 'y')
                 ->first();
             if ($turnos) 
