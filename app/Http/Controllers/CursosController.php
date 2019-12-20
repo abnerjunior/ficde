@@ -237,11 +237,10 @@ class CursosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($cod_curso)
+    public function show($curso)
     {
         /** esto es una consulta por la cedula */
-        $cursos = cursos::where('cod_curso', $cod_curso)
-            ->where('cod_curso', $cod_curso)
+        $cursos = cursos::where('curso', $curso)
             ->first();
         if ($cursos) {
             return response()->json($cursos, 200);
