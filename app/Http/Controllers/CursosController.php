@@ -355,16 +355,16 @@ class CursosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($dni)
+    public function destroy($cod_curso)
     {
-        $cursos = cursos::where('dni', $dni)
+        $cursos = cursos::where('cod_curso', $cod_curso)
             ->where('status', 'y')
             ->first();
         if ($cursos) {
-            cursos::where('dni', $dni)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            cursos::where('cod_curso', $cod_curso)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'curso eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'curso not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }
