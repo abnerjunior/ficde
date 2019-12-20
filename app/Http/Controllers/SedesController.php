@@ -189,7 +189,7 @@ class sedesController extends Controller
                 $sedes->cod_institucion = $request->cod_institucion;
                 $sedes->direccion = $request->direccion;
                 $sedes->telefono = $request->telefono;
-                $sedes->user = $request->user_r;
+                $sedes->user_r = $request->user_r;
                 $sedes->save();
                 return response()->json($request, 201);
             }
