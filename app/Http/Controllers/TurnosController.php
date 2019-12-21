@@ -360,7 +360,7 @@ class TurnosController extends Controller
                 ->first();
             if ($turnos) 
             {
-                turnos::where('turno', $turno)->update(['status' => 'n']);
+                turnos::where('cod_turno', $turno)->update(['status' => 'n']);
                 return response()->json(['status' => 'success', 'message' => 'turno eliminado'], 200);
             } 
             else 
