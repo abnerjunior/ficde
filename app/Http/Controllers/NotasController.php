@@ -20,10 +20,10 @@ class NotasController extends Controller
      * @param  [String] $id_em number id_em
      * @return [Function]  function validator
      */
-    private function validation($request, $id_em)
+    private function validation($request, $cod_nota)
     {
-        if ($id_em !== null) {
-            $unique = Rule::unique('notas')->ignore($request->id_em, 'id_em');
+        if ($cod_nota !== null) {
+            $unique = Rule::unique('notas')->ignore($request->cod_nota, 'cod_nota');
         } else {
             $unique = 'unique:notas';
         }
@@ -298,18 +298,15 @@ class NotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_em)
+    public function update(Request $request, $cod_nota)
     {
         try {
-            if ($this->validation($request, $id_em)->fails()) {
-                $errors = $this->validation($request, $id_em)->errors();
+            if ($this->validation($request, $cod_nota)->fails()) {
+                $errors = $this->validation($request, $cod_nota)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $notas = notas::where('id_em', $id_em)
-                    ->update([
-                        'id_estudiante' =>  $request->id_estudiante,
-                        'nota' =>  $request->nota,
-                    ]);
+                $notas = notas::where('cod_nota', $cod_nota)
+                    ->update($request->all());
                 return response()->json($notas, 200);
             }
         } catch (Exception $e) {
@@ -358,7 +355,7 @@ class NotasController extends Controller
      */
     public function destroy($dni)
     {
-        $notas = notas::where('dni', $dni)
+        $notas = notas::where('cod_nota', $dni)
             ->where('status', 'y')
             ->first();
         if ($notas) {
