@@ -76,7 +76,8 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('notas/', 'NotasController@store');
 		$router->put('notas/{id_nota}', 'NotasController@update');
 		$router->get('notas/{id_nota}', 'NotasController@show');
-
+        $router->delete('notas/{cod_nota}', 'NotasController@destroy');
+        
 		$router->get('pagos_recuperatorios/', 'Pagos_RecuperatoriosController@index');
 
 		$router->get('pagos_semestres/', 'Pagos_SemestresController@index');
