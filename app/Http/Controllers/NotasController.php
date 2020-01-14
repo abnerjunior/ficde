@@ -359,7 +359,7 @@ class NotasController extends Controller
             ->where('status', 'y')
             ->first();
         if ($notas) {
-            notas::where('dni', $dni)->update(['status' => 'n']);
+            notas::where('cod_nota', $dni)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
