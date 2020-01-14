@@ -138,7 +138,14 @@ class NotasController extends Controller
     public function index(Request $request)
     {
 
-        $q = notas::select();
+        $q = notas::select(
+         'estudiantes.dni',
+         'estudiantes.nombre',
+         'estudiantes.apellido',
+         'materias.materia'
+        )
+        ->join('estudiantes', 'estudiantes.cod_estudiante', 'notas.id_estudiante')
+        ->join('materias', 'materias.cod_materia', 'notas.id_materia');
         $notas = notas::search($request->toArray(), $q,'notas');
         return  new UsersCollection($notas);
     }
