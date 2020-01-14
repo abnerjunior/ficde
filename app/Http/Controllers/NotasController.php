@@ -141,7 +141,8 @@ class NotasController extends Controller
         $q = notas::select(
          'estudiantes.dni',
          'estudiantes.nombre',
-         'estudiantes.apellido'
+         'estudiantes.apellido',
+         'notas.*'
         )
         ->join('estudiantes', 'estudiantes.cod_estudiante', 'notas.id_estudiante');
         $notas = notas::search($request->toArray(), $q,'notas');
