@@ -312,7 +312,11 @@ class NotasController extends Controller
                 return response()->json($errors->all(), 400);
             } else {
                 $notas = notas::where('cod_nota', $cod_nota)
-                    ->update($request->all());
+                    ->update([
+                        'id_em' => $request->id_em,
+                        'id_estudiante' => $request->id_estudiante,
+                        'nota' => $request->nota
+                    ]);
                 return response()->json($notas, 200);
             }
         } catch (Exception $e) {
