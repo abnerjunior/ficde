@@ -304,7 +304,7 @@ class ModalidadesController extends Controller
                 $errors = $this->validation($request, $modalidad)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $modalidad = modalidades::where('modalidad', $modalidad)
+                $modalidad = modalidades::where('cod_modalidad', $modalidad)
                     ->update([
                         'modalidad' =>  $request->modalidad,
                     ]);
@@ -356,14 +356,14 @@ class ModalidadesController extends Controller
      */
     public function destroy($dni)
     {
-        $modalidades = modalidades::where('dni', $dni)
+        $modalidades = modalidades::where('cod_modalidad', $dni)
             ->where('status', 'y')
             ->first();
         if ($modalidades) {
-            modalidades::where('dni', $dni)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            modalidades::where('cod_modalidad', $dni)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'modalidad eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'modalidad not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }
