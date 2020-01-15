@@ -246,7 +246,7 @@ class AulasController extends Controller
     public function show($nombre)
     {
         $aulas = aulas::where('nombre', $nombre)
-            ->where('nombre', $nombre)
+            ->where('status', 'y')
             ->first();
         if ($aulas) {
             return response()->json($aulas, 200);
