@@ -245,7 +245,7 @@ class AulasController extends Controller
 
     public function show($nombre)
     {
-        $aulas = aulas::where('cod_sede', $nombre)
+        $aulas = aulas::where('nombre', $nombre)
             ->where('nombre', $nombre)
             ->first();
         if ($aulas) {
