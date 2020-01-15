@@ -142,7 +142,7 @@ class AsistenciasController extends Controller
             'estudiantes.dni as dni',
             'asistencias.*'
         )
-        ->join('estudiantes', 'estidiantes.cod_estudiante', 'asistencias.id_estudiante');
+        ->join('estudiantes', 'estudiantes.cod_estudiante', 'asistencias.id_estudiante');
         $asistencias = asistencias::search($request->toArray(), $q,'asistencias');
         return  new UsersCollection($asistencias);
     }
