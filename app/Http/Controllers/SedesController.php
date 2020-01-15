@@ -248,6 +248,7 @@ class sedesController extends Controller
         /** esto es una consulta por la nombre */
         $sedes = sedes::where('nombre', $nombre)
             ->where('nombre', $nombre)
+            ->where('status', 'y')
             ->first();
         if ($sedes) {
             return response()->json($sedes, 200);
