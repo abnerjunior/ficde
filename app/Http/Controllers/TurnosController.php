@@ -21,7 +21,7 @@ class TurnosController extends Controller
         if ($turno !== null) {
             $unique = Rule::unique('turnos')->ignore($request->turno, 'turno');
         } else {
-            $unique = 'unique:turnos';
+            $unique = Rule::unique('turnos')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
             'turno' => ['required', 'max:10', $unique],
