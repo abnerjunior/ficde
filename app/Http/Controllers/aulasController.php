@@ -135,7 +135,11 @@ class AulasController extends Controller
      */
     public function index(Request $request)
     {
-        $q = aulas::select();
+        $q = aulas::select(
+            'aulas.*',
+            'sedes.nombre'
+        )
+        ->join('sedes', 'sedes.cod_sede', 'aulas.cod_sede');
         $aulas = aulas::search($request->toArray(), $q,'aulas');
         return  new UsersCollection($aulas);
     }
@@ -241,7 +245,7 @@ class AulasController extends Controller
 
     public function show($nombre)
     {
-        $aulas = aulas::where('nombre', $nombre)
+        $aulas = aulas::where('cod_sede', $nombre)
             ->where('nombre', $nombre)
             ->first();
         if ($aulas) {
@@ -306,7 +310,7 @@ class AulasController extends Controller
                 $errors = $this->validation($request, $nombre)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $aulas = aulas::where('nombre', $nombre)
+                $aulas = aulas::where('cod_sede', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
                         'capacidad' =>  $request->capacidad,
@@ -361,14 +365,14 @@ class AulasController extends Controller
      */
     public function destroy($dni)
     {
-        $aulas = aulas::where('dni', $dni)
+        $aulas = aulas::where('cod_sede', $dni)
             ->where('status', 'y')
             ->first();
         if ($aulas) {
-            aulas::where('dni', $dni)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            aulas::where('cod_sede', $dni)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'aula eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'aula not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }
