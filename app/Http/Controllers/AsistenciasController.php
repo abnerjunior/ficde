@@ -307,11 +307,11 @@ class AsistenciasController extends Controller
                 $errors = $this->validation($request, $id_estudiante)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $asistencias = asistencias::where('id_estudiante', $id_estudiante)
+                $asistencias = asistencias::where('cod_asistencia', $id_estudiante)
                     ->update([
                         'id_estudiante' =>  $request->id_estudiante,
-                        'id_em' =>  $request->registro,
-                        'estatus' =>  $request->direccion,
+                        'id_em' =>  $request->id_em,
+                        'estatus' =>  $request->estatus,
                     ]);
                 return response()->json($asistencias, 200);
             }
@@ -362,14 +362,14 @@ class AsistenciasController extends Controller
      */
     public function destroy($dni)
     {
-        $asistencias = asistencias::where('dni', $dni)
+        $asistencias = asistencias::where('cod_asistencia', $dni)
             ->where('status', 'y')
             ->first();
         if ($asistencias) {
-            asistencias::where('dni', $dni)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            asistencias::where('cod_asistencia', $dni)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'asistencia eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'asistencia not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }
