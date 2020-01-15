@@ -369,7 +369,7 @@ class AulasController extends Controller
             ->where('status', 'y')
             ->first();
         if ($aulas) {
-            aulas::where('cod_sede', $dni)->update(['status' => 'n']);
+            aulas::where('cod_aula', $dni)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'aula eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'aula not inscrito'], 404); // 404 es de que no se encontro contenido
