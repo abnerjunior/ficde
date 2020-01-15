@@ -310,7 +310,7 @@ class AulasController extends Controller
                 $errors = $this->validation($request, $nombre)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $aulas = aulas::where('cod_sede', $nombre)
+                $aulas = aulas::where('cod_aula', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
                         'capacidad' =>  $request->capacidad,
@@ -365,7 +365,7 @@ class AulasController extends Controller
      */
     public function destroy($dni)
     {
-        $aulas = aulas::where('cod_sede', $dni)
+        $aulas = aulas::where('cod_aula', $dni)
             ->where('status', 'y')
             ->first();
         if ($aulas) {
