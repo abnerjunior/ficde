@@ -32,6 +32,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('aulas/', 'AulasController@store');
 		$router->put('aulas/{aula}', 'AulasController@update');
 		$router->get('aulas/{aula}', 'AulasController@show');
+		$router->delete('aulas/{aula}', 'AulasController@destroy');
 
 		$router->get('cursos/', 'CursosController@index');
 		$router->post('cursos/', 'CursosController@store');
