@@ -136,7 +136,13 @@ class AsistenciasController extends Controller
      */
     public function index(Request $request)
     {
-        $q = asistencias::select();
+        $q = asistencias::select(
+            'estudiantes.nombre as nombreEstudiante',
+            'estudiantes.apellido as apellidoEstudiante',
+            'estudiantes.dni as dni',
+            'asistencias.*'
+        )
+        ->join('estudiantes', 'estidiantes.cod_estudiante', 'asistencias.id_estudiante');
         $asistencias = asistencias::search($request->toArray(), $q,'asistencias');
         return  new UsersCollection($asistencias);
     }
