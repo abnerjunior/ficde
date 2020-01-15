@@ -23,11 +23,10 @@ class sedesController extends Controller
         if ($nombre !== null) {
             $unique = Rule::unique('sedes')->ignore($request->nombre, 'nombre');
         } else {
-            $unique = 'unique:sedes';
+            $unique = Rule::unique('sedes')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
-            'nombre' => ['required', 'max:20', $unique],
-
+            'nombre' => ['required', 'max:20'],
             'direccion' => 'required|min:5',
             'telefono' => 'required',
 
