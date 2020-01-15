@@ -104,7 +104,8 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('semestres/', 'SemestresController@store');
 		$router->put('semestres/{cod_sm}', 'SemestresController@update');
 		$router->get('semestres/{cod_sm}', 'SemestresController@show');
-
+        $router->delete('semestres/{cod_sm}', 'SemestresController@destroy');
+        
 		$router->get('turnos/', 'TurnosController@index');
 		$router->post('turnos/', 'TurnosController@store');
 		$router->put('turnos/{turno}', 'TurnosController@update');
