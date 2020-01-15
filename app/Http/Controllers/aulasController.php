@@ -137,7 +137,7 @@ class AulasController extends Controller
     {
         $q = aulas::select(
             'aulas.*',
-            'sedes.nombre'
+            'sedes.nombre as nombreSede'
         )
         ->join('sedes', 'sedes.cod_sede', 'aulas.cod_sede');
         $aulas = aulas::search($request->toArray(), $q,'aulas');
