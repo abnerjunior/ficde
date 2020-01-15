@@ -236,6 +236,7 @@ class TurnosController extends Controller
        /** esto es una consulta por la cedula */
        $turnos = turnos::where('turno', $turno)
             ->where('turno', $turno)
+            ->where('status', 'y')
             ->first();
         if ($turnos)
         {
