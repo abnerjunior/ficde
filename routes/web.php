@@ -72,6 +72,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('modalidades/', 'ModalidadesController@store');
 		$router->put('modalidades/{modalidad}', 'ModalidadesController@update');
 		$router->get('modalidades/{modalidad}', 'ModalidadesController@show');
+		$router->delete('modalidades/{modalidad}', 'ModalidadesController@destroy');
 
 		$router->get('notas/', 'NotasController@index');
 		$router->post('notas/', 'NotasController@store');
