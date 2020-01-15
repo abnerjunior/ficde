@@ -239,7 +239,6 @@ class SemestresController extends Controller
     {
         /** esto es una consulta por la cedula */
         $semestres = semestres::where('nombre', $nombre)
-            ->where('nombre', $nombre)
             ->first();
         if ($semestres) {
             return response()->json($semestres, 200);
@@ -302,7 +301,7 @@ class SemestresController extends Controller
                 $errors = $this->validation($request, $nombre)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $semestres = semestres::where('nombre', $nombre)
+                $semestres = semestres::where('cod_semestre', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
                         'fecha' =>  $request->fecha,
@@ -355,11 +354,11 @@ class SemestresController extends Controller
      */
     public function destroy($nombre)
     {
-        $semestres = semestres::where('dni', $nombre)
+        $semestres = semestres::where('cod_semestre', $nombre)
             ->where('status', 'y')
             ->first();
         if ($semestres) {
-            semestres::where('dni', $nombre)->update(['status' => 'n']);
+            semestres::where('cod_semestre', $nombre)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
