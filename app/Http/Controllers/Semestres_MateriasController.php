@@ -139,7 +139,7 @@ class Semestres_MateriasController extends Controller
     public function index(Request $request)
     {
 
-        $q = semestres_materias::select();
+        $q = Semestres_Materias::select();
         $semestres_materias = semestres_materias::search($request->toArray(), $q,'semestres_materias');
         return  new UsersCollection($semestres_materias);
     }
