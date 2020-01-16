@@ -26,7 +26,7 @@ class EstudiantesController extends Controller
         if ($dni !== null) {
             $unique = Rule::unique('estudiantes')->ignore($request->dni, 'dni');
         } else {
-            $unique = 'unique:estudiantes';
+            $unique = Rule::unique('estudiantes')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
