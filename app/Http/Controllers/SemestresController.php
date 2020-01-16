@@ -239,6 +239,7 @@ class SemestresController extends Controller
     {
         /** esto es una consulta por la cedula */
         $semestres = semestres::where('nombre', $nombre)
+            ->where('status', 'y')
             ->first();
         if ($semestres) {
             return response()->json($semestres, 200);
