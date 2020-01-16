@@ -54,7 +54,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class semestres_materias extends Base
 {
     protected $table = 'semestres_materias';
-    protected $primaryKey = 'cod_estudiante';
+    protected $primaryKey = 'cd_sm';
       
     /**
      * The attributes that are mass assignable.
