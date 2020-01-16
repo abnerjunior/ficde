@@ -144,11 +144,14 @@ class Estudiantes_MateriasController extends Controller
             'estudiantes.nombre as nombreEstudiante',
             'estudiantes.apellido as apellidoEstudiante',
             'estudiantes.dni as dniEstudiante',
-            'estudiantes_materias.*'
+            'estudiantes_materias.*',
+            'materias.nombre as nombreMateria'
         )
         ->join('turnos', 'turnos.cod_turno', 'estudiantes_materias.id_turno')
         ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
-        ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante');
+        ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante')
+        ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
+        ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
         $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q,'estudiantes_materias');
         return  new UsersCollection($estudiantes_materias);
     }
