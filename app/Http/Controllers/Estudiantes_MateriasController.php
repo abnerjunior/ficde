@@ -139,14 +139,14 @@ class Estudiantes_MateriasController extends Controller
     {
 
         $q = estudiantes_materias::select(
-            'turno.turno',
+            'turnos.turno',
             'modalidades.modalidad',
             'estudiantes.nombre as nombreEstudiante',
             'estudiantes.apellido as apellidoEstudiante',
             'estudiantes.dni as dniEstudiante',
             'estudiantes_materias.*'
         )
-        ->join('turno', 'turno.cod_turn', 'estudiantes_materias.id_turno')
+        ->join('turnos', 'turno.cod_turn', 'estudiantes_materias.id_turno')
         ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
         ->join('estudiantes', 'estudiantes.cod_estudiantes', 'estudiantes_materias.id_estudiantes');
         $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q,'estudiantes_materias');
