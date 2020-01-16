@@ -144,10 +144,9 @@ class AsistenciasController extends Controller
             'materias.materia'
         )
         ->join('estudiantes', 'estudiantes.cod_estudiante', 'asistencias.id_estudiante')
-        ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'notas.id_em')
+        ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'asistencias.id_em')
         ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
-        $notas = notas::search($request->toArray(), $q,'notas');
         $asistencias = asistencias::search($request->toArray(), $q,'asistencias');
         return  new UsersCollection($asistencias);
     }
