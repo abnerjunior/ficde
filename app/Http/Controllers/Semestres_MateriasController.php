@@ -186,7 +186,7 @@ class Semestres_MateriasController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $semestres_materias = new Semestres_Materias();
+                $semestres_materias = new semestres_materias();
                 $semestres_materias->id_semestres = $request->id_semestres;
                 $semestres_materias->id_materia = $request->id_materia;
                 $semestres_materias->id_usuario = $request->id_usuario;
@@ -196,7 +196,7 @@ class Semestres_MateriasController extends Controller
                 return response()->json($request, 201);
             }
         } catch (Exception $e) {
-            return response()->json($e);
+            return response()->json($e, 400);
         }
     }
 
