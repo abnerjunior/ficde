@@ -145,7 +145,7 @@ class Estudiantes_MateriasController extends Controller
             'estudiantes.apellido as apellidoEstudiante',
             'estudiantes.dni as dniEstudiante',
             'estudiantes_materias.*',
-            'materias.nombre as nombreMateria'
+            'materias.materia as nombreMateria'
         )
         ->join('turnos', 'turnos.cod_turno', 'estudiantes_materias.id_turno')
         ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
