@@ -249,7 +249,7 @@ class EstudiantesController extends Controller
     {
         /** esto es una consulta por la cedula */
         $estudiantes = estudiantes::where('dni', $dni)
-            ->where('dni', $dni)
+            ->where('status', 'y')
             ->first();
         if ($estudiantes) {
             return response()->json($estudiantes, 200);
