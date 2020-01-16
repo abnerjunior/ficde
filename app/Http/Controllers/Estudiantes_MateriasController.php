@@ -318,11 +318,11 @@ class Estudiantes_MateriasController extends Controller
             } else {
                 $estudiantes_materias = estudiantes_materias::where('cod_em', $id_estudiante)
                     ->update([
-                        'id_estudiante' = $request->id_estudiante,
-                        'id_semestre' = $request->id_semestre,
-                        'id_turno' = $request->id_turno,
-                        'id_modalidad' = $request->id_modalidad,
-                        'user_r' = $request->user_r
+                        'id_estudiante' => $request->id_estudiante,
+                        'id_semestre' => $request->id_semestre,
+                        'id_turno' => $request->id_turno,
+                        'id_modalidad' => $request->id_modalidad,
+                        'user_r' => $request->user_r
                     ]);
                 return response()->json($estudiantes_materias, 200);
             }
