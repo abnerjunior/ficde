@@ -100,8 +100,9 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('semestres_materias/', 'Semestres_MateriasController@store');
 		$router->put('semestres_materias/{id_semestres}', 'Semestres_MateriasController@update');
 		$router->get('semestres_materias/{id_semestres}', 'Semestres_MateriasController@show');
-
-		$router->get('semestres/', 'SemestresController@index');
+        $router->delete('semestres_materias/{id_semestres}', 'Semestres_MateriasController@destroy');
+		
+        $router->get('semestres/', 'SemestresController@index');
 		$router->post('semestres/', 'SemestresController@store');
 		$router->put('semestres/{cod_sm}', 'SemestresController@update');
 		$router->get('semestres/{cod_sm}', 'SemestresController@show');
