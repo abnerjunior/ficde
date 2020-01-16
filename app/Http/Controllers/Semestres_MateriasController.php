@@ -148,7 +148,7 @@ class Semestres_MateriasController extends Controller
             'usuarios.apellido as apellidoProfesor',
             'semestres_materias.*'
         )
-        ->join('aulas', 'aulas.cod_aulas', 'semestres_materias.id_aulas')
+        ->join('aulas', 'aulas.cod_aula', 'semestres_materias.id_aulas')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia')
         ->join('usuarios', 'usuarios.cod_usuarios', 'semestres_materias.id_usuarios')
         ->join('semestres', 'semestres.cod_semestre', 'semestres_materias.id_semestre');
