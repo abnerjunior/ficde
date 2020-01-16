@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-use App\Models\Semestres_Materias;
+use App\Models\semestres_materias;
 
 class Semestres_MateriasController extends Controller
 {
@@ -139,8 +139,8 @@ class Semestres_MateriasController extends Controller
     public function index(Request $request)
     {
 
-        $q = Semestres_Materias::select();
-        $semestres_materias = Semestres_Materias::search($request->toArray(), $q,'semestres_materias');
+        $q = semestres_materias::select();
+        $semestres_materias = semestres_materias::search($request->toArray(), $q,'semestres_materias');
         return  new UsersCollection($semestres_materias);
     }
     /**
