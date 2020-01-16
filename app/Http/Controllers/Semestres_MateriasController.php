@@ -140,7 +140,7 @@ class Semestres_MateriasController extends Controller
     {
 
         $q = Semestres_Materias::select();
-        $semestres_materias = semestres_materias::search($request->toArray(), $q,'semestres_materias');
+        $semestres_materias = Semestres_Materias::search($request->toArray(), $q,'semestres_materias');
         return  new UsersCollection($semestres_materias);
     }
     /**
@@ -186,7 +186,7 @@ class Semestres_MateriasController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $semestres_materias = new semestres_materias();
+                $semestres_materias = new Semestres_Materias();
                 $semestres_materias->id_semestres = $request->id_semestres;
                 $semestres_materias->id_materia = $request->id_materia;
                 $semestres_materias->id_usuario = $request->id_usuario;
@@ -243,7 +243,7 @@ class Semestres_MateriasController extends Controller
     public function show($id_semestres)
     {
         /** esto es una consulta por la cedula */
-        $semestres_materias = semestres_materias::where('id_semestres', $id_semestres)
+        $semestres_materias = Semestres_Materias::where('id_semestres', $id_semestres)
             ->where('id_semestres', $id_semestres)
             ->first();
         if ($semestres_materias) {
@@ -307,7 +307,7 @@ class Semestres_MateriasController extends Controller
                 $errors = $this->validation($request, $id_semestres)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $semestres_materias = semestres_materias::where('id_semestres', $id_semestres)
+                $semestres_materias = Semestres_Materias::where('id_semestres', $id_semestres)
                     ->update([
                         'id_materia' =>  $request->id_materia,
                         'id_semestres' =>  $request->id_semestres,
@@ -362,11 +362,11 @@ class Semestres_MateriasController extends Controller
      */
     public function destroy($id_semestres)
     {
-        $semestres_materias = semestres_materias::where('id_semestres', $id_semestres)
+        $semestres_materias = Semestres_Materias::where('id_semestres', $id_semestres)
             ->where('status', 'y')
             ->first();
         if ($semestres_materias) {
-            semestres_materias::where('id_semestres', $id_semestres)->update(['status' => 'n']);
+            Semestres_Materias::where('id_semestres', $id_semestres)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
