@@ -148,7 +148,7 @@ class Estudiantes_MateriasController extends Controller
         )
         ->join('turnos', 'turnos.cod_turno', 'estudiantes_materias.id_turno')
         ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
-        ->join('estudiantes', 'estudiantes.cod_estudiantes', 'estudiantes_materias.id_estudiantes');
+        ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante');
         $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q,'estudiantes_materias');
         return  new UsersCollection($estudiantes_materias);
     }
