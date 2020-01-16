@@ -253,7 +253,7 @@ class Estudiantes_MateriasController extends Controller
     {
         /** esto es una consulta por la cedula */
         $estudiantes_materias = estudiantes_materias::where('id_estudiante', $id_estudiante)
-            ->where('id_estudiante', $id_estudiante)
+            ->where('status', 'y')
             ->first();
         if ($estudiantes_materias) {
             return response()->json($estudiantes_materias, 200);
@@ -316,7 +316,7 @@ class Estudiantes_MateriasController extends Controller
                 $errors = $this->validation($request, $id_estudiante)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $estudiantes_materias = estudiantes_materias::where('id_estudiante', $id_estudiante)
+                $estudiantes_materias = estudiantes_materias::where('cod_em', $id_estudiante)
                     ->update([
                         'id_materia' =>  $request->id_materia,
                         'id_turno' =>  $request->id_turno,
@@ -370,11 +370,11 @@ class Estudiantes_MateriasController extends Controller
      */
     public function destroy($dni)
     {
-        $estudiantes_materias = estudiantes_materias::where('dni', $dni)
+        $estudiantes_materias = estudiantes_materias::where('cod_em', $dni)
             ->where('status', 'y')
             ->first();
         if ($estudiantes_materias) {
-            estudiantes_materias::where('dni', $dni)->update(['status' => 'n']);
+            estudiantes_materias::where('cod_em', $dni)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
