@@ -138,7 +138,20 @@ class Estudiantes_MateriasController extends Controller
     public function index(Request $request)
     {
 
-        $q = estudiantes_materias::select();
+        $q = estudiantes_materias::select(
+            'turnos.turno',
+            'modalidades.modalidad',
+            'estudiantes.nombre as nombreEstudiante',
+            'estudiantes.apellido as apellidoEstudiante',
+            'estudiantes.dni as dniEstudiante',
+            'estudiantes_materias.*',
+            'materias.materia as nombreMateria'
+        )
+        ->join('turnos', 'turnos.cod_turno', 'estudiantes_materias.id_turno')
+        ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
+        ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante')
+        ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
+        ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
         $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q,'estudiantes_materias');
         return  new UsersCollection($estudiantes_materias);
     }
@@ -243,7 +256,7 @@ class Estudiantes_MateriasController extends Controller
     {
         /** esto es una consulta por la cedula */
         $estudiantes_materias = estudiantes_materias::where('id_estudiante', $id_estudiante)
-            ->where('id_estudiante', $id_estudiante)
+            ->where('status', 'y')
             ->first();
         if ($estudiantes_materias) {
             return response()->json($estudiantes_materias, 200);
@@ -306,11 +319,13 @@ class Estudiantes_MateriasController extends Controller
                 $errors = $this->validation($request, $id_estudiante)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $estudiantes_materias = estudiantes_materias::where('id_estudiante', $id_estudiante)
+                $estudiantes_materias = estudiantes_materias::where('cod_em', $id_estudiante)
                     ->update([
-                        'id_materia' =>  $request->id_materia,
-                        'id_turno' =>  $request->id_turno,
+                        'id_estudiante' => $request->id_estudiante,
+                        'id_semestre' => $request->id_semestre,
+                        'id_turno' => $request->id_turno,
                         'id_modalidad' => $request->id_modalidad,
+                        'user_r' => $request->user_r
                     ]);
                 return response()->json($estudiantes_materias, 200);
             }
@@ -360,11 +375,11 @@ class Estudiantes_MateriasController extends Controller
      */
     public function destroy($dni)
     {
-        $estudiantes_materias = estudiantes_materias::where('dni', $dni)
+        $estudiantes_materias = estudiantes_materias::where('cod_em', $dni)
             ->where('status', 'y')
             ->first();
         if ($estudiantes_materias) {
-            estudiantes_materias::where('dni', $dni)->update(['status' => 'n']);
+            estudiantes_materias::where('cod_em', $dni)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
