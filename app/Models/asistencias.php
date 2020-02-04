@@ -43,7 +43,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  */
 class asistencias extends Base
 {
-      protected $table = 'asistencias';
+    protected $table = 'asistencias';
     protected $primaryKey = 'cod_asistencia';
       
     /**

@@ -129,6 +129,12 @@ $router->group(['', ''], function () use ($router) {
 		$router->get('Reporte_aprobacion/{dni}', 'ReportesController@BRI');
 
 
+		$router->get('horarios/', 'HorariosController@index');
+		$router->post('horarios/', 'HorariosController@store');
+		$router->put('horarios/{aula}', 'HorariosController@update');
+		$router->get('horarios/{aula}', 'HorariosController@show');
+        $router->delete('horarios/{aula}', 'HorariosController@destroy');
+        
 
 		/** 
 		 * existen 5 tipos de rutas

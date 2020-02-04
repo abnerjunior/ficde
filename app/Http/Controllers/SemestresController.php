@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Http\Resources\UsersCollection;
 use Illuminate\Http\Request;
 use App\Models\semestres;
-use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -28,7 +28,8 @@ class SemestresController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
-            'fecha' => 'required'
+            'fecha_inicio' => 'required',
+            'fecha_final' => 'required'
         ]);
         return $validator;
     }
@@ -185,13 +186,14 @@ class SemestresController extends Controller
             } else {
                 $semestres = new semestres();
                 $semestres->nombre = $request->nombre;
-                $semestres->fecha = $request->fecha;
+                $semestres->fecha_inicio = $request->fecha_inicio;
+                $semestres->fecha_final = $request->fecha_final;
                 $semestres->user_r = $request->user_r;
                 $semestres->save();
-                return response()->json($request, 201);
+                return response()->json($semestres, 201);
             }
         } catch (Exception $e) {
-            return response()->json($e);
+            return response()->json($e, 400);
         }
     }
 
@@ -305,7 +307,8 @@ class SemestresController extends Controller
                 $semestres = semestres::where('cod_semestre', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
-                        'fecha' =>  $request->fecha,
+                        'fecha_inicio' =>  $request->fecha_inicio,
+                        'fecha_final' =>  $request->fecha_final,
                     ]);
                 return response()->json($semestres, 200);
             }

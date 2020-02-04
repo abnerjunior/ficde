@@ -2,42 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\Authenticatable;
-use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-
-
-  /**
+/**
  * @OA\Schema(
- *   schema="semestres",
+ *   schema="horarios",
  *   type="object",
  *   @OA\Property(
- *       property="nombre",
+ *       property="dia",
  *       type="string",
  *       required={"true"},
- *       description="The semestres nombre"
+ *       description="The Horario dia"
  *   ),
  *   @OA\Property(
- *       property="fecha_inicio",
+ *       property="hora_inicio",
  *       type="string",
  *       required={"true"},
- *       description="The semestres fecha"
+ *       description="The Horarios hora de inicio"
  *   ),
  *   @OA\Property(
- *       property="fecha_final",
+ *       property="hora_final",
  *       type="string",
  *       required={"true"},
- *       description="The semestres fecha"
+ *       description="The Horarios hora_final"
  *   ),
- *    @OA\Property(
+ *   @OA\Property(
  *       property="status",
  *       type="string",
  *       required={"true"},
  *       description="The asistencias telefono"
  *   ),
- * @OA\Property(
+ *   @OA\Property(
  *       property="user_r",
  *       type="string",
  *       required={"true"},
@@ -45,11 +39,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *   ),
  * )
  */
-
-class semestres extends Base
+class horario extends Base
 {
-    protected $table = 'semestres';
-    protected $primaryKey = 'cod_semestre';
+    protected $table = 'horarios';
+    protected $primaryKey = 'cod_horario';
       
     /**
      * The attributes that are mass assignable.
@@ -57,11 +50,9 @@ class semestres extends Base
      * @var array
      */
     protected $fillable = [
-        'nombre',
-        'fecha_inicio',
-        'fecha_final',
-        'status',
-        'user_r'
+        'dia',
+        'hora_inicio',
+        'hora_final'
     ];
     /**
      * The attributes that are filterable.
@@ -69,7 +60,8 @@ class semestres extends Base
      * @var array
      */
     public static $filterable = [
-        'cod_semestre',
-        'nombre'
+        'dia',
+        'hora_inicio',
+        'hora_final'
     ];
 }

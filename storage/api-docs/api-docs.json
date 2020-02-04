@@ -531,7 +531,7 @@
                 ]
             }
         },
-        "/cursos/{curso}": {
+        "/cursos/{cod_curso}": {
             "get": {
                 "tags": [
                     "cursos"
@@ -1279,6 +1279,163 @@
                 "responses": {
                     "204": {
                         "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/horarios": {
+            "get": {
+                "tags": [
+                    "horarios"
+                ],
+                "summary": "Lists available horarios",
+                "description": "Gets all available horarios resources",
+                "operationId": "App\\Http\\Controllers\\HorariosController::index",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The unique identifier of a horarios resource",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "horarios resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a horarios resource",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "title": "name",
+                            "description": "The unique identifier of a horarios resource",
+                            "type": "string",
+                            "example": "name"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "sortOrder",
+                            "description": "The unique identifier of a horarios resource",
+                            "type": "string",
+                            "example": "asc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a horarios resource",
+                            "type": "number",
+                            "default": "0"
+                        }
+                    },
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "authorization",
+                        "schema": {
+                            "title": "authorization",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list with horarios",
+                        "headers": {
+                            "X-Auth-Token": {
+                                "description": "calls per hour allowed by the horarios",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "horarios"
+                ],
+                "summary": "Creates a new sede",
+                "description": "Creates a new sede",
+                "operationId": "App\\Http\\Controllers\\HorariosController::store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/horarios"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The sede resource created",
                         "content": {
                             "application/json": {}
                         }
@@ -5694,6 +5851,46 @@
                 },
                 "type": "object"
             },
+            "horarios": {
+                "properties": {
+                    "dia": {
+                        "description": "The Horario dia",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "hora_inicio": {
+                        "description": "The Horarios hora de inicio",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "hora_final": {
+                        "description": "The Horarios hora_final",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The asistencias telefono",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_r": {
+                        "description": "The aulas user_r",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "institucion": {
                 "properties": {
                     "nombre": {
@@ -6077,7 +6274,14 @@
                         ],
                         "type": "string"
                     },
-                    "fecha": {
+                    "fecha_inicio": {
+                        "description": "The semestres fecha",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "fecha_final": {
                         "description": "The semestres fecha",
                         "required": [
                             "true"
