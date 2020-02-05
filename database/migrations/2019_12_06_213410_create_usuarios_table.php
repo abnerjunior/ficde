@@ -28,7 +28,7 @@ class CreateUsuariosTable extends Migration
             $table->string('user_r');
             $table->string('api_token',200)->nullable();
 
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

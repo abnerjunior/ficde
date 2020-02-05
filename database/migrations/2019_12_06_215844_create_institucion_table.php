@@ -21,7 +21,8 @@ class CreateInstitucionTable extends Migration
             $table->string('direccion');
             $table->enum('status', ['y','n'])->default('y');
 
-            $table->string('user_r');
+            $table->unsignedBigInteger('user_r');
+            $table->foreign('user_r')->references('cod_usuario')->on('usuarios');
 
             $table->timestamps();
         });

@@ -5314,6 +5314,52 @@
                         ]
                     }
                 ]
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Restore a usuarios resource",
+                "description": "Restore a usuarios resource",
+                "parameters": [
+                    {
+                        "name": "dni",
+                        "in": "path",
+                        "description": "The usuarios resource dni",
+                        "required": true,
+                        "schema": {
+                            "description": "The unique identifier of a usuarios resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "The resource has been deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             }
         },
         "/aulas": {

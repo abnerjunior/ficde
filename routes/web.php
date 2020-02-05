@@ -120,7 +120,7 @@ $router->group(['', ''], function () use ($router) {
 		$router->post('usuarios/', 'UsuariosController@store');
 		$router->put('usuarios/{dni}', 'UsuariosController@update');
 		$router->delete('usuarios/{dni}', 'UsuariosController@destroy');
-
+		$router->patch('usuarios/{dni}', 'UsuariosController@restore');
 
 		
 		$router->get('Reporte_Inscripcion/', 'ReportesController@RGI');
