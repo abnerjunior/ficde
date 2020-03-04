@@ -114,9 +114,10 @@ class HorariosController extends Controller
      */
     public function index(Request $request)
     {
-        $q = horario::select();
+      /*  $q = horario::select();
         $horarios = horario::search($request->toArray(), $q,'horarios');
         return  new UsersCollection($horarios);
+      */
     }
     /**
      * @OA\Post(
