@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 
-  /**
+/**
  * @OA\Schema(
  *   schema="estudiantes",
  *   type="object",
@@ -67,6 +67,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class estudiantes extends Base
 {
     protected $table = 'estudiantes';
+    
     protected $primaryKey = 'cod_estudiante';
       
     /**

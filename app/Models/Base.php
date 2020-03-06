@@ -22,7 +22,7 @@ class Base extends Model
 		if (!empty($data['dataSearch'])) {
 			$fields = json_decode($data['dataSearch'], true);
 			$fields = array_filter($fields, 'strlen');
-			$fields = array_only($fields, static::$filterable);
+			$fields = array_intersect_assoc($fields, static::$filterable);
 			$q->where(function ($query) use ($fields, $data) {
 				foreach ($fields as $field => $value) {
 					if (isset($fields[$field])) {
@@ -31,7 +31,6 @@ class Base extends Model
 				}
 			});
 		}
-		$q->where($table.'.status', 'y');
 		if ($data['paginate'] === "true") {
 			return $q->paginate($data['perPage']);
 		} else {

@@ -75,6 +75,7 @@ $app->routeMiddleware([
 $app->middleware([
 	//...,
 	// 'Vluzrmos\LumenCors\CorsMiddleware'
+    \App\Http\Middleware\Cors::class 
 ]);
 /*
 |--------------------------------------------------------------------------

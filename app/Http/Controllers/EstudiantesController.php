@@ -145,6 +145,7 @@ class EstudiantesController extends Controller
         $q = estudiantes::select();
         $estudiantes = estudiantes::search($request->toArray(), $q,'estudiantes');
         return  new UsersCollection($estudiantes);
+        // return response()->json(['message' => 'hola'], 200);
     }
     /**
      * @OA\Post(

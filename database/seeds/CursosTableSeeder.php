@@ -11,6 +11,12 @@ class CursosTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('cursos')->insert(
+        	[ 
+        		'curso' => 'Progrmacion',
+        		'descripcion' => 'pro01',
+        		'user_r' => 1
+        	]
+	    );
     }
 }

@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+
 
 /**
  * @OA\Schema(
@@ -100,7 +103,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * )
  */
 
-class usuarios extends Base implements AuthenticatableContract, AuthorizableContract
+class Usuario extends Base implements AuthenticatableContract, AuthorizableContract
 {
       use Authenticatable, Authorizable;
       use SoftDeletes;
