@@ -24,7 +24,6 @@ class CreateUsuariosTable extends Migration
             $table->string('telefono');
             $table->string('email');
             $table->string('rol');
-            $table->enum('status', ['y','n'])->default('y');
             $table->string('user_r');
             $table->string('api_token',200)->nullable();
 

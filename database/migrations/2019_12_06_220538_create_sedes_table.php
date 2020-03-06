@@ -26,6 +26,7 @@ class CreateSedesTable extends Migration
             $table->foreign('cod_institucion')
             ->references('cod_institucion')->on('institucion');
 
+            $table->softDeletes();
             $table->timestamps();
         });
         

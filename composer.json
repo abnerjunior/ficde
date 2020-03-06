@@ -8,6 +8,7 @@
         "php": "^7.2",
         "darkaonline/swagger-lume": "6.*",
         "flipbox/lumen-generator": "^6.0",
+        "fruitcake/laravel-cors": "^1.0",
         "illuminate/encryption": "^6.11",
         "laravel/lumen-framework": "^6.0"
     },

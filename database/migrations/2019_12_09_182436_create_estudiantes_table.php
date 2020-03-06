@@ -21,7 +21,11 @@ class CreateEstudiantesTable extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->string('email');
+            $table->unsignedBigInteger('id_curso');
             $table->enum('status', ['y','n'])->default('y');
+
+            $table->foreign('id_curso')
+                ->references('cod_curso')->on('cursos');
             $table->string('user_r');
 
             $table->timestamps();
