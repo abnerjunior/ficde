@@ -146,12 +146,14 @@ class Semestres_MateriasController extends Controller
             'usuarios.dni as dniProfesor',
             'usuarios.nombre as nombreProfesor',
             'usuarios.apellido as apellidoProfesor',
-            'semestres_materias.*'
+            'semestres_materias.*',
+            'cursos.curso'
         )
         ->join('aulas', 'aulas.cod_aula', 'semestres_materias.id_aula')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia')
         ->join('usuarios', 'usuarios.cod_usuario', 'semestres_materias.id_usuario')
-        ->join('semestres', 'semestres.cod_semestre', 'semestres_materias.id_semestres');
+        ->join('semestres', 'semestres.cod_semestre', 'semestres_materias.id_semestres')
+        ->join('cursos', 'cursos.cod_curso', 'materias.cod_curso');
         $semestres_materias = semestres_materias::search($request->toArray(), $q,'semestres_materias');
         return  new UsersCollection($semestres_materias);
     }
