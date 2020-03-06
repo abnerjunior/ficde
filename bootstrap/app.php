@@ -74,7 +74,7 @@ $app->routeMiddleware([
 ]);
 $app->middleware([
 	//...,
-	'Vluzrmos\LumenCors\CorsMiddleware'
+	// 'Vluzrmos\LumenCors\CorsMiddleware'
 ]);
 /*
 |--------------------------------------------------------------------------
