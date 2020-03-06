@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\usuarios;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Firebase\JWT\JWT;
@@ -12,10 +12,10 @@ class AuthenticateController extends Controller
     /**
      * Create a new token.
      * 
-     * @param  \App\usuarios   $user
+     * @param  \App\Usuario   $user
      * @return string
      */
-    protected function jwt(usuarios $user) {
+    protected function jwt(Usuario $user) {
         $payload = [
             'iss' => "lumen-jwt", // Issuer of the token
             'sub' => $user->user_id, // Subject of the token
@@ -65,14 +65,13 @@ class AuthenticateController extends Controller
         * @return \Illuminate\Http\Response
         */
     public function authenticate(Request $request) {
-        $user = usuarios::where('dni', $request->dni)
+        $user = Usuario::where('dni', $request->dni)
         ->orWhere('user',$request->dni)
             ->first();
         if ($user) {
             if(Hash::check($request->pass, $user->pass)){
                 $apikey = $this->jwt($user);
-                usuarios::where('dni', $request->dni)->update(['api_token' => $apikey]);
-
+                Usuario::where('dni', $request->dni)->update(['api_token' => $apikey]);
                 return response()->json(['status' => 'success','api_token' => $apikey], 200);
             } else {
               return response()->json(['status' => 'Incorrect password'], 401);
