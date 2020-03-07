@@ -72,7 +72,12 @@ class AuthenticateController extends Controller
             if(Hash::check($request->pass, $user->pass)){
                 $apikey = $this->jwt($user);
                 Usuario::where('dni', $request->dni)->update(['api_token' => $apikey]);
-                return response()->json(['status' => 'success','api_token' => $apikey], 200);
+                return response()->json(
+                    [
+                        'status' => 'success',
+                        'api_token' => $apikey
+                    ],
+                    200);
             } else {
               return response()->json(['status' => 'Incorrect password'], 401);
             }
