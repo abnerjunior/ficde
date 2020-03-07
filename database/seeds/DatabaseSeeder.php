@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
             SedesTableSeeder::class,
             CursosTableSeeder::class,
             EstudiantesTableSeeder::class,
+            AulasTableSeeder::class,
+            SemestresTableSeeder::class,
+            MateriasTableSeeder::class
         ]);
     }
 }

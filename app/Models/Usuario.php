@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-
+use Laravel\Passport\HasApiTokens;
 
 /**
  * @OA\Schema(
@@ -136,6 +136,7 @@ class Usuario extends Base implements AuthenticatableContract, AuthorizableContr
             'user',
             'dni',
             'nombre',
+            'rol',
             'apellido',
             'email'
         ];

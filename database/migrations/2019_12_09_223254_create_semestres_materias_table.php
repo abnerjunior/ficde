@@ -15,7 +15,7 @@ class CreateSemestresMateriasTable extends Migration
     {
         Schema::create('semestres_materias', function (Blueprint $table) 
         {
-            $table->bigIncrements('cod_sm');
+            $table->primary(['id_materia', 'id_semestres', 'id_usuario', 'id_aula'], 'id_primary_key');
             $table->unsignedBigInteger('id_materia');
             $table->unsignedBigInteger('id_semestres');
             $table->unsignedBigInteger('id_usuario');

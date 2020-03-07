@@ -75,6 +75,8 @@ class AuthenticateController extends Controller
                 return response()->json(
                     [
                         'status' => 'success',
+                        'expiry_date' => time() + 60 * 60,
+                        'rol' => $user->rol,
                         'api_token' => $apikey
                     ],
                     200);
