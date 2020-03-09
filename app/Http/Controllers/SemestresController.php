@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Http\Resources\UsersCollection;
 use Illuminate\Http\Request;
 use App\Models\semestres;
-use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -28,7 +28,8 @@ class SemestresController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
-            'fecha' => 'required'
+            'fecha_inicio' => 'required',
+            'fecha_final' => 'required'
         ]);
         return $validator;
     }
@@ -185,13 +186,14 @@ class SemestresController extends Controller
             } else {
                 $semestres = new semestres();
                 $semestres->nombre = $request->nombre;
-                $semestres->fecha = $request->fecha;
+                $semestres->fecha_inicio = $request->fecha_inicio;
+                $semestres->fecha_final = $request->fecha_final;
                 $semestres->user_r = $request->user_r;
                 $semestres->save();
-                return response()->json($request, 201);
+                return response()->json($semestres, 201);
             }
         } catch (Exception $e) {
-            return response()->json($e);
+            return response()->json($e, 400);
         }
     }
 
@@ -239,7 +241,7 @@ class SemestresController extends Controller
     {
         /** esto es una consulta por la cedula */
         $semestres = semestres::where('nombre', $nombre)
-            ->where('nombre', $nombre)
+            ->where('status', 'y')
             ->first();
         if ($semestres) {
             return response()->json($semestres, 200);
@@ -302,10 +304,11 @@ class SemestresController extends Controller
                 $errors = $this->validation($request, $nombre)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $semestres = semestres::where('nombre', $nombre)
+                $semestres = semestres::where('cod_semestre', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
-                        'fecha' =>  $request->fecha,
+                        'fecha_inicio' =>  $request->fecha_inicio,
+                        'fecha_final' =>  $request->fecha_final,
                     ]);
                 return response()->json($semestres, 200);
             }
@@ -355,11 +358,11 @@ class SemestresController extends Controller
      */
     public function destroy($nombre)
     {
-        $semestres = semestres::where('dni', $nombre)
+        $semestres = semestres::where('cod_semestre', $nombre)
             ->where('status', 'y')
             ->first();
         if ($semestres) {
-            semestres::where('dni', $nombre)->update(['status' => 'n']);
+            semestres::where('cod_semestre', $nombre)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido

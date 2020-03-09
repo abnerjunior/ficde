@@ -54,6 +54,7 @@ $app->singleton(
 
 $app->configure('swagger-lume');
 
+$app->configure('auth');
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -74,7 +75,8 @@ $app->routeMiddleware([
 ]);
 $app->middleware([
 	//...,
-	'Vluzrmos\LumenCors\CorsMiddleware'
+	// 'Vluzrmos\LumenCors\CorsMiddleware'
+    \App\Http\Middleware\Cors::class 
 ]);
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +93,9 @@ $app->middleware([
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\SwaggerLume\ServiceProvider::class);
-
+$app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+\Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

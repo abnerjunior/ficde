@@ -1,10 +1,6 @@
 <?php
 namespace App\Models;
-use Illuminate\Auth\Authenticatable;
-use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
   /**
  * @OA\Schema(
  *   schema="asistencias",
@@ -43,7 +39,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  */
 class asistencias extends Base
 {
-      protected $table = 'asistencias';
+    protected $table = 'asistencias';
     protected $primaryKey = 'cod_asistencia';
       
     /**

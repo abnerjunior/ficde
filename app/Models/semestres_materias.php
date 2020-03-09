@@ -51,10 +51,10 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * )
  */
 
-class semestres_materias extends base
+class semestres_materias extends Base
 {
     protected $table = 'semestres_materias';
-    protected $primaryKey = 'cod_estudiante';
+    protected $primaryKey = 'id_primary_key';
       
     /**
      * The attributes that are mass assignable.
@@ -75,7 +75,6 @@ class semestres_materias extends base
      * @var array
      */
     public static $filterable = [
-        'cod_sm',
         'id_semestres',
         'id_usuario',
         'id_aula'

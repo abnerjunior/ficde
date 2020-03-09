@@ -26,7 +26,7 @@ class EstudiantesController extends Controller
         if ($dni !== null) {
             $unique = Rule::unique('estudiantes')->ignore($request->dni, 'dni');
         } else {
-            $unique = 'unique:estudiantes';
+            $unique = Rule::unique('estudiantes')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
@@ -145,6 +145,7 @@ class EstudiantesController extends Controller
         $q = estudiantes::select();
         $estudiantes = estudiantes::search($request->toArray(), $q,'estudiantes');
         return  new UsersCollection($estudiantes);
+        // return response()->json(['message' => 'hola'], 200);
     }
     /**
      * @OA\Post(
@@ -249,7 +250,7 @@ class EstudiantesController extends Controller
     {
         /** esto es una consulta por la cedula */
         $estudiantes = estudiantes::where('dni', $dni)
-            ->where('dni', $dni)
+            ->where('status', 'y')
             ->first();
         if ($estudiantes) {
             return response()->json($estudiantes, 200);
@@ -370,7 +371,7 @@ class EstudiantesController extends Controller
     public function destroy($dni)
     {
         $estudiantes = estudiantes::where('dni', $dni)
-            ->where('status', 'n')
+            ->where('status', 'y')
             ->first();
         if ($estudiantes) {
             estudiantes::where('dni', $dni)->update(['status' => 'n']);

@@ -23,11 +23,10 @@ class sedesController extends Controller
         if ($nombre !== null) {
             $unique = Rule::unique('sedes')->ignore($request->nombre, 'nombre');
         } else {
-            $unique = 'unique:sedes';
+            $unique = Rule::unique('sedes')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
-            'nombre' => ['required', 'max:20', $unique],
-
+            'nombre' => ['required', 'max:20'],
             'direccion' => 'required|min:5',
             'telefono' => 'required',
 
@@ -137,7 +136,11 @@ class sedesController extends Controller
      */
     public function index(Request $request)
     {
-        $q = sedes::select();
+        $q = sedes::select(
+            'institucion.cod_institucion',
+            'institucion.nombre as institucion',
+            'sedes.*'
+        )->join('institucion', 'institucion.cod_institucion', 'sedes.cod_institucion');
         $sedes = sedes::search($request->toArray(), $q,'sedes');
         return  new UsersCollection($sedes);
     }
@@ -189,7 +192,7 @@ class sedesController extends Controller
                 $sedes->cod_institucion = $request->cod_institucion;
                 $sedes->direccion = $request->direccion;
                 $sedes->telefono = $request->telefono;
-                $sedes->user = $request->user;
+                $sedes->user_r = $request->user_r;
                 $sedes->save();
                 return response()->json($request, 201);
             }
@@ -244,6 +247,7 @@ class sedesController extends Controller
         /** esto es una consulta por la nombre */
         $sedes = sedes::where('nombre', $nombre)
             ->where('nombre', $nombre)
+            ->where('status', 'y')
             ->first();
         if ($sedes) {
             return response()->json($sedes, 200);
@@ -306,7 +310,7 @@ class sedesController extends Controller
                 $errors = $this->validation($request, $nombre)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $sedes = sedes::where('nombre', $nombre)
+                $sedes = sedes::where('cod_sede', $nombre)
                     ->update([
                         'nombre' =>  $request->nombre,
                         'cod_institucion' =>  $request->cod_institucion,
@@ -362,14 +366,14 @@ class sedesController extends Controller
      */
     public function destroy($nombre)
     {
-        $sedes = sedes::where('nombre', $nombre)
+        $sedes = sedes::where('cod_sede', $nombre)
             ->where('status', 'y')
             ->first();
         if ($sedes) {
-            sedes::where('nombre', $nombre)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            sedes::where('cod_sede', $nombre)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'sede eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'sede not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }

@@ -16,7 +16,8 @@ class CreateSemestresTable extends Migration
         Schema::create('semestres', function (Blueprint $table) {
             $table->bigIncrements('cod_semestre')->unique();
             $table->string('nombre');
-            $table->string('fecha');
+            $table->string('fecha_inicio');
+            $table->string('fecha_final');
             $table->enum('status', ['y','n'])->default('y');
             $table->string('user_r');
 

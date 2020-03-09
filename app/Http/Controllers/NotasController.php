@@ -20,10 +20,10 @@ class NotasController extends Controller
      * @param  [String] $id_em number id_em
      * @return [Function]  function validator
      */
-    private function validation($request, $id_em)
+    private function validation($request, $cod_nota)
     {
-        if ($id_em !== null) {
-            $unique = Rule::unique('notas')->ignore($request->id_em, 'id_em');
+        if ($cod_nota !== null) {
+            $unique = Rule::unique('notas')->ignore($request->cod_nota, 'cod_nota');
         } else {
             $unique = 'unique:notas';
         }
@@ -138,7 +138,17 @@ class NotasController extends Controller
     public function index(Request $request)
     {
 
-        $q = notas::select();
+        $q = notas::select(
+         'estudiantes.dni',
+         'estudiantes.nombre',
+         'estudiantes.apellido',
+         'notas.*',
+         'materias.materia'
+        )
+        ->join('estudiantes', 'estudiantes.cod_estudiante', 'notas.id_estudiante')
+        ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'notas.id_em')
+        ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
+        ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
         $notas = notas::search($request->toArray(), $q,'notas');
         return  new UsersCollection($notas);
     }
@@ -298,17 +308,18 @@ class NotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_em)
+    public function update(Request $request, $cod_nota)
     {
         try {
-            if ($this->validation($request, $id_em)->fails()) {
-                $errors = $this->validation($request, $id_em)->errors();
+            if ($this->validation($request, $cod_nota)->fails()) {
+                $errors = $this->validation($request, $cod_nota)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $notas = notas::where('id_em', $id_em)
+                $notas = notas::where('cod_nota', $cod_nota)
                     ->update([
-                        'id_estudiante' =>  $request->id_estudiante,
-                        'nota' =>  $request->nota,
+                        'id_em' => $request->id_em,
+                        'id_estudiante' => $request->id_estudiante,
+                        'nota' => $request->nota
                     ]);
                 return response()->json($notas, 200);
             }
@@ -358,11 +369,11 @@ class NotasController extends Controller
      */
     public function destroy($dni)
     {
-        $notas = notas::where('dni', $dni)
+        $notas = notas::where('cod_nota', $dni)
             ->where('status', 'y')
             ->first();
         if ($notas) {
-            notas::where('dni', $dni)->update(['status' => 'n']);
+            notas::where('cod_nota', $dni)->update(['status' => 'n']);
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
             return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UsersCollection;
 use Illuminate\Http\Request;
-use App\Models\usuarios;
+use App\Models\Usuario;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -145,9 +145,8 @@ class UsuariosController extends Controller
      */
     public function index(Request $request)
     {
-
-        $q = usuarios::select();
-        $usuarios = usuarios::search($request->toArray(), $q, 'usuarios');
+        $q = Usuario::select();
+        $usuarios = Usuario::search($request->toArray(), $q, 'usuarios');
         return  new UsersCollection($usuarios);
     }
 
@@ -194,7 +193,7 @@ class UsuariosController extends Controller
     public function show($dni)
     {
         /** esto es una consulta por la cedula */
-        $usuarios = usuarios::where('dni', $dni)
+        $usuarios = Usuario::where('dni', $dni)
             ->where('dni', $dni)
             ->first();
         if ($usuarios) {
@@ -248,7 +247,7 @@ class UsuariosController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $usuarios = new usuarios;
+                $usuarios = new Usuario;
                 $usuarios->user = $request->user;
                 $usuarios->pass = Hash::make($request->pass);
                 $usuarios->nombre = $request->nombre;
@@ -322,7 +321,7 @@ class UsuariosController extends Controller
                 return response()->json($errors->all(), 400); // error en la validacion
             } else {
                 // es mejor usar $request->all() 
-                $usuarios = usuarios::where('dni', $dni)->update($request->all());
+                $usuarios = Usuario::where('dni', $dni)->update($request->all());
                 return response()->json($usuarios, 200); // 200 todo salio bien
             }
         } catch (Exception $e) {
@@ -371,14 +370,64 @@ class UsuariosController extends Controller
      */
     public function destroy($dni)
     {
-        $usuarios = usuarios::where('dni', $dni)
+        $usuarios = Usuario::where('dni', $dni)
             ->where('status', 'y')
             ->first();
         if ($usuarios) {
-            usuarios::where('dni', $dni)->update(['status' => 'n']);
+            Usuario::where('dni', $dni)->delete();
             return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404);
         }
+    }
+    /**
+     * @OA\Patch(
+     *   path="/usuarios/{dni}",
+     *   summary="Restore a usuarios resource",
+     *   description="Restore a usuarios resource",
+     *   tags={"Users"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\Parameter(
+     *   name="dni",
+     *   in="path",
+     *   description="The usuarios resource dni",
+     *   required=true,
+     *   @OA\Schema(
+     *       type="string",
+     *       description="The unique identifier of a usuarios resource"
+     *   )
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response=204,
+     *   description="The resource has been deleted"
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response=401,
+     *   description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response="default",
+     *   description="an ""unexpected"" error"
+     *   )
+     * )
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $dni
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /**
+     * Resotore data
+     * @param int $dni
+     */
+    public function restore($dni)
+    {
+        $usuarios = Usuario::where('dni', $dni)
+            ->restore();
+        return response()->json($usuarios);
     }
 }

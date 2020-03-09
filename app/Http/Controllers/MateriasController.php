@@ -23,12 +23,12 @@ class MateriasController extends Controller
     private function validation($request, $descripcion)
     {
         if ($descripcion !== null) {
-            $unique = Rule::unique('materias')->ignore($request->descripcion, 'descripcion');
+            $unique = Rule::unique('materias')->ignore($request->cod_materia, 'cod_materia');
         } else {
             $unique = 'unique:materias';
         }
         $validator = Validator::make($request->all(), [
-            'descripcion' => ['required', 'max:19', $unique]
+            'cod_materia' => [$unique]
         ]);
         return $validator;
     }
@@ -138,11 +138,8 @@ class MateriasController extends Controller
     {
         $q = materias::select(
             'cursos.cod_curso',
-            'cursos.descripcion',
             'cursos.curso',
-            'materias.materia',
-            'materias.descripcion',
-            'materias.status as status'
+            'materias.*'
         )->join('cursos', 'cursos.cod_curso','materias.cod_curso');
         $descripcion = materias::search($request->toArray(), $q, 'materias');
         return  new usersCollection($descripcion);
@@ -304,14 +301,14 @@ class MateriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $descripcion)
+    public function update(Request $request, $cod_materia)
     {
         try {
-            if ($this->validation($request, $descripcion)->fails()) {
-                $errors = $this->validation($request, $descripcion)->errors();
+            if ($this->validation($request, $cod_materia)->fails()) {
+                $errors = $this->validation($request, $cod_materia)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $descripcion = materias::where('descripcion', $descripcion)
+                $descripcion = materias::where('cod_materia', $cod_materia)
                     ->update([
                         'cod_curso' =>  $request->cod_curso,
                         'descripcion' =>  $request->descripcion,
@@ -363,16 +360,16 @@ class MateriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($dni)
+    public function destroy($cod_materia)
     {
-        $materias = materias::where('dni', $dni)
+        $materias = materias::where('cod_materia', $cod_materia)
             ->where('status', 'y')
             ->first();
         if ($materias) {
-            materias::where('dni', $dni)->update(['status' => 'n']);
-            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+            materias::where('cod_materia', $cod_materia)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'materia eliminado'], 200);
         } else {
-            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+            return response()->json(['status' => 'error', 'message' => 'materia not inscrito'], 404); // 404 es de que no se encontro contenido
         }
     }
 }

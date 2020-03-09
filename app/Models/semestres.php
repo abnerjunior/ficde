@@ -3,10 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
-use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 
   /**
@@ -20,7 +18,13 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The semestres nombre"
  *   ),
  *   @OA\Property(
- *       property="fecha",
+ *       property="fecha_inicio",
+ *       type="string",
+ *       required={"true"},
+ *       description="The semestres fecha"
+ *   ),
+ *   @OA\Property(
+ *       property="fecha_final",
  *       type="string",
  *       required={"true"},
  *       description="The semestres fecha"
@@ -52,7 +56,8 @@ class semestres extends Base
      */
     protected $fillable = [
         'nombre',
-        'fecha',
+        'fecha_inicio',
+        'fecha_final',
         'status',
         'user_r'
     ];

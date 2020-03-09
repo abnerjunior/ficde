@@ -21,7 +21,7 @@ class TurnosController extends Controller
         if ($turno !== null) {
             $unique = Rule::unique('turnos')->ignore($request->turno, 'turno');
         } else {
-            $unique = 'unique:turnos';
+            $unique = Rule::unique('turnos')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
             'turno' => ['required', 'max:10', $unique],
@@ -236,6 +236,7 @@ class TurnosController extends Controller
        /** esto es una consulta por la cedula */
        $turnos = turnos::where('turno', $turno)
             ->where('turno', $turno)
+            ->where('status', 'y')
             ->first();
         if ($turnos)
         {
@@ -301,7 +302,7 @@ class TurnosController extends Controller
                     $errors = $this->validation($request, $turno)->errors();
                     return response()->json($errors->all(), 400);
                 } else {
-                    $turno = turnos::where('turno', $turno)
+                    $turno = turnos::where('cod_turno', $turno)
                     ->update([
                         'turno' =>  $request->turno,
                         'hora' => $request->hora,
@@ -355,12 +356,12 @@ class TurnosController extends Controller
         */
         public function destroy($turno)
         {
-            $turnos = turnos::where('turno', $turno)
+            $turnos = turnos::where('cod_turno', $turno)
                 ->where('status', 'y')
                 ->first();
             if ($turnos) 
             {
-                turnos::where('turno', $turno)->update(['status' => 'n']);
+                turnos::where('cod_turno', $turno)->update(['status' => 'n']);
                 return response()->json(['status' => 'success', 'message' => 'turno eliminado'], 200);
             } 
             else 

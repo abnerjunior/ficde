@@ -14,16 +14,16 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        \Wn\Generators\Commands\ControllerCommand::class,
-        \Wn\Generators\Commands\ModelCommand::class,
-        \Wn\Generators\Commands\ControllerRestActionsCommand::class,
-        \Wn\Generators\Commands\ControllerCommand::class,
-        \Wn\Generators\Commands\RouteCommand::class,
-        \Wn\Generators\Commands\MigrationCommand::class,
-        \Wn\Generators\Commands\ResourceCommand::class,
-        \Wn\Generators\Commands\ResourcesCommand::class,
-        \Wn\Generators\Commands\PivotTableCommand::class,
-        \Wn\Generators\Commands\FactoryCommand::class,
+        // \Wn\Generators\Commands\ControllerCommand::class,
+        // \Wn\Generators\Commands\ModelCommand::class,
+        // \Wn\Generators\Commands\ControllerRestActionsCommand::class,
+        // \Wn\Generators\Commands\ControllerCommand::class,
+        // \Wn\Generators\Commands\RouteCommand::class,
+        // \Wn\Generators\Commands\MigrationCommand::class,
+        // \Wn\Generators\Commands\ResourceCommand::class,
+        // \Wn\Generators\Commands\ResourcesCommand::class,
+        // \Wn\Generators\Commands\PivotTableCommand::class,
+        // \Wn\Generators\Commands\FactoryCommand::class,
     ];
 
     /**
