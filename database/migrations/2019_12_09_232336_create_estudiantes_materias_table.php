@@ -15,7 +15,7 @@ class CreateEstudiantesMateriasTable extends Migration
     {
         Schema::create('estudiantes_materias', function (Blueprint $table) {
             $table->bigIncrements('cod_em');
-            $table->unsignedBigInteger('id_sm')->unsigned();
+            $table->unsignedBigInteger('id_sm');
             $table->unsignedBigInteger('id_turno');
             $table->unsignedBigInteger('id_modalidad');
             $table->unsignedBigInteger('id_estudiante');

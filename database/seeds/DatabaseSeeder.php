@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             EstudiantesTableSeeder::class,
             AulasTableSeeder::class,
             SemestresTableSeeder::class,
-            MateriasTableSeeder::class
+            MateriasTableSeeder::class,
+            ModalidadTableSeeder::class,
+            TurnoTableSeeder::class
         ]);
     }
 }
