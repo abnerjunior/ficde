@@ -11,7 +11,7 @@ class TurnoTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usuarios')->insert([
+        DB::table('turnos')->insert([
         	['turno' => 'Diurno', 'hora' => '9:00 am', 'user_r' => 1],
         	['turno' => 'Tarde', 'hora' => '2:00 pm', 'user_r' => 1]
         ]);

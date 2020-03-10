@@ -15,7 +15,7 @@ class EstudiantesTableSeeder extends Seeder
         DB::table('estudiantes')->insert([
             'nombre' => Str::random(10),
             'apellido' => Str::random(10),
-            'dni' => Str::random(10),
+            'dni' => 26720270,
             'email' => Str::random(10).'@gmail.com',
             'telefono' => Str::random(10),
             'direccion' => Str::random(20),
