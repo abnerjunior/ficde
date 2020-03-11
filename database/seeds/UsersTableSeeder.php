@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'nombre' => Str::random(10),
                     'apellido' => Str::random(10),
-                    'dni' => Str::random(10),
+                    'dni' => 28298930,
                     'email' => Str::random(10).'@gmail.com',
                     'telefono' => Str::random(10),
                     'pass' => Hash::make('secret'),
