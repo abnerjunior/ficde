@@ -150,7 +150,7 @@ class Estudiantes_MateriasController extends Controller
         ->join('turnos', 'turnos.cod_turno', 'estudiantes_materias.id_turno')
         ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
         ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante')
-        ->join('semestres_materias', 'semestres_materias.id_semestres', 'estudiantes_materias.id_semestre')
+        ->join('semestres_materias', 'semestres_materias.id_semestres', 'estudiantes_materias.id_sm')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
         $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q,'estudiantes_materias');
         return  new UsersCollection($estudiantes_materias);
@@ -200,7 +200,7 @@ class Estudiantes_MateriasController extends Controller
             } else {
                 $estudiantes_materias = new estudiantes_materias();
                 $estudiantes_materias->id_estudiante = $request->id_estudiante;
-                $estudiantes_materias->id_semestre = $request->id_semestre;
+                $estudiantes_materias->id_sm = $request->id_semestre;
                 $estudiantes_materias->id_turno = $request->id_turno;
                 $estudiantes_materias->id_modalidad = $request->id_modalidad;
                 $estudiantes_materias->user_r = $request->user_r;

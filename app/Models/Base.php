@@ -31,6 +31,7 @@ class Base extends Model
 					}
 				}
 			});
+			$q->where($table.'.status', 'y');
 		}
 		if ($data['paginate'] === "true") {
 			return $q->paginate($data['perPage']);

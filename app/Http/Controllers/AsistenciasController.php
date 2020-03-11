@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UsersCollection;
-use Illuminate\Http\Request;
 use App\Models\asistencias;
+use App\Models\semestres_materias;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -136,19 +137,19 @@ class AsistenciasController extends Controller
      */
     public function index(Request $request)
     {
-        $q = asistencias::select(
+        $q = semestres_materias::select(
+            'semestres_materias.cod_sm',
+            'estudiantes_materias.id_sm',
             'estudiantes.nombre as nombreEstudiante',
+            'estudiantes.dni',
             'estudiantes.apellido as apellidoEstudiante',
-            'estudiantes.dni as dni',
-            'asistencias.*',
             'materias.materia'
         )
-        ->join('estudiantes', 'estudiantes.cod_estudiante', 'asistencias.id_estudiante')
-        ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'asistencias.id_em')
-        ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
+        ->join('estudiantes_materias', 'estudiantes_materias.id_sm', 'semestres_materias.cod_sm')
+        ->join('estudiantes', 'estudiantes_materias.id_estudiante', 'estudiantes.cod_estudiante')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
-        $asistencias = asistencias::search($request->toArray(), $q,'asistencias');
-        return  new UsersCollection($asistencias);
+        $estudiantes = semestres_materias::search($request->toArray(), $q, 'semestres_materias');
+        return  new UsersCollection($estudiantes);
     }
 
     /**
