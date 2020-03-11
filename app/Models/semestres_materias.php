@@ -36,11 +36,17 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       type="string",
  *       description="The Estudiantes id_aula"
  *   ),
+ *   @OA\Property(
+ *       property="id_turno",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Estudiantes id_turno"
+ *   ),
  *    @OA\Property(
  *       property="status",
  *       type="string",
  *       required={"true"},
- *       description="The asistencias telefono"
+ *       description="The status"
  *   ),
  * @OA\Property(
  *       property="user_r",
@@ -54,7 +60,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class semestres_materias extends Base
 {
     protected $table = 'semestres_materias';
-      
+
     /**
      * The attributes that are mass assignable.
      *
@@ -65,6 +71,8 @@ class semestres_materias extends Base
         'id_semestres',
         'id_usuario',
         'id_aula',
+        'id_turno',
+        'id_modalidad',
         'status',
         'user_r'
     ];

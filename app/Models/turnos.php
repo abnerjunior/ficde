@@ -19,10 +19,22 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       description="The Turnos name"
  *   ),
  *   @OA\Property(
- *       property="hora",
+ *       property="hora_e",
  *       type="string",
  *       required={"true"},
- *       description="The Turnoss password"
+ *       description="The Turnoss hora entrada"
+ *   ),
+ *    @OA\Property(
+ *       property="hora_s",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Turnoss hora salida"
+ *   ),
+ *   @OA\Property(
+ *       property="dia",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Turnos dia"
  *   ),
  *    @OA\Property(
  *       property="status",
@@ -44,7 +56,7 @@ class turnos extends Base
     protected $table = 'turnos';
     protected $primaryKey = 'cod_turno';
 
-      
+
     /**
      * The attributes that are mass assignable.
      *
@@ -52,7 +64,9 @@ class turnos extends Base
      */
     protected $fillable = [
         'turno',
-        'hora',
+        'hora_e',
+        'hora_s',
+        'dia',
         'status',
         'user_r'
     ];
