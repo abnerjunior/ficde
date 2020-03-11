@@ -17,7 +17,7 @@ class NotasController extends Controller
     /**
      * validate data of request
      * @param  [Request] $request data
-     * @param  [String] $id_em number id_em
+     * @param  [String] $id_sm number id_sm
      * @return [Function]  function validator
      */
     private function validation($request, $cod_nota)
@@ -28,7 +28,7 @@ class NotasController extends Controller
             $unique = 'unique:notas';
         }
         $validator = Validator::make($request->all(), [
-            'id_em' => 'required',
+            'id_sm' => 'required',
             'nota' => 'required',
             'id_estudiante' => 'required'
         ]);
@@ -146,7 +146,7 @@ class NotasController extends Controller
          'materias.materia'
         )
         ->join('estudiantes', 'estudiantes.cod_estudiante', 'notas.id_estudiante')
-        ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'notas.id_em')
+        ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'notas.id_sm')
         ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
         $notas = notas::search($request->toArray(), $q,'notas');
@@ -196,7 +196,7 @@ class NotasController extends Controller
                 return response()->json($errors->all(), 400);
             } else {
                 $notas = new notas();
-                $notas->id_em = $request->id_em;
+                $notas->id_sm = $request->id_sm;
                 $notas->nota = $request->nota;
                 $notas->id_estudiante = $request->id_estudiante;
                 $notas->user_r = $request->user_r;
@@ -210,15 +210,15 @@ class NotasController extends Controller
 
     /**
      * @OA\Get(
-     *   path="/notas/{id_em}",
+     *   path="/notas/{id_sm}",
      *   summary="Gets a notas resource",
      *   description="Gets a notas resource",
      *   tags={"notas"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
-     *   name="id_em",
+     *   name="id_sm",
      *   in="path",
-     *   description="The notas resource id_em",
+     *   description="The notas resource id_sm",
      *   required=true,
      *   @OA\Schema(
      *       type="string",
@@ -244,15 +244,15 @@ class NotasController extends Controller
      *
      * Remove the specified resource from storage.
      *
-     * @param  int  $id_em
+     * @param  int  $id_sm
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id_em)
+    public function show($id_sm)
     {
         /** esto es una consulta por la cedula */
-        $notas = notas::where('id_em', $id_em)
-            ->where('id_em', $id_em)
+        $notas = notas::where('id_sm', $id_sm)
+            ->where('id_sm', $id_sm)
             ->first();
         if ($notas) {
             return response()->json($notas, 200);
@@ -263,13 +263,13 @@ class NotasController extends Controller
 
     /**
      * @OA\Put(
-     *   path="/notas/{id_em}",
+     *   path="/notas/{id_sm}",
      *   summary="Updates a notas resource",
-     *   description="Updates a notas resource by the id_em",
+     *   description="Updates a notas resource by the id_sm",
      *   tags={"notas"},
      *   security={{"passport": {"*"}}},
      *   @OA\Parameter(
-     *   name="id_em",
+     *   name="id_sm",
      *   in="path",
      *   description="notas resource id",
      *   required=true,
@@ -304,7 +304,7 @@ class NotasController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param  int  $id_em
+     * @param  int  $id_sm
      *
      * @return \Illuminate\Http\Response
      */
@@ -317,7 +317,7 @@ class NotasController extends Controller
             } else {
                 $notas = notas::where('cod_nota', $cod_nota)
                     ->update([
-                        'id_em' => $request->id_em,
+                        'id_sm' => $request->id_sm,
                         'id_estudiante' => $request->id_estudiante,
                         'nota' => $request->nota
                     ]);
