@@ -58,7 +58,7 @@ class notas extends Base
      */
     protected $fillable = [
         'nota',
-        'id_em',
+        'id_sm',
         'id_estudiante',
         'status',
         'user_r'

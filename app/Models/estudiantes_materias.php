@@ -18,12 +18,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  *       required={"true"},
  *       description="The Estudiantes id_semestre"
  *   ),
- *   @OA\Property(
- *       property="id_turno",
- *       type="string",
- *       required={"true"},
- *       description="The Estudiantes id_turno"
- *   ),
+
  *   @OA\Property(
  *       property="id_modalidad",
  *       type="string",
@@ -55,7 +50,7 @@ class estudiantes_materias extends Base
 {
     protected $table = 'estudiantes_materias';
     protected $primaryKey = 'cod_em';
-      
+
     /**
      * The attributes that are mass assignable.
      *

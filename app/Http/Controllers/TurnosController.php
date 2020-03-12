@@ -25,7 +25,9 @@ class TurnosController extends Controller
         }
         $validator = Validator::make($request->all(), [
             'turno' => ['required', 'max:10', $unique],
-            'hora' => 'required|min:5'
+            'hora_e' => 'required|min:5',
+            'hora_s' => 'required|min:5',
+            'dia' => 'required|min:5'
         ]);
         return $validator;
     }
@@ -169,7 +171,7 @@ class TurnosController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -181,10 +183,12 @@ class TurnosController extends Controller
             } else {
                 $turnos= new turnos();
                 $turnos->turno = $request->turno;
-                $turnos->hora = $request->hora;
+                $turnos->hora_e = $request->hora_e;
+                $turnos->hora_s = $request->hora_s;
+                $turnos->dia = $request->dia;
                 $turnos->user_r = $request->user_r;
                 $turnos->save();
-                return response()->json($request, 201);      
+                return response()->json($request, 201);
             }
         }catch (Exception $e) {
             return response()->json($e);
@@ -241,8 +245,8 @@ class TurnosController extends Controller
         if ($turnos)
         {
             return response()->json($turnos, 200);
-        } 
-        else 
+        }
+        else
         {
             return response()->json(['status' => 'error', 'message' => 'No existe este turno'], 404);
         }
@@ -305,7 +309,9 @@ class TurnosController extends Controller
                     $turno = turnos::where('cod_turno', $turno)
                     ->update([
                         'turno' =>  $request->turno,
-                        'hora' => $request->hora,
+                        'hora_e' => $request->hora_e,
+                        'hora_s' => $request->hora_s,
+                        'dia' => $request->dia
                     ]);
                     return response()->json($turno, 200);
                 }
@@ -359,12 +365,12 @@ class TurnosController extends Controller
             $turnos = turnos::where('cod_turno', $turno)
                 ->where('status', 'y')
                 ->first();
-            if ($turnos) 
+            if ($turnos)
             {
                 turnos::where('cod_turno', $turno)->update(['status' => 'n']);
                 return response()->json(['status' => 'success', 'message' => 'turno eliminado'], 200);
-            } 
-            else 
+            }
+            else
             {
                 return response()->json(['status' => 'error', 'message' => 'turno no existe'], 404);
             }
