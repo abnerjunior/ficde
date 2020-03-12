@@ -84,7 +84,7 @@ class AuthenticateController extends Controller
                 return response()->json(
                     [
                         'status' => 'success',
-                        'expires_in' => 7000,
+                        'expires_in' => 21600000,
                         'api_token' => $apikey,
                         'refresh_token' => $refreshToken,
                         'user' => $user
@@ -112,7 +112,7 @@ class AuthenticateController extends Controller
             return response()->json(
                 [
                     'status' => 'success',
-                    'expires_in' => 7000,
+                    'expires_in' => 21600000,
                     // 'rol' => $user->rol,
                     'api_token' => $apikey,
                     'refresh_token' => $refreshToken,

@@ -24,7 +24,7 @@ class TurnosController extends Controller
             $unique = Rule::unique('turnos')->where('status', 'y');
         }
         $validator = Validator::make($request->all(), [
-            'turno' => ['required', 'max:10', $unique],
+            'turno' => ['required', 'max:50'],
             'hora_e' => 'required|min:5',
             'hora_s' => 'required|min:5',
             'dia' => 'required|min:5'

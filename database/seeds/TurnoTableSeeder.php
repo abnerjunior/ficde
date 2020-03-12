@@ -21,7 +21,7 @@ class TurnoTableSeeder extends Seeder
             ],
         	[
                 'turno' => 'Tarde',
-                'dia' => 'lune',
+                'dia' => 'Lunes',
                 'hora_e' => '2:00 pm',
                 'hora_s' => '3:00 pm',
                 'user_r' => 1

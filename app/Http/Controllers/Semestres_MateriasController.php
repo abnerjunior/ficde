@@ -32,6 +32,7 @@ class Semestres_MateriasController extends Controller
             'id_semestres' => 'required',
             'id_usuario' => 'required',
             'id_aula' => 'required',
+            'id_modalidad' => 'required'
         ]);
         return $validator;
     }
@@ -147,13 +148,19 @@ class Semestres_MateriasController extends Controller
             'usuarios.nombre as nombreProfesor',
             'usuarios.apellido as apellidoProfesor',
             'semestres_materias.*',
-            'cursos.curso'
+            'cursos.curso',
+            'turnos.turno',
+            'turnos.hora_e',
+            'turnos.hora_s',
+            'modalidades.modalidad'
         )
         ->join('aulas', 'aulas.cod_aula', 'semestres_materias.id_aula')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia')
         ->join('usuarios', 'usuarios.cod_usuario', 'semestres_materias.id_usuario')
         ->join('semestres', 'semestres.cod_semestre', 'semestres_materias.id_semestres')
-        ->join('cursos', 'cursos.cod_curso', 'materias.cod_curso');
+        ->join('cursos', 'cursos.cod_curso', 'materias.cod_curso')
+        ->join('turnos', 'turnos.cod_turno', 'semestres_materias.id_turno')
+        ->join('modalidades', 'modalidades.cod_modalidad', 'semestres_materias.id_modalidad');
         $semestres_materias = semestres_materias::search($request->toArray(), $q,'semestres_materias');
         return  new UsersCollection($semestres_materias);
     }
@@ -205,6 +212,8 @@ class Semestres_MateriasController extends Controller
                 $semestres_materias->id_materia = $request->id_materia;
                 $semestres_materias->id_usuario = $request->id_usuario;
                 $semestres_materias->id_aula = $request->id_aula;
+                $semestres_materias->id_turno = $request->id_turno;
+                $semestres_materias->id_modalidad = $request->id_modalidad;
                 $semestres_materias->user_r = $request->user_r;
                 $semestres_materias->save();
                 return response()->json($request, 201);
@@ -328,6 +337,8 @@ class Semestres_MateriasController extends Controller
                         'id_semestres' =>  $request->id_semestres,
                         'id_usuario' =>  $request->id_usuario,
                         'id_aula' => $request->id_aula,
+                        'id_turno' => $request->id_turno,
+                        'id_modalidad' => $request->id_modalidad
                     ]);
                 return response()->json($semestres_materias, 200);
             }
