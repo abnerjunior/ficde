@@ -22,6 +22,7 @@ $router->group(['', ''], function () use ($router) {
 		 * User routes
 		 */
 		$router->post('authenticate/', 'AuthenticateController@authenticate');
+		$router->post('refreshToken/', 'AuthenticateController@refreshToken');
 
 		$router->get('asistencias/', 'AsistenciasController@index');
 		$router->post('asistencias/', 'AsistenciasController@store');

@@ -26,7 +26,8 @@ class CreateUsuariosTable extends Migration
             $table->string('rol');
             $table->string('user_r');
              $table->enum('status', ['y','n'])->default('y');
-            $table->string('api_token',200)->nullable();
+            $table->string('api_token', 200)->nullable();
+            $table->string('refresh_token', 200)->nullable();
 
             $table->softDeletes();
             $table->timestamps();
