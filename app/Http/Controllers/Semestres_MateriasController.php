@@ -152,6 +152,7 @@ class Semestres_MateriasController extends Controller
             'turnos.turno',
             'turnos.hora_e',
             'turnos.hora_s',
+            'turnos.dia',
             'modalidades.modalidad'
         )
         ->join('aulas', 'aulas.cod_aula', 'semestres_materias.id_aula')
