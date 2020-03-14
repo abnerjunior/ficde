@@ -15,15 +15,15 @@ class TurnoTableSeeder extends Seeder
         	[
                 'turno' => 'Diurno',
                 'dia' => 'Lunes',
-                'hora_e' => '9:00 am',
-                'hora_s' => '10:00 am',
+                'hora_e' => '9:00',
+                'hora_s' => '10:00',
                 'user_r' => 1
             ],
         	[
                 'turno' => 'Tarde',
-                'dia' => 'Lunes',
-                'hora_e' => '2:00 pm',
-                'hora_s' => '3:00 pm',
+                'dia' => 'Martes',
+                'hora_e' => '14:00',
+                'hora_s' => '18:00 pm',
                 'user_r' => 1
             ]
         ]);
