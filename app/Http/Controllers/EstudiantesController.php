@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Resources\estudiantesCollection;
 use App\Http\Resources\UsersCollection;
+use App\Http\Resources\estudiantesCollection;
 use App\Models\estudiantes;
+use App\curso_estudiante;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -142,7 +144,7 @@ class EstudiantesController extends Controller
     public function index(Request $request)
     {
 
-        $q = estudiantes::select();
+        $q = estudiantes::select()->with('cursos');
         $estudiantes = estudiantes::search($request->toArray(), $q,'estudiantes');
         return  new UsersCollection($estudiantes);
         // return response()->json(['message' => 'hola'], 200);
@@ -190,19 +192,30 @@ class EstudiantesController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $estudiantes = new estudiantes();
-                $estudiantes->dni = $request->dni;
-                $estudiantes->nombre = $request->nombre;
-                $estudiantes->apellido = $request->apellido;
-                $estudiantes->email = $request->email;
-                $estudiantes->telefono = $request->telefono;
-                $estudiantes->direccion = $request->direccion;
-                $estudiantes->user_r = $request->user_r;
-                $estudiantes->save();
+                $id = DB::table('estudiantes')->insertGetId(
+                    [
+                        'dni' => $request->dni,
+                        'nombre' => $request->nombre,
+                        'apellido' => $request->apellido,
+                        'email' => $request->email,
+                        'telefono' => $request->telefono,
+                        'direccion' => $request->direccion,
+                        'user_r' => $request->user_r
+                    ]
+                );
+                foreach ($request->id_curso as $key => $value) {
+                    DB::table('curso_estudiantes')->insert(
+                        [
+                            'id_estudiante' => $id,
+                            'id_curso' => $request->id_curso[$key],
+                            'user_r' => $request->user_r
+                        ]
+                    );
+                }
                 return response()->json($request, 201);
             }
         } catch (Exception $e) {
-            return response()->json($e);
+            return response()->json($e, 400);
         }
     }
 

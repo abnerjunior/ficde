@@ -14,12 +14,12 @@ class CreateCursoEstudiantesTable extends Migration
     public function up()
     {
         Schema::create('curso_estudiantes', function (Blueprint $table) {
-            $table->bigIncrements('cod_ce');
             $table->unsignedBigInteger('id_estudiante');
             $table->unsignedBigInteger('id_curso');
+            $table->primary(['id_estudiante', 'id_curso']);
+            $table->string('user_r');
             $table->foreign('id_estudiante')
             ->references('cod_estudiante')->on('estudiantes');
-
             $table->foreign('id_curso')
             ->references('cod_curso')->on('cursos');
             $table->timestamps();

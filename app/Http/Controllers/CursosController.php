@@ -137,7 +137,7 @@ class CursosController extends Controller
     public function index(Request $request)
     {
 
-        $q = cursos::select();
+        $q = cursos::with('estudiantes')->select();
         $curso = cursos::search($request->toArray(), $q,'cursos');
         return  new usersCollection($curso);
     }
