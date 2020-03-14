@@ -14,9 +14,9 @@ class CreateEstudiantesMateriasTable extends Migration
     public function up()
     {
         Schema::create('estudiantes_materias', function (Blueprint $table) {
-            $table->bigIncrements('cod_em');
             $table->unsignedBigInteger('id_sm');
             $table->unsignedBigInteger('id_estudiante');
+            $table->primary(['id_sm', 'id_estudiante']);
             $table->enum('status', ['y','n'])->default('y');
             $table->string('user_r');
             $table->timestamps();
