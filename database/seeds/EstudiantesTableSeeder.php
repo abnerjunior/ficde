@@ -13,13 +13,12 @@ class EstudiantesTableSeeder extends Seeder
     public function run()
     {
         DB::table('estudiantes')->insert([
-            'nombre' => Str::random(10),
-            'apellido' => Str::random(10),
-            'dni' => 26720270,
-            'email' => Str::random(10).'@gmail.com',
-            'telefono' => Str::random(10),
-            'direccion' => Str::random(20),
-            'id_curso' => 1,
+            'nombre' => 'Oriana Andreina',
+            'apellido' => 'Lopez Meza',
+            'dni' => 28298930,
+            'email' => 'orianalopez@gmail.com',
+            'telefono' => 4249502755,
+            'direccion' => Str::random(50),
             'user_r' => Str::random(10)
         ]);
     }

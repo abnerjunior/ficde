@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Resources\UsersCollection;
-
 use App\Models\estudiantes_materias;
+use App\Models\semestres_materias;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -136,22 +136,30 @@ class Estudiantes_MateriasController extends Controller
     public function index(Request $request)
     {
 
-        $q = estudiantes_materias::select(
+        $q = semestres_materias::select(
+            'aulas.nombre as nombreAula',
+            'materias.materia as nombreMateria',
+            'semestres.nombre as nombreSemestre',
+            'usuarios.dni as dniProfesor',
+            'usuarios.nombre as nombreProfesor',
+            'usuarios.apellido as apellidoProfesor',
+            'semestres_materias.*',
+            'cursos.curso',
             'turnos.turno',
-            'modalidades.modalidad',
-            'estudiantes.nombre as nombreEstudiante',
-            'estudiantes.apellido as apellidoEstudiante',
-            'estudiantes.dni as dniEstudiante',
-            'estudiantes_materias.*',
-            'materias.materia as nombreMateria'
+            'turnos.hora_e',
+            'turnos.hora_s',
+            'turnos.dia',
+            'modalidades.modalidad'
         )
-        ->join('turnos', 'turnos.cod_turno', 'estudiantes_materias.id_turno')
-        ->join('modalidades', 'modalidades.cod_modalidad', 'estudiantes_materias.id_modalidad')
-        ->join('estudiantes', 'estudiantes.cod_estudiante', 'estudiantes_materias.id_estudiante')
-        ->join('semestres_materias', 'semestres_materias.id_semestres', 'estudiantes_materias.id_sm')
-        ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
-        $estudiantes_materias = estudiantes_materias::search($request->toArray(), $q,'estudiantes_materias');
-        return  new UsersCollection($estudiantes_materias);
+        ->join('aulas', 'aulas.cod_aula', 'semestres_materias.id_aula')
+        ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia')
+        ->join('usuarios', 'usuarios.cod_usuario', 'semestres_materias.id_usuario')
+        ->join('semestres', 'semestres.cod_semestre', 'semestres_materias.id_semestres')
+        ->join('cursos', 'cursos.cod_curso', 'materias.cod_curso')
+        ->join('turnos', 'turnos.cod_turno', 'semestres_materias.id_turno')
+        ->join('modalidades', 'modalidades.cod_modalidad', 'semestres_materias.id_modalidad');
+        $semestres_materias = semestres_materias::search($request->toArray(), $q,'semestres_materias');
+        return  new UsersCollection($semestres_materias);
     }
     /**
      * @OA\Post(
