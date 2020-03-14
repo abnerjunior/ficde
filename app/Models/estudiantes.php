@@ -103,7 +103,7 @@ class estudiantes extends Base
     
     public function cursos()
     {
-        return $this->belongsToMany(Cursos::class, 'curso_estudiantes', 'id_estudiante', 'id_curso');
+        return $this->belongsToMany(cursos::class, 'curso_estudiantes', 'id_estudiante', 'id_curso');
     }
 }
 
