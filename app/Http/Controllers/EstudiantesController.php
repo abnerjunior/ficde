@@ -335,10 +335,24 @@ class EstudiantesController extends Controller
                         'id_curso' => $request->id_curso,
                         'telefono' => $request->telefono,
                     ]);
+
                 return response()->json($estudiante, 200);
             }
         } catch (Exception $e) {
             return response()->json($e);
+        }
+    }
+
+    public function storeCourses($id, $courses, $user_r)
+    {
+        foreach ($courses as $key => $value) {
+            DB::table('curso_estudiantes')->insert(
+                [
+                    'id_estudiante' => $id,
+                    'id_curso' => $courses[$key],
+                    'user_r' => $request->user_r
+                ]
+            );
         }
     }
 
