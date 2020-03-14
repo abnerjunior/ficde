@@ -203,11 +203,11 @@ class EstudiantesController extends Controller
                         'user_r' => $request->user_r
                     ]
                 );
-                foreach ($request->id_curso as $key => $value) {
+                foreach ($request->cursos as $key => $value) {
                     DB::table('curso_estudiantes')->insert(
                         [
                             'id_estudiante' => $id,
-                            'id_curso' => $request->id_curso[$key],
+                            'id_curso' => $request->cursos[$key],
                             'user_r' => $request->user_r
                         ]
                     );
