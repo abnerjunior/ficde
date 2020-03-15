@@ -138,7 +138,8 @@ class Usuario extends Base implements AuthenticatableContract, AuthorizableContr
             'nombre',
             'rol',
             'apellido',
-            'email'
+            'email',
+            'api_token'
         ];
         /**
          * The attributes excluded from the model's JSON form.
