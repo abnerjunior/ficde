@@ -10,5 +10,5 @@ class curso_estudiante extends Pivot
 
     protected $primaryKey = 'id_primary_curso_estudiantes';
 
-   	public $incrementing = true;
+   	public $incrementing = false;
 }
