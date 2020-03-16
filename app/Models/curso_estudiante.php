@@ -8,7 +8,6 @@ class curso_estudiante extends Pivot
 {
     protected $table = 'curso_estudiantes';
 
-    protected $primaryKey = 'id_primary_curso_estudiantes';
-
+    protected $primaryKey = null;
    	public $incrementing = false;
 }
