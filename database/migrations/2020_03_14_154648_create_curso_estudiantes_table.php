@@ -16,7 +16,7 @@ class CreateCursoEstudiantesTable extends Migration
         Schema::create('curso_estudiantes', function (Blueprint $table) {
             $table->unsignedBigInteger('id_estudiante');
             $table->unsignedBigInteger('id_curso');
-            $table->primary(['id_estudiante', 'id_curso']);
+            $table->primary(['id_estudiante', 'id_curso'], 'id_primary_curso_estudiantes');
             $table->string('user_r');
             $table->foreign('id_estudiante')
             ->references('cod_estudiante')->on('estudiantes');
