@@ -192,7 +192,7 @@ class EstudiantesController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $id = DB::table('estudiantes')->insertGetId(
+                DB::table('estudiantes')->insert(
                     [
                         'dni' => $request->dni,
                         'nombre' => $request->nombre,
