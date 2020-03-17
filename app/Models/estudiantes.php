@@ -69,6 +69,8 @@ class estudiantes extends Base
     protected $table = 'estudiantes';
     
     protected $primaryKey = 'cod_estudiante';
+
+    protected $incrementing=false;
     /**
      * The attributes that are mass assignable.
      *
