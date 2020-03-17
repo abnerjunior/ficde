@@ -70,7 +70,6 @@ class estudiantes extends Base
     
     protected $primaryKey = 'cod_estudiante';
 
-    protected $incrementing = true;
     /**
      * The attributes that are mass assignable.
      *
