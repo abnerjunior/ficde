@@ -49,8 +49,9 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class recuperatorios extends Base
 {
     protected $table = 'recuperatorios';
+
     protected $primaryKey = 'cod_recuperatorio';
-      
+
     /**
      * The attributes that are mass assignable.
      *
