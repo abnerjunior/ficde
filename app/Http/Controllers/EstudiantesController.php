@@ -203,7 +203,7 @@ class EstudiantesController extends Controller
                         'user_r' => $request->user_r
                     ]
                 );                
-                $this->storeCourses($id, $request->courses, $request->user_r);
+                $this->storeCourses($id, $request->cursos, $request->user_r);
                 return response()->json($request, 201);
             }
         } catch (Exception $e) {
@@ -319,8 +319,8 @@ class EstudiantesController extends Controller
                 return response()->json($errors->all(), 400);
             } else {
                 estudiantes::where('id', $id)->delete();
-                $this->storeCourses($id, $request->courses, $request->user_r);
-                return response()->json($estudiante, 200);
+                $this->storeCourses($id, $request->cursos, $request->user_r);
+                return response()->json($request, 200);
             }
         } catch (Exception $e) {
             return response()->json($e);
