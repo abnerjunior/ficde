@@ -146,7 +146,7 @@ class AsistenciasController extends Controller
             'materias.materia'
         )
         ->join('estudiantes_materias', 'estudiantes_materias.id_sm', 'semestres_materias.cod_sm')
-        ->join('estudiantes', 'estudiantes_materias.id_estudiante', 'estudiantes.cod_estudiante')
+        ->join('estudiantes', 'estudiantes_materias.id_estudiante', 'estudiantes.id')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
         $estudiantes = semestres_materias::search($request->toArray(), $q, 'semestres_materias');
         return  new UsersCollection($estudiantes);

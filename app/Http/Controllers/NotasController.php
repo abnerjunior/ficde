@@ -145,7 +145,7 @@ class NotasController extends Controller
          'notas.*',
          'materias.materia'
         )
-        ->join('estudiantes', 'estudiantes.cod_estudiante', 'notas.id_estudiante')
+        ->join('estudiantes', 'estudiantes.id', 'notas.id_estudiante')
         ->join('estudiantes_materias', 'estudiantes_materias.cod_em', 'notas.id_sm')
         ->join('semestres_materias', 'semestres_materias.cod_sm', 'estudiantes_materias.id_semestre')
         ->join('materias', 'materias.cod_materia', 'semestres_materias.id_materia');
