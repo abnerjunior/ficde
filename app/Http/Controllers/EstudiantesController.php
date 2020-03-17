@@ -319,8 +319,19 @@ class EstudiantesController extends Controller
                 return response()->json($errors->all(), 400);
             } else {
                 DB::table('curso_estudiantes')->where('id_estudiante', $id)->delete();
+                $id = DB::table('estudiantes')->where('id', $id)->update(
+                    [
+                        'dni' => $request->dni,
+                        'nombre' => $request->nombre,
+                        'apellido' => $request->apellido,
+                        'email' => $request->email,
+                        'telefono' => $request->telefono,
+                        'direccion' => $request->direccion,
+                        'user_r' => $request->user_r
+                    ]
+                );
                 $this->storeCourses($id, $request->cursos, $request->user_r);
-                return response()->json($request, 200);
+                return response()->json($id, 200);
             }
         } catch (Exception $e) {
             return response()->json($e, 400);
