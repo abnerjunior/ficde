@@ -202,16 +202,8 @@ class EstudiantesController extends Controller
                         'direccion' => $request->direccion,
                         'user_r' => $request->user_r
                     ]
-                );
-                foreach ($request->cursos as $key => $value) {
-                    DB::table('curso_estudiantes')->insert(
-                        [
-                            'id_estudiante' => $id,
-                            'id_curso' => $request->cursos[$key],
-                            'user_r' => $request->user_r
-                        ]
-                    );
-                }
+                );                
+                $this->storeCourses($id, $request->courses, $request->user_r);
                 return response()->json($request, 201);
             }
         } catch (Exception $e) {
@@ -319,23 +311,15 @@ class EstudiantesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $dni)
+    public function update(Request $request, $id)
     {
         try {
-            if ($this->validation($request, $dni)->fails()) {
-                $errors = $this->validation($request, $dni)->errors();
+            if ($this->validation($request, $id)->fails()) {
+                $errors = $this->validation($request, $id)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $estudiante = estudiantes::where('dni', $dni)
-                    ->update([
-                        'nombre' =>  $request->nombre,
-                        'apellido' =>  $request->apellido,
-                        'direccion' =>  $request->direccion,
-                        'email' => $request->email,
-                        'id_curso' => $request->id_curso,
-                        'telefono' => $request->telefono,
-                    ]);
-
+                estudiantes::where('id', $id)->delete();
+                $this->storeCourses($id, $request->courses, $request->user_r);
                 return response()->json($estudiante, 200);
             }
         } catch (Exception $e) {
