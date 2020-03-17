@@ -192,7 +192,7 @@ class EstudiantesController extends Controller
                 $errors = $this->validation($request, null)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                $id = DB::table('estudiantes')->insertGetId(
+                $usuarios = DB::table('estudiantes')->insert(
                     [
                         'dni' => $request->dni,
                         'nombre' => $request->nombre,
@@ -206,7 +206,7 @@ class EstudiantesController extends Controller
                 foreach ($request->cursos as $key => $value) {
                     DB::table('curso_estudiantes')->insert(
                         [
-                            'id_estudiante' => $id,
+                            'id_estudiante' => $usuarios->cod_usuario,
                             'id_curso' => $request->cursos[$key],
                             'user_r' => $request->user_r
                         ]
