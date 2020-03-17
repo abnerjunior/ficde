@@ -323,7 +323,7 @@ class EstudiantesController extends Controller
                 return response()->json($request, 200);
             }
         } catch (Exception $e) {
-            return response()->json($e);
+            return response()->json($e, 400);
         }
     }
 
