@@ -330,7 +330,7 @@ class EstudiantesController extends Controller
                         'user_r' => $request->user_r
                     ]
                 );
-                $this->storeCourses($id, $request->cursos, $request->user_r);
+                $this->storeCourses($id->id, $request->cursos, $request->user_r);
                 return response()->json($id, 200);
             }
         } catch (Exception $e) {
