@@ -318,7 +318,7 @@ class EstudiantesController extends Controller
                 $errors = $this->validation($request, $id)->errors();
                 return response()->json($errors->all(), 400);
             } else {
-                estudiantes::where('id', $id)->delete();
+                curso_estudiante::where('id', $id)->delete();
                 $this->storeCourses($id, $request->cursos, $request->user_r);
                 return response()->json($request, 200);
             }
