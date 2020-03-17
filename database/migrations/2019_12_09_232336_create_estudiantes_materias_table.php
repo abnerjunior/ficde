@@ -29,7 +29,7 @@ class CreateEstudiantesMateriasTable extends Migration
             ->references('cod_sm')->on('semestres_materias');
 
             $table->foreign('id_estudiante')
-            ->references('cod_estudiante')->on('estudiantes');
+            ->references('id')->on('estudiantes');
 
         });
     }

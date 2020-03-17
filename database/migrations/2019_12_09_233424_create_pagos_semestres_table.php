@@ -38,7 +38,7 @@ class CreatePagosSemestresTable extends Migration
             ->references('cod_semestre')->on('semestres');
 
             $table->foreign('id_estudiante')
-            ->references('cod_estudiante')->on('estudiantes');
+            ->references('id')->on('estudiantes');
 
         });
     }

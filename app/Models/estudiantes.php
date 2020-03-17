@@ -67,8 +67,6 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class estudiantes extends Base
 {
     protected $table = 'estudiantes';
-    
-    protected $primaryKey = 'cod_estudiante';
 
     /**
      * The attributes that are mass assignable.

@@ -35,7 +35,7 @@ class CreatePagosRecuperatoriosTable extends Migration
             ->references('cod_nota')->on('notas');
 
             $table->foreign('id_estudiante')
-            ->references('cod_estudiante')->on('estudiantes');
+            ->references('id')->on('estudiantes');
 
         });
     }

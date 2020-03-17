@@ -203,15 +203,15 @@ class EstudiantesController extends Controller
                         'user_r' => $request->user_r
                     ]
                 );
-                // foreach ($request->cursos as $key => $value) {
-                //     DB::table('curso_estudiantes')->insert(
-                //         [
-                //             'id_estudiante' => $id,
-                //             'id_curso' => $request->cursos[$key],
-                //             'user_r' => $request->user_r
-                //         ]
-                //     );
-                // }
+                foreach ($request->cursos as $key => $value) {
+                    DB::table('curso_estudiantes')->insert(
+                        [
+                            'id_estudiante' => $id,
+                            'id_curso' => $request->cursos[$key],
+                            'user_r' => $request->user_r
+                        ]
+                    );
+                }
                 return response()->json($request, 201);
             }
         } catch (Exception $e) {
