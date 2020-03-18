@@ -149,6 +149,18 @@ class EstudiantesController extends Controller
         return  new UsersCollection($estudiantes);
         // return response()->json(['message' => 'hola'], 200);
     }
+    function storeCourses($id, $courses, $user_r)
+    {
+        foreach ($courses as $key => $value) {
+            DB::table('curso_estudiantes')->insert(
+                [
+                    'id_estudiante' => $id,
+                    'id_curso' => $key,
+                    'user_r' => $request->user_r
+                ]
+            );
+        }
+    }    
     /**
      * @OA\Post(
      *   path="/estudiantes",
@@ -335,19 +347,6 @@ class EstudiantesController extends Controller
             }
         } catch (Exception $e) {
             return response()->json($e, 400);
-        }
-    }
-
-    public function storeCourses($id, $courses, $user_r)
-    {
-        foreach ($courses as $key => $value) {
-            DB::table('curso_estudiantes')->insert(
-                [
-                    'id_estudiante' => $id,
-                    'id_curso' => $key,
-                    'user_r' => $request->user_r
-                ]
-            );
         }
     }
 
