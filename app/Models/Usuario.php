@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Laravel\Passport\HasApiTokens;
@@ -106,7 +105,6 @@ use Laravel\Passport\HasApiTokens;
 class Usuario extends Base implements AuthenticatableContract, AuthorizableContract
 {
       use Authenticatable, Authorizable;
-      use SoftDeletes;
       /**
        * The attributes that are mass assignable.
        *

@@ -158,11 +158,12 @@ class EstudiantesController extends Controller
                     [
                         'id_estudiante' => $id,
                         'id_curso' => $courses[$key],
-                        'user_r' => $request->user_r
+                        'user_r' => $user_r
                     ]
                 );
             }
         } catch (Exception $e) {
+            \Log::info($e);
             return response()->json($e, 500);
         }
     }    
@@ -336,7 +337,8 @@ class EstudiantesController extends Controller
                 return response()->json($errors->all(), 400);
             } else {
                 DB::table('curso_estudiantes')->where('id_estudiante', $id)->delete();
-                $id = DB::table('estudiantes')->where('id', $id)->update(
+                $estudiante = estudiantes::where('id', $id)
+                ->update(
                     [
                         'dni' => $request->dni,
                         'nombre' => $request->nombre,
@@ -347,8 +349,8 @@ class EstudiantesController extends Controller
                         'user_r' => $request->user_r
                     ]
                 );
-                $this->storeCourses($id->id, $request->cursos, $request->user_r);
-                return response()->json($id, 200);
+                $this->storeCourses($id, $request->cursos, $request->user_r);
+                return response()->json($estudiante, 200);
             }
         } catch (Exception $e) {
             return response()->json($e, 400);
