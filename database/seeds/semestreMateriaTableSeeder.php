@@ -17,7 +17,6 @@ class semestreMateriaTableSeeder extends Seeder
 				'id_semestres' => 1,
 				'id_usuario' => 2,
 				'id_aula' => 1,
-				'id_turno' => 1,
 				'id_modalidad' => 1,
 				'user_r' => 'Luis Palma'
         	],
@@ -26,7 +25,6 @@ class semestreMateriaTableSeeder extends Seeder
 				'id_semestres' => 2,
 				'id_usuario' => 2,
 				'id_aula' => 2,
-				'id_turno' => 2,
 				'id_modalidad' => 2,
 				'user_r' => 'Luis Palma'
         	]

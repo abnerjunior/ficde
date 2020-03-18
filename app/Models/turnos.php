@@ -79,4 +79,8 @@ class turnos extends Base
         'cod_turno',
         'turno'
     ];
+    
+    public function semestres_materias() {
+        return $this->belongsToMany(semestres_materias::class, 'turno_semestre_materias', 'id_turno', 'id_sm');
+    }
 }

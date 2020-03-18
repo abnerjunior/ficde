@@ -20,7 +20,6 @@ class CreateSemestresMateriasTable extends Migration
             $table->unsignedBigInteger('id_semestres');
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_aula');
-            $table->unsignedBigInteger('id_turno')->nullable();
             $table->unsignedBigInteger('id_modalidad');
             $table->enum('status', ['y','n'])->default('y');
 
@@ -46,10 +45,6 @@ class CreateSemestresMateriasTable extends Migration
 
             $table->foreign('id_modalidad')
             ->references('cod_modalidad')->on('modalidades');
-
-            $table->foreign('id_turno')
-            ->references('cod_turno')->on('turnos');
-
 
         });
     }
