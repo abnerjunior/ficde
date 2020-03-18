@@ -1,21 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use Firebase\JWT\JWT;
+use App\Models\Usuario;
 use Firebase\JWT\ExpiredException;
+use Firebase\JWT\JWT;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthenticateController extends Controller
 {
     /**
      * Create a new token.
      * 
-     * @param  \App\User   $user
+     * @param  \App\Usuario   $user
      * @return string
      */
-    protected function jwt(User $user) {
+    protected function jwt(Usuario $user) {
         $payload = [
             'iss' => "lumen-jwt", // Issuer of the token
             'sub' => $user->user_id, // Subject of the token
@@ -33,7 +34,7 @@ class AuthenticateController extends Controller
         *   path="/authenticate",
         *   summary="Authenticate",
         *   description="Authenticate Users",
-        *   tags={"Users"},
+        *   tags={"usuarios"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
@@ -65,18 +66,62 @@ class AuthenticateController extends Controller
         * @return \Illuminate\Http\Response
         */
     public function authenticate(Request $request) {
-        $user = User::where('email', $request->email)->first();
+        $user = Usuario::where('dni', $request->dni)
+        ->orWhere('user',$request->dni)
+            ->first();
         if ($user) {
-            if(Hash::check($request->password, $user->password)){
+            if(Hash::check($request->pass, $user->pass)){
                 $apikey = $this->jwt($user);
-                User::where('email', $request->email)->update(['api_token' => $apikey]);
-
-                return response()->json(['status' => 'success','api_token' => $apikey], 200);
+                $refreshToken = Hash::make(Str::random(20));
+                Usuario::where('dni', $request->dni)
+                    ->orWhere('user',$request->dni)
+                    ->update(
+                        [
+                            'api_token' => $apikey,
+                            'refresh_token' => $refreshToken
+                        ]
+                    );
+                return response()->json(
+                    [
+                        'status' => 'success',
+                        'expires_in' => 21600000,
+                        'api_token' => $apikey,
+                        'refresh_token' => $refreshToken,
+                        'user' => $user
+                    ],
+                    200);
             } else {
               return response()->json(['status' => 'Incorrect password'], 401);
             }
         } else {
             return response()->json(['status' => 'user not register'], 401);
+        }
+    }
+
+    public function refreshToken (Request $request) {
+        $user = Usuario::where('refresh_token', $request->refresh_token)
+            ->first();
+        if ($user) {
+            $apikey = $this->jwt($user);
+            $refreshToken = Hash::make(Str::random(20));
+            Usuario::where('refresh_token', $request->refresh_token)
+                ->update([
+                    'api_token' => $apikey,
+                    'refresh_token' => $refreshToken
+                ]);
+            return response()->json(
+                [
+                    'status' => 'success',
+                    'expires_in' => 21600000,
+                    // 'rol' => $user->rol,
+                    'api_token' => $apikey,
+                    'refresh_token' => $refreshToken,
+                    'user' => $user
+                ],
+                200
+            );
+        } else {
+            return response()->json(['status' => 'Incorrect Refresn Token'], 401);
         }
     }
 }

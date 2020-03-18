@@ -1,0 +1,371 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Exception;
+use App\Http\Resources\UsersCollection;
+use Illuminate\Http\Request;
+use App\Models\semestres;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+
+class SemestresController extends Controller
+{
+    /**
+     * validate data of request
+     * @param  [Request] $request data
+     * @param  [String] $nombre number nombre
+     * @return [Function]  function validator
+     */
+    private function validation($request, $nombre)
+    {
+        if ($nombre !== null) {
+            $unique = Rule::unique('semestres')->ignore($request->nombre, 'nombre');
+        } else {
+            $unique = 'unique:semestres';
+        }
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required',
+            'fecha_inicio' => 'required',
+            'fecha_final' => 'required'
+        ]);
+        return $validator;
+    }
+    /**
+     * @OA\Get(
+     *   path="/semestres",
+     *   summary="Lists available semestres",
+     *   description="Gets all available semestres resources",
+     *   tags={"semestres"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\Parameter(
+     *       name="paginate",
+     *       in="query",
+     *       description="paginate",
+     *       required=false,
+     *       @OA\Schema(
+     *           title="Paginate",
+     *           example="true",
+     *           type="boolean",
+     *           description="The unique identifier of a semestres resource"
+     *       )
+     *   ),
+     *   @OA\Parameter(
+     *       name="dataSearch",
+     *       in="query",
+     *       description="semestres resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="The unique identifier of a semestres resource"
+     *       )
+     *    ),
+     *   @OA\Parameter(
+     *       name="sortField",
+     *       in="query",
+     *       description="Sort field",
+     *       required=false,
+     *       @OA\Schema(
+     *           title="name",
+     *           type="string",
+     *           example="name",
+     *           description="The unique identifier of a semestres resource"
+     *       )
+     *    ),
+     *   @OA\Parameter(
+     *       name="sortOrder",
+     *       in="query",
+     *       description="Sort order field",
+     *       @OA\Schema(
+     *           title="sortOrder",
+     *           example="asc",
+     *           type="string",
+     *           description="The unique identifier of a semestres resource"
+     *       )
+     *    ),
+     *   @OA\Parameter(
+     *       name="perPage",
+     *       in="query",
+     *       description="Sort order field",
+     *       @OA\Schema(
+     *           title="perPage",
+     *           type="number",
+     *           default="0",
+     *           description="The unique identifier of a semestres resource"
+     *       )
+     *    ),
+     * @OA\Parameter(
+     *     name="authorization",
+     *     in="header",
+     *     description="authorization",
+     *     @OA\Schema(
+     *         title="authorization",
+     *         type="string",
+     *     )
+     * ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="A list with semestres",
+     *       @OA\Header(
+     *       header="X-Auth-Token",
+     *       @OA\Schema(
+     *           type="integer",
+     *           format="int32"
+     *       ),
+     *       description="calls per hour allowed by the semestres"
+     *     ),
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error"
+     *   ),
+     * )
+     *
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+
+        $q = semestres::select();
+        $semestres = semestres::search($request->toArray(), $q,'semestres');
+        return  new UsersCollection($semestres);
+    }
+    /**
+     * @OA\Post(
+     *   path="/semestres",
+     *   summary="Creates a new semestres",
+     *   description="Creates a new semestres",
+     *   tags={"semestres"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/semestres")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The semestres resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+     * )
+     *
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            if ($this->validation($request, null)->fails()) {
+                $errors = $this->validation($request, null)->errors();
+                return response()->json($errors->all(), 400);
+            } else {
+                $semestres = new semestres();
+                $semestres->nombre = $request->nombre;
+                $semestres->fecha_inicio = $request->fecha_inicio;
+                $semestres->fecha_final = $request->fecha_final;
+                $semestres->user_r = $request->user_r;
+                $semestres->save();
+                return response()->json($semestres, 201);
+            }
+        } catch (Exception $e) {
+            return response()->json($e, 400);
+        }
+    }
+
+    /**
+     * @OA\Get(
+     *   path="/semestres/{nombre}",
+     *   summary="Gets a semestres resource",
+     *   description="Gets a semestres resource",
+     *   tags={"semestres"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\Parameter(
+     *   name="nombre",
+     *   in="path",
+     *   description="The semestres resource nombre",
+     *   required=true,
+     *   @OA\Schema(
+     *       type="string",
+     *       description="The unique identifier of a semestres resource"
+     *   )
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response=204,
+     *   description="The resource has been deleted"
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response=401,
+     *   description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response="default",
+     *   description="an ""unexpected"" error"
+     *   )
+     * )
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $nombre
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($nombre)
+    {
+        /** esto es una consulta por la cedula */
+        $semestres = semestres::where('nombre', $nombre)
+            ->where('status', 'y')
+            ->first();
+        if ($semestres) {
+            return response()->json($semestres, 200);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'semestres no inscrito'], 404);
+        }
+    }
+
+    /**
+     * @OA\Put(
+     *   path="/semestres/{nombre}",
+     *   summary="Updates a semestres resource",
+     *   description="Updates a semestres resource by the nombre",
+     *   tags={"semestres"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\Parameter(
+     *   name="nombre",
+     *   in="path",
+     *   description="semestres resource id",
+     *   required=true,
+     *   @OA\Schema(
+     *       type="string",
+     *       description="The unique identifier of a semestres resource"
+     *   )
+     *   ),
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/semestres")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *           response=200,
+     *           description="The semestres resource updated"
+     *       ),
+     *       @OA\Response(
+     *           @OA\MediaType(mediaType="application/json"),
+     *           response=401,
+     *           description="Unauthenticated."
+     *       ),
+     *       @OA\Response(
+     *           @OA\MediaType(mediaType="application/json"),
+     *           response="default",
+     *           description="an ""unexpected"" error"
+     *       )
+     *   )
+     *
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param  int  $nombre
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $nombre)
+    {
+        try {
+            if ($this->validation($request, $nombre)->fails()) {
+                $errors = $this->validation($request, $nombre)->errors();
+                return response()->json($errors->all(), 400);
+            } else {
+                $semestres = semestres::where('cod_semestre', $nombre)
+                    ->update([
+                        'nombre' =>  $request->nombre,
+                        'fecha_inicio' =>  $request->fecha_inicio,
+                        'fecha_final' =>  $request->fecha_final,
+                    ]);
+                return response()->json($semestres, 200);
+            }
+        } catch (Exception $e) {
+            return response()->json($e);
+        }
+    }
+    /**
+     * @OA\Delete(
+     *   path="/semestres/{dni}",
+     *   summary="Removes a semestres resource",
+     *   description="Removes a semestres resource",
+     *   tags={"semestres"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\Parameter(
+     *   name="dni",
+     *   in="path",
+     *   description="The semestres resource dni",
+     *   required=true,
+     *   @OA\Schema(
+     *       type="string",
+     *       description="The unique identifier of a semestres resource"
+     *   )
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response=204,
+     *   description="The resource has been deleted"
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response=401,
+     *   description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *   @OA\MediaType(mediaType="application/json"),
+     *   response="default",
+     *   description="an ""unexpected"" error"
+     *   )
+     * )
+     *
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $nombre
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($nombre)
+    {
+        $semestres = semestres::where('cod_semestre', $nombre)
+            ->where('status', 'y')
+            ->first();
+        if ($semestres) {
+            semestres::where('cod_semestre', $nombre)->update(['status' => 'n']);
+            return response()->json(['status' => 'success', 'message' => 'usuario eliminado'], 200);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'usuario not inscrito'], 404); // 404 es de que no se encontro contenido
+        }
+    }
+}
