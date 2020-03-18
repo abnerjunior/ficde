@@ -344,7 +344,7 @@ class EstudiantesController extends Controller
             DB::table('curso_estudiantes')->insert(
                 [
                     'id_estudiante' => $id,
-                    'id_curso' => $courses[$key],
+                    'id_curso' => $key,
                     'user_r' => $request->user_r
                 ]
             );
