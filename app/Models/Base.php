@@ -33,7 +33,7 @@ class Base extends Model
             });
 		}
         $q->where($table.'.status', 'y');
-		if ($data['paginate'] === "true") {
+		if (isset($data['paginate']) && $data['paginate'] === "true") {
 			return $q->paginate($data['perPage']);
 		} else {
 			return $q->get();
