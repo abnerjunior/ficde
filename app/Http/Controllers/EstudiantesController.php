@@ -151,14 +151,19 @@ class EstudiantesController extends Controller
     }
     function storeCourses($id, $courses, $user_r)
     {
-        foreach ($courses as $key => $value) {
-            DB::table('curso_estudiantes')->insert(
-                [
-                    'id_estudiante' => $id,
-                    'id_curso' => $key,
-                    'user_r' => $request->user_r
-                ]
-            );
+        try {
+            //code...
+            foreach ($courses as $key => $value) {
+                DB::table('curso_estudiantes')->insert(
+                    [
+                        'id_estudiante' => $id,
+                        'id_curso' => $courses[$key],
+                        'user_r' => $request->user_r
+                    ]
+                );
+            }
+        } catch (Exception $e) {
+            return response()->json($e, 500);
         }
     }    
     /**
