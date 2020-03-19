@@ -166,7 +166,7 @@ class EstudiantesController extends Controller
             \Log::info($e);
             return response()->json($e, 500);
         }
-    }    
+    } 
     /**
      * @OA\Post(
      *   path="/estudiantes",

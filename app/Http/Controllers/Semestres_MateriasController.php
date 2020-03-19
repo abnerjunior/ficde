@@ -209,17 +209,34 @@ class Semestres_MateriasController extends Controller
                 $semestres_materias->id_materia = $request->id_materia;
                 $semestres_materias->id_usuario = $request->id_usuario;
                 $semestres_materias->id_aula = $request->id_aula;
-                $semestres_materias->id_turno = $request->id_turno;
                 $semestres_materias->id_modalidad = $request->id_modalidad;
                 $semestres_materias->user_r = $request->user_r;
                 $semestres_materias->save();
-                return response()->json($request, 201);
+                $this->storeTurnos($semestres_materias->cod_sm, $request->turnos, $request->user_r);
+                return response()->json($semestres_materias, 201);
             }
         } catch (Exception $e) {
             return response()->json($e, 400);
         }
     }
 
+    function storeTurnos($id, $turnos, $user_r)
+    {
+        try {
+            foreach ($turnos as $key => $value) {
+                DB::table('turno_semestre_materias')->insert(
+                    [
+                        'cod_sm' => $id,
+                        'id_turno' => $turnos[$key],
+                        'user_r' => $user_r
+                    ]
+                );
+            }
+        } catch (Exception $e) {
+            \Log::info($e);
+            return response()->json($e, 500);
+        }
+    }
     /**
      * @OA\Get(
      *   path="/semestres_materias/{id_semestres}",
