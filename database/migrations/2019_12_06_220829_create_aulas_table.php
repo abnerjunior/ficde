@@ -22,7 +22,7 @@ class CreateAulasTable extends Migration
 
             $table->string('user_r');
 
-            $table->foreign('cod_sede')->references('cod_sede')->on('sedes');
+            $table->foreign('cod_sede')->references('id')->on('sedes');
 
             $table->timestamps();
         });

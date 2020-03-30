@@ -149,4 +149,14 @@ class Usuario extends Base implements AuthenticatableContract, AuthorizableContr
         ];
     
         protected $primaryKey = 'cod_usuario';
+
+        public function roles()
+        {
+            return $this->belongsToMany(Rol::class, 'rol_sede_usuarios', 'id_usuario', 'id_usuario');
+        }
+
+        public function sedes()
+        {
+            return $this->belongsToMany(sedes::class, 'rol_sede_usuarios', 'id_usuario', 'id_sede');
+        }
 }

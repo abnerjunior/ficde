@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             TurnoTableSeeder::class,
             CursoEstudiantesSeederTable::class,
             semestreMateriaTableSeeder::class,
-            TurnoSemestreMateriasTableSeeder::class
+            RolsTableSeeder::class,
+            RolsSedeUsuarioTableSeeder::class
         ]);
     }
 }

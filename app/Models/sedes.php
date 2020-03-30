@@ -5,7 +5,7 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-   /**
+/**
  * @OA\Schema(
  *   schema="sedes",
  *   type="object",
@@ -52,7 +52,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 class sedes extends Base
 {
       protected $table = 'sedes';
-      protected $primaryKey = 'cod_sede';
+      protected $primaryKey = 'id';
  /**
      * The attributes that are mass assignable.
      *
@@ -78,7 +78,10 @@ class sedes extends Base
       'telefono',
       'direccion'
   ];
-      
-      
-   
+  
+  public function usuarios()
+  {
+    return $this->belongsToMany(Usuario::class, 'rol_sede_usuarios', 'id_sede', 'id_usuario')
+      ->with('roles');
+  } 
 }
