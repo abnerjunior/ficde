@@ -140,7 +140,9 @@ class sedesController extends Controller
             'institucion.cod_institucion',
             'institucion.nombre as institucion',
             'sedes.*'
-        )->join('institucion', 'institucion.cod_institucion', 'sedes.cod_institucion');
+        )
+        ->with('usuarios')
+        ->join('institucion', 'institucion.cod_institucion', 'sedes.cod_institucion');
         $sedes = sedes::search($request->toArray(), $q,'sedes');
         return  new UsersCollection($sedes);
     }
