@@ -145,7 +145,7 @@ class UsuariosController extends Controller
      */
     public function index(Request $request)
     {
-        $q = Usuario::select()->with('roles');
+        $q = Usuario::select()->with('roles')->with('sedes');
         $usuarios = Usuario::search($request->toArray(), $q, 'usuarios');
         return  new UsersCollection($usuarios);
     }
